@@ -14,23 +14,23 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li>
-                <a href="{{ asset('assets') }}/index.html">
+            <li class="{{ (request()->segment('1') == '' || request()->segment('1') == '/') ? 'active' : '' }}">
+                <a href="{{ url('/') }}">
                     <i class="fa fa-users"></i> <span>Vendor</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ asset('assets') }}/index.html">
+            <li class="{{ request()->segment('1') == 'user' ? 'active' : '' }}"> 
+                <a href="{{ url('/user') }}">
                     <i class="fa fa-user"></i> <span>User</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ asset('assets') }}/index.html">
+            <li class="{{ request()->segment('1') == 'status' ? 'active' : '' }}">
+                <a href="{{ url('/status') }}">
                     <i class="fa fa-file-text"></i> <span>Status</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ asset('assets') }}/index.html">
+            <li class="{{ request()->segment('1') == 'order' ? 'active' : '' }}">
+                <a href="{{ url('/order') }}">
                     <i class="fa fa-tags"></i> <span>Order</span>
                 </a>
             </li>
