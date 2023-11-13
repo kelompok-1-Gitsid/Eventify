@@ -6,8 +6,18 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        cyan: '#A0E9FF',
+        bluelight: '#367CFF',
+      },
+      fontFamily:{
+        plusJakarta: 'Plus Jakarta Sans',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 
