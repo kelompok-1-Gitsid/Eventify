@@ -28,15 +28,27 @@
                             <i class="fa-regular fa-user"></i>
                             Profil Vendor
                         </a>
-                        <a href="#" class="sidebar-link fs-6 mt-2">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link fs-6 mt-2" >
                             <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i>
                             Orders
                         </a>
-                        <a href="#" class="sidebar-link fs-6 mt-2">
+                        </li>
+                        <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed fs-6 mt-2" data-bs-target="#product" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-suitcase" style="color: #ffffff;"></i>
                             Product
                         </a>
+                        <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Tambah Produk</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Produk Saya</a>
+                            </li>
+                    </ul>
                     </li>
+                </li>
 
                 </ul>
             </div>
@@ -54,7 +66,6 @@
                             <img src="{{asset ('assets/images/profile.jpg')}}" alt="Profile" class="avatar img-fluid rounded" width="42px">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a href="#" class="dropdown-item">Profile</a>
                             <a href="#" class="dropdown-item">Setting</a>
                             <a href="#" class="dropdown-item">Logout</a>
                         </div>
