@@ -3,12 +3,20 @@
 @section('container')
 <div class="w-full max-h-screen px-[165px] py-[70px] bg-white justify-center items-center inline-flex">
     <div class="w-[950px] h-[580px] relative">
-        <div class="w-[950px] h-[580px] left-0 top-0 absolute bg-slate-50 rounded-[13px] shadow"></div>
+        <div class="w-[950px] h-[580px] left-0 top-0 absolute bg-slate-50 rounded-[13px] shadow">
+            <div class="text-zinc-800 ">
+                <h1 class="mt-2 text-[22px] text-center font-bold font-['Plus Jakarta Sans']">Welcome back</h1>
+                <h2 class="mt-1 text-[15px] text-center font-medium font-['Plus Jakarta Sans']">We are so happy, u come back</h2>    
+            </div>
+        </div>
+        {{-- 
         <div class="w-[450px] h-[74px] left-[73px] top-[465px] absolute">
             <div class="w-[450px] h-[45px] left-0 top-[29px] absolute">
-                <div class="w-[450px] h-[45px] left-0 top-0 absolute bg-white rounded-[5px] shadow"></div>
+                <div class="w-[450px] h-[45px] left-0 top-0 absolute bg-white rounded-[5px] shadow">
+                    <div class="left-[138px] top-[12px] absolute text-black text-base font-medium font-['Plus Jakarta Sans']">Continue using google</div>
+                </div>
                 <div class="w-6 h-[25px] left-[39px] top-[10px] absolute"></div>
-                <div class="left-[138px] top-[12px] absolute text-black text-base font-medium font-['Plus Jakarta Sans']">Continue using google</div>
+                
             </div>
             <div class="w-[17px] h-3.5 left-[216px] top-0 absolute text-black text-base font-medium font-['Plus Jakarta Sans']">or</div>
             <div class="w-[180px] h-[0px] left-[21px] top-[7px] absolute border border-black"></div>
@@ -100,8 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="left-[397px] top-[24px] absolute text-zinc-800 text-[22px] font-bold font-['Plus Jakarta Sans']">Welcome back</div>
-        <div class="left-[369px] top-[58px] absolute text-zinc-800 text-[15px] font-medium font-['Plus Jakarta Sans']">We are so happy, u come back</div>
+         --}}
     </div>
 </div>
 @endsection
