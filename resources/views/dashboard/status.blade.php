@@ -1,6 +1,6 @@
 @extends('layouts.dash')
 
-@section('content')
+@section('container')
     <section class="content-header">
         <h1>
             Status
