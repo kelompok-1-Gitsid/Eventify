@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('address', 100);
             $table->string('telephone', 50);   
-            $table->bcrypt('password', 50)->required();        
+            $table->string('password', 50)->required()->bcrypt();        
             $table->timestamps();
         });
     }
