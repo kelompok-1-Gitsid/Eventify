@@ -7,16 +7,31 @@ use App\Models\Vendor;
 
 class VendorController extends Controller
 {
+    public function index()
+    {
+        $vendors = Vendor::all();
+        return view('dashboard', compact('vendors'));
+    }
     public function profile()
     {
         $vendors = Vendor::all();
         return view('profile', compact('vendors'));
     }
 
-    public function index()
+    public function orders()
     {
         $vendors = Vendor::all();
-        return view('dashboard', compact('vendors'));
+        return view('orders', compact('vendors'));
+    }
+    public function AddProduct()
+    {
+        $vendors = Vendor::all();
+        return view('AddProduct', compact('vendors'));
+    }
+    public function MyProduct()
+    {
+        $vendors = Vendor::all();
+        return view('MyProduct', compact('vendors'));
     }
 
     public function store(Request $request)

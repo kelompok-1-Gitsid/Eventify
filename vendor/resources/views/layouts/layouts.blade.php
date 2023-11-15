@@ -13,7 +13,7 @@
 
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#" class="d-flex justify-content-center fs-3">Eventify</a>
+                    <a href="{{ route('vendor.index')}}" class="d-flex justify-content-center fs-3">Eventify</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header fs-4">
@@ -29,7 +29,7 @@
                             Profil Vendor
                         </a>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link fs-6 mt-2" >
+                            <a href="{{ route('vendor.orders')}}" class="sidebar-link fs-6 mt-2" >
                             <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i>
                             Orders
                         </a>
@@ -41,10 +41,10 @@
                         </a>
                         <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Tambah Produk</a>
+                                <a href="{{ route('vendor.AddProduct')}}" class="sidebar-link">Tambah Produk</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Produk Saya</a>
+                                <a href="{{ route('vendor.MyProduct')}}" class="sidebar-link">Produk Saya</a>
                             </li>
                     </ul>
                     </li>
