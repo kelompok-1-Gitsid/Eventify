@@ -33,6 +33,21 @@ class VendorController extends Controller
         $vendors = Vendor::all();
         return view('MyProduct', compact('vendors'));
     }
+    public function TotalOrders()
+    {
+        $vendors = Vendor::all();
+        return view('TotalOrders', compact('vendors'));
+    }
+    public function OrderProcess()
+    {
+        $vendors = Vendor::all();
+        return view('OrderProcess', compact('vendors'));
+    }
+    public function OrdersDone()
+    {
+        $vendors = Vendor::all();
+        return view('OrdersDone', compact('vendors'));
+    }
 
     public function store(Request $request)
     {
