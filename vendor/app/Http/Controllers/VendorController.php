@@ -7,15 +7,16 @@ use App\Models\Vendor;
 
 class VendorController extends Controller
 {
-    public function index()
+    public function profile()
     {
         $vendors = Vendor::all();
         return view('profile', compact('vendors'));
     }
 
-    public function create()
+    public function index()
     {
-        return view('dashboard.vendor.create');
+        $vendors = Vendor::all();
+        return view('dashboard', compact('vendors'));
     }
 
     public function store(Request $request)
@@ -29,7 +30,7 @@ class VendorController extends Controller
 
         Vendor::create($data);
 
-        return redirect()->route('vendor.index')->with('success', 'Vendor berhasil ditambahkan');
+        return redirect()->route('vendor.profile')->with('success', 'Vendor berhasil ditambahkan');
     }
 
     public function edit(Vendor $vendor)

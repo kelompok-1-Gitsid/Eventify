@@ -20,11 +20,11 @@
                         Vendor Elements
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link fs-6 mt-2">
+                        <a href="{{ route('vendor.index') }}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-solid fa-list"></i>
                             Dashboard
                         </a>
-                        <a href="{{ route('vendor.index') }}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{ route('vendor.profile') }}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-regular fa-user"></i>
                             Profil Vendor
                         </a>
