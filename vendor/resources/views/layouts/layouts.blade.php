@@ -29,10 +29,21 @@
                             Profil Vendor
                         </a>
                         <li class="sidebar-item">
-                            <a href="{{ route('vendor.orders')}}" class="sidebar-link fs-6 mt-2" >
+                            <a href="{{ route('vendor.orders')}}" class="sidebar-link fs-6 mt-2" data-bs-target="#orders" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i>
                             Orders
                         </a>
+                        <ul id="orders" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('vendor.TotalOrders')}}" class="sidebar-link">Order Total</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('vendor.OrderProcess')}}" class="sidebar-link">Order In Progress</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('vendor.OrdersDone')}}" class="sidebar-link">Completed Order</a>
+                            </li>
+                    </ul>
                         </li>
                         <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed fs-6 mt-2" data-bs-target="#product" data-bs-toggle="collapse" aria-expanded="false">
@@ -67,7 +78,11 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="#" class="dropdown-item">Setting</a>
-                            <a href="#" class="dropdown-item">Logout</a>
+                            <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn border-0">Logout</button>
+                            </form>
                         </div>
                     </li>
                 </ul>

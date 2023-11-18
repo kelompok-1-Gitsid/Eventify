@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <img src="{{asset ('assets/images/profile.jpg')}}" alt="Profile Picture" class="img img-thumbnail rounded-circle w-50">
                     @foreach ($vendors as $vendor)
-                    <h2>{{ $vendor->nama }}</h2>
+                    <h2>{{Auth::user()->name}}</h2>
 
                     <p class="card-text text-muted">
                         Wedding Organizer Terbaik dan Terpercaya
