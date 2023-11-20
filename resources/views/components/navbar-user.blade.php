@@ -1,4 +1,4 @@
-<nav class="w-full z-20 top-0 start-0 font-plusJakarta">
+<nav class="w-full z-20 top-0 start-0 border-b border-gray-400 font-plusJakarta">
     <div class="max-w-screen flex flex-wrap items-center justify-between mx-[2rem] lg:mx-[8rem] p-4">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"> --}}
@@ -34,7 +34,7 @@
                 </li>
             </ul>
             @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                <div class="md:fixed md:top-0 md:right-0 p-3 text-right z-10">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-800 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else

@@ -7,6 +7,6 @@
 
 @layer components {
     .image{
-        @apply w-[400px] sm:max-w-sm;
+        @apply max-w-md md:max-w-lg lg:w-[400px];
     }
 }
