@@ -35,6 +35,14 @@
                             <input type="password" name="password" class="form-control" id="password" required>
                         </div>
                         <div class="mb-3">
+                            <label for="no_telepon" class="form-label">No. Telepon</label>
+                            <input type="text" name="no_telepon" class="form-control" id="no_telepon" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <textarea name="alamat" class="form-control" id="alamat" rows="3" placeholder="Jalan Raya, Desa, Kecamatan" required></textarea>
+                        </div>
+                        <div class="mb-3">
                             <div class="d-grid">
                                 <button class="btn btn-primary">Register</button>
                             </div>

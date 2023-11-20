@@ -18,7 +18,8 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-
+        $user->no_telepon = $request->no_telepon;
+        $user->alamat= $request->alamat;
         $user->save();
 
         return back()->with('success','Register Successfully');

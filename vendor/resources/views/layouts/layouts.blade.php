@@ -52,10 +52,10 @@
                         </a>
                         <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('vendor.AddProduct')}}" class="sidebar-link">Tambah Produk</a>
+                                <a href="{{ route('product.AddProduct')}}" class="sidebar-link">Tambah Produk</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('vendor.MyProduct')}}" class="sidebar-link">Produk Saya</a>
+                                <a href="{{ route('product.index')}}" class="sidebar-link">Produk Saya</a>
                             </li>
                     </ul>
                     </li>

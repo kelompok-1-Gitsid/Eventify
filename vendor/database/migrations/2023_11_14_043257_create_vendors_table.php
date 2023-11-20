@@ -15,10 +15,10 @@ class CreateVendorsTable extends Migration
             $table->string('telepon');
             $table->string('email')->unique();
             $table->text('deskripsi')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
 
-            // Tambahkan kolom lain sesuai kebutuhan
-
-            $table->timestamps();
         });
     }
 

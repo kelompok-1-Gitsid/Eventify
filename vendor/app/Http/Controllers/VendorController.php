@@ -17,6 +17,11 @@ class VendorController extends Controller
         $vendors = Vendor::all();
         return view('profile', compact('vendors'));
     }
+    public function UbahProfil()
+    {
+        $vendors = Vendor::all();
+        return view('UbahProfile', compact('vendors'));
+    }
 
     public function orders()
     {
