@@ -1,7 +1,12 @@
 /* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&display=swap');
 
-/* Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .image{
+        @apply w-[400px] sm:max-w-sm;
+    }
+}
