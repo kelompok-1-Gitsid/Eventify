@@ -1,13 +1,10 @@
 <nav class="w-full z-20 top-0 start-0 font-plusJakarta">
-    <div class="max-w-screen flex flex-wrap items-center justify-between mx-[2rem] lg:mx-[5rem] p-4">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <div class="max-w-screen flex flex-wrap items-center justify-between mx-[2rem] lg:mx-[8rem] p-4">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"> --}}
             <span class="self-center text-xl font-semibold whitespace-nowrap">Eventify</span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                Log in
-            </button>
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 aria-controls="navbar-sticky" aria-expanded="false">
@@ -36,6 +33,22 @@
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Help</a>
                 </li>
             </ul>
+            @if (Route::has('login'))
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-800 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                    @else
+                    <button type="button" data-modal-target="authetication-modal" class="bg-slate-300 text-slate-900 hover:bg-cyan hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center">
+                        <a href="{{ route('login') }}" class="font-medium">Log in</a>
+                    </button>
+                        @if (Route::has('register'))
+                        <button type="button" data-modal-target="authetication-modal" class="ml-2 bg-blue-700 text-slate-50 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center">
+                            <a href="{{ route('register') }}" class="font-medium">Register</a>
+                        </button>
+                        @endif
+                    @endauth
+                </div>
+            @endif
         </div>
     </div>
 </nav>
