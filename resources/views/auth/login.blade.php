@@ -45,13 +45,13 @@
 
             <div class="flex items-center justify-between mt-4">
                 <p class="text-sm"> Need an account ?
-                    <a class="ml-1 underline text-bluelight hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    <a class="ml-1 underline text-bluelight hover:text-gray-900 rounded-md"
                         href="{{ route('register') }}">
                         {{ __('Register') }}
                     </a>
                 </p>
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md"
                         href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
@@ -59,10 +59,10 @@
             </div>
             <div class="">
                 <div class="font-plusJakarta">
-                    <div class="flex items-center justify-between mx-2 my-2">
-                        <hr class="border-b border-gray-500 w-52">
+                    <div class="flex items-center justify-between my-2">
+                        <hr class="border-b border-gray-500 w-48 md:w-52">
                         <p class=" ">or</p>
-                        <hr class="border-b border-gray-500 w-52">
+                        <hr class="border-b border-gray-500 w-48 md:w-52">
                     </div>
                     <button type="button"
                         class="text-gray-800 w-full bg-white mt-4 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center me-2 mb-2">
