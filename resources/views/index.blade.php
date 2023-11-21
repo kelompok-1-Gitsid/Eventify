@@ -2,7 +2,7 @@
 
 @section('container')
     <section id="header">
-        <div class="py-8 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
+        <div class="mt-[5rem] lg:mt-2 py-10 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
             <div class="flex flex-col lg:flex-row items-center md:justify-center md:justify-items-center gap-5 md:gap-15 lg:gap-25">
                 <div class="mx-5 my-5 font-plusJakarta text-center md:my-4 lg:my-auto lg:w-[50rem] lg:text-justify">
                     <h1 class="title text-[1.5rem] md:text-[2.5rem] lg:text-[3rem]">Eventify is</h1>
@@ -25,13 +25,26 @@
             <h1 class="font-bold text-[1.5rem] md:text-[2rem] lg:text-[2.5rem]"> Our Product</h1>
             <h3 class="font-medium text-[1rem] md:text-[1.2rem] lg:text-[1.4rem]">This are our priority product</h3>
         </div>
-        <div class="mt-2 mx-6 flex justify-items-center items-center justify-center">
-            <div class="grid grid-cols-4">
-
+        <div class="mt-5 mx-8 flex justify-items-center items-center justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-44 lg:gap-20 min-h-full">
+                <div class="image-product">
+                    <img src="{{ url('assets/img/wedding-product.jpg')}}" alt="" class="rounded-lg">
+                </div>
+                <div class="image-product">
+                    <img src="{{ url('assets/img/wedding-product.jpg')}}" alt="" class="rounded-lg">
+                </div>
+                <div class="image-product">
+                    <img src="{{ url('assets/img/wedding-product.jpg')}}" alt="" class="rounded-lg">
+                </div>
+                <div class="image-product">
+                    <img src="{{ url('assets/img/wedding-product.jpg')}}" alt="" class="rounded-lg">
+                </div>
             </div>
         </div>
         <section id="content">
+            <div class="py-72 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen font-plusJakarta">
 
-
+                <h1 class="title-sub-header text-start ml-10 text-2xl">Top Month Of Vendor</h1>
+            </div>
         </section>
     @endsection

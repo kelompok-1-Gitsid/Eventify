@@ -1,4 +1,4 @@
-<nav class="w-full z-20 top-0 start-0 border-b border-gray-400 font-plusJakarta">
+<nav class="w-full fixed z-20 top-0 start-0 bg-white border-b border-gray-400 font-plusJakarta">
     <div class="max-w-screen flex flex-wrap items-center justify-between mx-[2rem] lg:mx-[8rem] p-4">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"> --}}
