@@ -47,7 +47,7 @@
             </div>
             <div class="mt-8">
                 <x-primary-button
-                    class="flex w-full justify-center rounded-md bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+                    class="flex w-full justify-center rounded-md bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white">
                     {{ __('Register') }}
                 </x-primary-button>
             </div>
@@ -81,7 +81,7 @@
                     </button>
                     <div class="flex justify-center mt-4">
                         <p class=""> have an account ?
-                            <a class="ml-1 underline text-sm text-bluelight hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            <a class="ml-1 underline text-sm text-bluelight hover:text-gray-900 rounded-md"
                                 href="{{ route('login') }}">
                                 {{ __('Already registered?') }}
                             </a>
