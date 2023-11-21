@@ -1,6 +1,4 @@
-@extends('layouts.layout')
-
-@section('container')
+<x-user-layout>
     <section id="header">
         <div class="mt-[5rem] lg:mt-2 py-10 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
             <div class="flex flex-col lg:flex-row items-center md:justify-center md:justify-items-center gap-5 md:gap-15 lg:gap-25">
@@ -41,10 +39,10 @@
                 </div>
             </div>
         </div>
-        <section id="content">
-            <div class="py-72 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen font-plusJakarta">
+    <section id="content">
+        <div class="py-72 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen font-plusJakarta">
+            <h1 class="title-sub-header text-start ml-10 text-2xl">Top Month Of Vendor</h1>
+        </div>
+    </section>
 
-                <h1 class="title-sub-header text-start ml-10 text-2xl">Top Month Of Vendor</h1>
-            </div>
-        </section>
-    @endsection
+</x-user-layout>

@@ -20,6 +20,13 @@ class HomeController extends Controller
             else if($usertype == 'admin'){
                 return view('admin.index');
             }
+            else if($usertype == 'vendor'){
+                return view ();
+            }
+
+            else{
+                return redirect()->back();
+            }
 
         }
 
