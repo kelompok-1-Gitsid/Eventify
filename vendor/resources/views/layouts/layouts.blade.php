@@ -6,6 +6,7 @@
     <title>Eventify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -13,38 +14,25 @@
 
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="{{ route('vendor.index')}}" class="d-flex justify-content-center fs-3">Eventify</a>
+                    <a href="{{ route('index')}}" class="d-flex justify-content-center fs-3">Eventify</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header fs-4">
                         Vendor Elements
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{ route('vendor.index') }}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{ route('index') }}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-solid fa-list"></i>
                             Dashboard
                         </a>
-                        <a href="{{ route('vendor.profile') }}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{ route('profile') }}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-regular fa-user"></i>
                             Profil Vendor
                         </a>
-                        <li class="sidebar-item">
-                            <a href="{{ route('vendor.orders')}}" class="sidebar-link fs-6 mt-2" data-bs-target="#orders" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i>
+                        <a href="{{ route('order.index')}}" class="sidebar-link fs-6 mt-2">
+                            <i class="fa-regular fa-basket-shopping"></i>
                             Orders
                         </a>
-                        <ul id="orders" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('vendor.TotalOrders')}}" class="sidebar-link">Order Total</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('vendor.OrderProcess')}}" class="sidebar-link">Order In Progress</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('vendor.OrdersDone')}}" class="sidebar-link">Completed Order</a>
-                            </li>
-                    </ul>
-                        </li>
                         <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed fs-6 mt-2" data-bs-target="#product" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-suitcase" style="color: #ffffff;"></i>

@@ -1,7 +1,7 @@
 @extends('layouts.layouts')
 
 @section('content')
-@foreach ($vendors as $vendor)
+
     <div class="content px-3 py-2">
         <div class="container-fluid">
             <div class="mb-5">
@@ -35,7 +35,7 @@
                                         Total Orders
                                     </h3>
                                     <p>
-                                        20 Orders
+                                        {{ $orders->count() }} Orders
                                     </p>
                                 </div>
                                 </div>
@@ -46,7 +46,7 @@
                 <div class="card border-0">
                     <div class="card-header">
                         <h5 class="card-title">
-                            Basic Table
+                            Orders In Progress
                         </h5>
                         <h6 class="card-subtitle text-muted">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatum ab hic tempora nihil enim.
@@ -56,35 +56,24 @@
                         <table class="table">
                             <thead>
                               <tr class="table-secondary">
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created At</th>
                               </tr>
                             </thead>
                             <tbody>
+                                @foreach($orders as $order)
                               <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->status }}</td>
+                                <td>{{ $order->created_at }}</td>
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                              </tr>
+                              @endforeach
                             </tbody>
                           </table>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
+
 @endsection

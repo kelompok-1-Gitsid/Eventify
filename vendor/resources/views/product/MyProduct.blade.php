@@ -1,11 +1,11 @@
 @extends('layouts.layouts')
 
 @section('content')
-<div class="container">
+<div class="container mt-3">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8 offset-md-1">
             <h4>Products</h4>
-            <table class="table">
+            <table class="table px-4">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -21,7 +21,7 @@
                         <tr>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->description }}</td>
-                            <td>{{ $product->price }}</td>
+                            <td>Rp {{ $product->price }}</td>
                             <td>{{ $product->user->name }}</td>
                             <td><img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}" height="80" /></td>
                             <td>

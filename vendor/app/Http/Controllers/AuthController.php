@@ -12,6 +12,10 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    public function profile(){
+        return view('profile');
+    }
+
     public function registerPost(Request $request){
         $user = new User();
 
