@@ -1,7 +1,14 @@
 <?php
 
+use App\Http\Controllers\CateringController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DecorationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MuaController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +41,32 @@ Route::middleware('auth')->group(function () {
 });
 
 
-route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
+Route::redirect('admin', 'admin/vendor');
 
-require __DIR__.'/auth.php';
+Route::prefix('admin')->group(function () {
+    Route::prefix('vendor')->group(function () {
+        Route::get('/', function () {
+            return view('admin.vendor');
+        })->name('vendor');
+
+        Route::resource('photo', PhotoController::class);
+        Route::resource('video', VideoController::class);
+        Route::resource('catering', CateringController::class);
+        Route::resource('mua', MuaController::class);
+        Route::resource('decoration', DecorationController::class);
+    });
+
+
+    Route::resource('user', CustomerController::class);
+
+    Route::get('status', [StatusController::class, 'index'])->name('status');
+
+    Route::get('/order', function () {
+        return view('admin.order');
+    })->name('order');
+});
+
+
+route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+
+require __DIR__ . '/auth.php';
