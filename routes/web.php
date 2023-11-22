@@ -9,6 +9,7 @@ use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\VideoController;
+use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,6 +73,9 @@ Route::prefix('admin')->group(function () {
     })->name('order');
 });
 
+
+Route::get('/googleLogin', [HomeController::class, 'googleLogin']);
+Route::get('auth/google/callback', [HomeController::class, 'googleHandle']);
 
 route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
