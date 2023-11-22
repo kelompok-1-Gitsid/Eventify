@@ -11,6 +11,7 @@ class DashboardController extends Controller
     public function showDashboard()
     {
         $orders = Order::where('user_id', Auth::id())->get();
-        return view('dashboard.dashboard', compact('orders'));
+        $user = Auth::user();
+        return view('dashboard.dashboard', compact('orders' , 'user'));
     }
 }

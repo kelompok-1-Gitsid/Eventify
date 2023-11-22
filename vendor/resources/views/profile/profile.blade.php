@@ -6,13 +6,17 @@
         <div class="col-lg-4">
             <div class="card text-center p-5">
                 <div class="card-body">
-                    <img src="{{asset ('assets/images/profile.jpg')}}" alt="Profile Picture" class="img img-thumbnail rounded-circle w-50">
+                    @if ($user->profile_image)
+                        <img src="{{ asset('uploads/' . $user->profile_image) }}" alt="Profile" class="img img-thumbnail rounded-circle w-50">
+                     @else
+                        <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="img img-thumbnail rounded-circle w-50">
+                    @endif
                     <h2>{{Auth::user()->vendor}}</h2>
 
                     <p class="card-text text-muted">
                         Wedding Organizer Terbaik dan Terpercaya
                     </p>
-                    <a href="#" class="btn btn-success btn-sm">
+                    <a href="{{ route('profile.edit') }}" class="btn btn-success btn-sm">
                         <i class="edit fa-solid fa-pencil me-1">
                             Ubah Profil
                         </i>

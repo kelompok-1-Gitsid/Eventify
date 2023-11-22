@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 use App\Models\Order;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Product;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
 
     public function index()
 {
+    $user = Auth::user();
     $orders = Order::where('user_id', auth()->id())->get();
-    return view('orders.index', compact('orders'));
+    return view('orders.index', compact('user', 'orders'));
 }
 
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('address');
+            $table->string('profile_image')->nullable();
             $table->unsignedBigInteger('id_role')->nullable();
             $table->foreign('id_role')->references('id')->on('roles')->onDelete('cascade');
             $table->string('deskripsi')->default('');

@@ -14,25 +14,29 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('user')->get();
-        $users = User::all();
-        return view('product.MyProduct', compact('products'));
+        $products = auth()->user()->products; // Use lowercase 'products'
+
+        $user = auth()->user();
+
+        return view('product.MyProduct', compact('products','user'));
     }
+
 
 
     public function create()
     {
         $products = Product::all();
-
-        return view('product.AddProduct', compact('products'));
+        $user = auth()->user();
+        return view('product.AddProduct', compact('products','user'));
     }
 
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+        $user = auth()->user();
 
         // Mengirim data product ke view edit.blade.php
-        return view('product.edit', compact('product'));
+        return view('product.edit', compact('product','user'));
     }
 
     public function update(Request $request, $id)

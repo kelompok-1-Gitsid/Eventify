@@ -19,7 +19,11 @@
                                     </div>
                                 </div>
                                 <div class="col-6 align-self-end text-end">
-                                    <img src="{{asset ('assets/images/profile.jpg')}}" class="img-fluid illustration-img" alt="Dashboard Photo">
+                                @if ($user->profile_image)
+                                    <img src="{{ asset('uploads/' . $user->profile_image) }}" alt="Profile" class="img-fluid illustration-img">
+                                    @else
+                                    <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="img-fluid illustration-img">
+                                @endif
                                 </div>
                             </div>
                         </div>
@@ -48,9 +52,7 @@
                         <h5 class="card-title">
                             Orders In Progress
                         </h5>
-                        <h6 class="card-subtitle text-muted">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatum ab hic tempora nihil enim.
-                        </h6>
+
                     </div>
                     <div class="card-body">
                         <table class="table">

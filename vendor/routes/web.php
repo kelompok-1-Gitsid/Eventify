@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VendorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 
@@ -22,7 +22,9 @@ Route::group(['middleware' => 'guest'], function(){
 route::group(['middleware' => 'auth'], function(){
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('index');
-    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::post('/update-status/{id}/{status}', 'OrderController@updateStatus')->name('updateStatus');
     Route::get('/MyProduct', [ProductController::class, 'index'])->name('product.index');
