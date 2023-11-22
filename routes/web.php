@@ -31,6 +31,7 @@ Route::get('/product', function(){
     return view('product');
 });
 
+
 Route::get('/about-us', function(){
     return view ('about-us');
 });
@@ -39,6 +40,10 @@ Route::get('/about-us', function(){
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
