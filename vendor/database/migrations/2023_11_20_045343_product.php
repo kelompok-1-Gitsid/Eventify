@@ -12,14 +12,18 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->text('description');
-            $table->string('price', 8, 2);
+            $table->string('price', 8);
             $table->string('product_image')->nullable();
+            $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
 
 
-            $table->foreign('user_id')->references('id')->on('users');
+
+
         });
     }
 

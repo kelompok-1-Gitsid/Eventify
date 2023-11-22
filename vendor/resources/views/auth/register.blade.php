@@ -23,24 +23,36 @@
                     <form action="{{route('register')}}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="John Doe" required>
+                            <label for="vendor" class="form-label">Vendor</label>
+                            <input type="text" name="vendor" class="form-control" id="vendor" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="JohnDoe21" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="JohnDoe@example.com" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" required>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="*********" required>
                         </div>
                         <div class="mb-3">
-                            <label for="no_telepon" class="form-label">No. Telepon</label>
-                            <input type="text" name="no_telepon" class="form-control" id="no_telepon" placeholder="08xxxxxxxxxx" required>
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="08xxxxxxxxxx" required>
                         </div>
                         <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <textarea name="alamat" class="form-control" id="alamat" rows="3" placeholder="Jalan Raya, Desa, Kecamatan" required></textarea>
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" name="address" class="form-control" id="address" placeholder="jl. ......." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_role" class="form-label">Role</label>
+                            <select name="id_role" required>
+                                <option value="1">Admin</option>
+                                <option value="2">Vendor</option>
+                                <option value="3">User</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <div class="d-grid">

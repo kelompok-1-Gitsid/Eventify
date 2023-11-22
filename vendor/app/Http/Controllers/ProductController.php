@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+
 
 
 class ProductController extends Controller
@@ -77,6 +79,10 @@ class ProductController extends Controller
                 'product_image' => $request->input('product_image'),
                 'user_id' => $user_id,
             ]);
+            $category = Categories::where('name', $request->input('category'))->first(); // Ganti $categories menjadi $category
+            if ($category) {
+                $product->category_id = $category->id;
+            }
 
             $product->save();
 

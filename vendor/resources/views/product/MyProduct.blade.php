@@ -22,7 +22,7 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->description }}</td>
                             <td>Rp {{ $product->price }}</td>
-                            <td>{{ $product->user->name }}</td>
+                            <td>{{ $product->user->vendor }}</td>
                             <td><img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}" height="80" /></td>
                             <td>
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a>

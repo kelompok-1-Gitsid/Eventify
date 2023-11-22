@@ -14,7 +14,7 @@
                             <div class="row g-0 w-100">
                                 <div class="col-6">
                                     <div class="p-3 m-1">
-                                        <h4>Welcome Back, {{Auth::user()->name}}</h4>
+                                        <h4>Welcome Back, {{Auth::user()->vendor}}</h4>
                                         <p class="mb-0">Vendor Dashboard, Eventify</p>
                                     </div>
                                 </div>

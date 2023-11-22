@@ -23,6 +23,16 @@
                     <label for="product_image">Image</label>
                     <input type="text" name="product_image" id="product_image" class="form-control" required>
                 </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category" class="form-control" required>
+                        <option value="Catering">Catering</option>
+                        <option value="Videographer">Videographer</option>
+                        <option value="Photographer">Photographer</option>
+                        <option value="Decoration">Decoration</option>
+                        <option value="MUA">MUA</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>

@@ -7,7 +7,7 @@
             <div class="card text-center p-5">
                 <div class="card-body">
                     <img src="{{asset ('assets/images/profile.jpg')}}" alt="Profile Picture" class="img img-thumbnail rounded-circle w-50">
-                    <h2>{{Auth::user()->name}}</h2>
+                    <h2>{{Auth::user()->vendor}}</h2>
 
                     <p class="card-text text-muted">
                         Wedding Organizer Terbaik dan Terpercaya
@@ -35,7 +35,7 @@
                             <p class="card-text">
                                 <span class="text-muted mb-1 d-block">Alamat :</span>
                                 <i class="fa-solid fa-map me-2 text-success"></i>
-                                {{Auth::user()->alamat}}
+                                {{Auth::user()->address}}
                             </p>
                             <p class="card-text">
                                 <span class="text-muted mb-1 d-block">Alamat Email :</span>
@@ -45,7 +45,7 @@
                             <p class="card-text">
                                 <span class="text-muted mb-1 d-block">Nomor Telepon :</span>
                                 <i class="fa-solid fa-phone me-2 text-success"></i>
-                                {{Auth::user()->no_telepon}}
+                                {{Auth::user()->phone}}
                             </p>
                         </div>
 

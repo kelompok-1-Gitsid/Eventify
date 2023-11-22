@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,13 +18,17 @@ class AuthController extends Controller
     }
 
     public function registerPost(Request $request){
+
         $user = new User();
 
-        $user->name = $request->name;
+        $user->vendor = $request->vendor;
+        $user->username = $request->input('username');
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->no_telepon = $request->no_telepon;
-        $user->alamat= $request->alamat;
+        $user->phone = $request->phone;
+        $user->address= $request->address;
+        $user->id_role= $request->id_role;
+
         $user->save();
 
         return back()->with('success','Register Successfully');
@@ -31,6 +36,7 @@ class AuthController extends Controller
     Public function login(){
         return view('auth.login');
     }
+
 
     Public function loginPost(Request $request)
     {
