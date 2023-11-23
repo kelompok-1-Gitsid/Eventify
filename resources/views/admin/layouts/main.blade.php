@@ -73,6 +73,12 @@
     <script src="{{ asset('assets') }}/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('assets') }}/dist/js/demo.js"></script>
+    <script>
+        function deleteData(name) {
+            pesan = confirm(`Are you sure you wanna delete this '${name}' ?`);
+            return pesan
+        }
+    </script>
 </body>
 
 </html>
