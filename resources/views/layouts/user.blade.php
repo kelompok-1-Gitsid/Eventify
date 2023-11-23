@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Eventify</title>
 </head>
 
@@ -21,8 +21,21 @@
     </div>
 
     <div class="">
-        <x-footer-user/>
+        <x-footer-user />
     </div>
+
+    <script>
+        const $prevButton = document.getElementById('data-carousel-prev');
+        const $nextButton = document.getElementById('data-carousel-next');
+
+        $prevButton.addEventListener('click', () => {
+            carousel.prev();
+        });
+
+        $nextButton.addEventListener('click', () => {
+            carousel.next();
+        });
+    </script>
 
 </body>
 
