@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('id_category')->constrained('categories');
+            $table->unsignedBigInteger('id_category')->nullable();
+            $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('id_role')->constrained('roles');
             $table->timestamps();
         });
