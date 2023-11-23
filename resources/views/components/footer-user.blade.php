@@ -6,13 +6,10 @@
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-slate-50 sm:mb-0">
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                    <a href="{{url('/about-us')}}" class="hover:underline me-4 md:me-6">About</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                    <a href="#" class="hover:underline me-4 md:me-6">Social</a>
                 </li>
                 <li>
                     <a href="#" class="hover:underline">Contact</a>

@@ -63,10 +63,9 @@
         </div>
     </section>
     <section id="content" class="mb-10 mt-10">
-        <div class="py-6 px-60 text-start">
-            <h1 class="font-bold text-[2rem]">Top Vendor</h1>
-        </div>
-        <div class="flex flex-col lg:flex-row items-center md:justify-center gap-40">
+    <div class="w-full flex flex-col">
+        <h1 class="flex justify-center lg:justify-start lg:mx-[15.5rem] text-[2rem] font-semibold my-5">Top Vendor</h1>
+        <div class="flex flex-col lg:flex-row items-center md:justify-center lg:gap-20">
             <div class="mx-5 my-5 image">
                 <img src="{{ url('assets/img/dummy.jpg') }}" alt="" class="rounded-lg">
             </div>
@@ -86,7 +85,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row-reverse items-center md:justify-center gap-40">
+        <div class="flex flex-col lg:flex-row-reverse items-center md:justify-center lg:gap-20">
             <div class="mx-5 my-5 image">
                 <img src="{{ url('assets/img/dummy.jpg') }}" alt="" class="rounded-lg">
             </div>
@@ -106,6 +105,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 
 </x-user-layout>

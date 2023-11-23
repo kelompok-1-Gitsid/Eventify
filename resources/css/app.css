@@ -11,6 +11,10 @@
         @apply font-bold text-slate-900;
     }
 
+    .title-2{
+        @apply text-[5rem] pt-20 flex items-center justify-center font-bold;
+    }
+
     .title-sub-header{
         @apply font-bold text-slate-900;
     }
@@ -19,10 +23,19 @@
     }
 
     .image-product{
-        @apply w-40 h-24;
+        @apply w-72 ;
     }
 
     .content-card{
-        @apply ml-36;
+        @apply ml-16 lg:ml-36 mr-16;
     }
+
+    .card{
+        @apply max-w-sm lg:max-w-md h-auto;
+    }
+
+    .scale{
+        @apply hover:transform hover:scale-110 cursor-pointer;
+    }
+
 }
