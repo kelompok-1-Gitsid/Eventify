@@ -14,46 +14,47 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        @if (session('msg'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('msg') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
                         <table id="example2" class="table table-bordered table-hover">
                             <thead class="text-center">
                                 <tr>
                                     <th>Vendor</th>
                                     <th>Address</th>
                                     <th>Phone</th>
+                                    <th>Email</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                <tr>
-                                    <td>Adelia MUA</td>
-                                    <td>Jalan Bukit Duri</td>
-                                    <td>+6285712312</td>
-                                    <td>
-                                        <a class="btn btn-warning d-inline" href="#"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-danger d-inline" href="#"><i
-                                                class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Adelia MUA</td>
-                                    <td>Jalan Bukit Duri</td>
-                                    <td>+6285712312</td>
-                                    <td>
-                                        <a class="btn btn-warning d-inline" href="#"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-danger d-inline" href="#"><i
-                                                class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Adelia MUA</td>
-                                    <td>Jalan Bukit Duri</td>
-                                    <td>+6285712312</td>
-                                    <td>
-                                        <a class="btn btn-warning d-inline" href="#"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-danger d-inline" href="#"><i
-                                                class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($mua as $row)
+                                    <tr>
+                                        <td>{{ $row->username }}</td>
+                                        <td>{{ $row->address }}</td>
+                                        <td>{{ $row->phone }}</td>
+                                        <td>{{ $row->email }}</td>
+                                        <td>
+                                            <a href="{{ route('mua.show', $row->id) }}" class="btn btn-warning"
+                                                title="Edit data">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form onsubmit="return deleteData('{{ $row->username }}')"
+                                                action="{{ route('mua.destroy', $row->id) }}" method="post"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" title="Hapus data" class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class DecorationController extends Controller
@@ -11,7 +12,9 @@ class DecorationController extends Controller
      */
     public function index()
     {
-        return view('admin.vendor.decoration.index');
+        return view('admin.vendor.decoration.index')->with([
+            'decoration' => Vendor::where('id_category', '2')->get()
+        ]);
     }
 
     /**
@@ -33,9 +36,17 @@ class DecorationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vendor $vendor, $id)
     {
-        //
+        $data = $vendor->find($id);
+        return view('admin.vendor.decoration.edit')->with([
+            'id' => $id,
+            'fullname' => $data->fullname,
+            'username' => $data->username,
+            'address' => $data->address,
+            'phone' => $data->phone,
+            'email' => $data->email,
+        ]);
     }
 
     /**
@@ -49,16 +60,21 @@ class DecorationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Vendor $vendor, $id)
     {
-        //
+        $vendor->find($id)->update($request->only(['fullname', 'username', 'address', 'phone', 'email']));
+
+        return redirect()->route('decoration.index')->with('msg', 'Category has been successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Vendor $vendor, $id)
     {
-        //
+        $data = $vendor->find($id);
+        $data->delete();
+
+        return redirect()->route('decoration.index')->with('msg', 'Category has been successfully deleted');
     }
 }

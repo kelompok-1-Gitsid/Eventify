@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class MuaController extends Controller
@@ -11,7 +12,9 @@ class MuaController extends Controller
      */
     public function index()
     {
-        return view('admin.vendor.mua.index');
+        return view('admin.vendor.mua.index')->with([
+            'mua' => Vendor::where('id_category', '3')->get()
+        ]);
     }
 
     /**
@@ -33,9 +36,17 @@ class MuaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vendor $vendor, $id)
     {
-        //
+        $data = $vendor->find($id);
+        return view('admin.vendor.mua.edit')->with([
+            'id' => $id,
+            'fullname' => $data->fullname,
+            'username' => $data->username,
+            'address' => $data->address,
+            'phone' => $data->phone,
+            'email' => $data->email,
+        ]);
     }
 
     /**
@@ -49,16 +60,21 @@ class MuaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Vendor $vendor, $id)
     {
-        //
+        $vendor->find($id)->update($request->only(['fullname', 'username', 'address', 'phone', 'email']));
+
+        return redirect()->route('mua.index')->with('msg', 'Category has been successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Vendor $vendor, $id)
     {
-        //
+        $data = $vendor->find($id);
+        $data->delete();
+
+        return redirect()->route('mua.index')->with('msg', 'Category has been successfully deleted');
     }
 }
