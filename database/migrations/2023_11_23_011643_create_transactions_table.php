@@ -17,8 +17,8 @@ return new class extends Migration
             $table->dateTime('payment_date')->nullable();
             $table->enum('status', ['paid', 'unpaid']);
             $table->string('total');
-            $table->foreignId('id_customer')->constrained('customers');
-            $table->foreignId('id_vendor')->constrained('vendors');
+            // $table->foreignId('id_customer')->constrained('customers');
+            // $table->foreignId('id_vendor')->constrained('vendors');
             $table->timestamps();
         });
     }

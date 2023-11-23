@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('id_category')->constrained('categories');
-            $table->foreignId('id_role')->constrained('roles');
+            // $table->foreignId('id_category')->constrained('categories');
+            // $table->foreignId('id_role')->constrained('roles');
             $table->timestamps();
         });
     }

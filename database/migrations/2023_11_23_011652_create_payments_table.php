@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->dateTime('payment_date')->nullable();
             $table->enum('status', ['success', 'failed']);
-            $table->foreignId('id_transaction')->constrained('transactions');
-            $table->foreignId('id_customer')->constrained('customers');
-            $table->foreignId('id_product')->constrained('products');
+            // $table->foreignId('id_transaction')->constrained('transactions');
+            // $table->foreignId('id_customer')->constrained('customers');
+            // $table->foreignId('id_product')->constrained('products');
             $table->timestamps();
         });
     }
