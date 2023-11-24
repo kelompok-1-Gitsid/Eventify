@@ -31,11 +31,17 @@
     }
 
     .card{
-        @apply max-w-sm lg:max-w-md h-auto;
+        @apply  md:max-w-md h-auto;
     }
 
     .scale{
         @apply hover:transform hover:scale-110 cursor-pointer;
     }
 
+    .footer{
+        @apply h-auto md:h-[20rem] bg-cyan pb-20 pt-10  rounded-t-[2.5rem];
+    }
+    .footer-2{
+        @apply h-auto md:h-[30rem] bg-white -mt-12 lg:-mt-14 pt-12 mb-8 z-20 gap-10 rounded-t-[2.5rem];
+    }
 }
