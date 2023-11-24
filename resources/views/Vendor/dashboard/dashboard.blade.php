@@ -14,16 +14,18 @@
                             <div class="row g-0 w-100">
                                 <div class="col-6">
                                     <div class="p-3 m-1">
-                                        <h4>Welcome Back, {{Auth::user()->vendor}}</h4>
+                                        <h4>Welcome Back, {{ Auth::user()->vendor }}</h4>
                                         <p class="mb-0">Vendor Dashboard, Eventify</p>
                                     </div>
                                 </div>
                                 <div class="col-6 align-self-end text-end">
-                                @if ($user->profile_image)
-                                    <img src="{{ asset('uploads/' . $user->profile_image) }}" alt="Profile" class="img-fluid illustration-img">
+                                    @if ($user->profile_image)
+                                        <img src="{{ asset('uploads/' . $user->profile_image) }}" alt="Profile"
+                                            class="img-fluid illustration-img">
                                     @else
-                                    <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="img-fluid illustration-img">
-                                @endif
+                                        <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile"
+                                            class="img-fluid illustration-img">
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -36,46 +38,50 @@
                             <div class="d-flex align-items-start">
                                 <div class="flex-grow-1">
                                     <h3 class="mb-2">
-                                        Total Orders
+                                        Total Transactions
                                     </h3>
                                     <p>
-                                        {{ $orders->count() }} Orders
+                                        {{ $transactions->count() }} Transactions
                                     </p>
-                                </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="card border-0">
                     <div class="card-header">
                         <h5 class="card-title">
-                            Orders In Progress
+                            Transactions In Progress
                         </h5>
-
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
-                              <tr class="table-secondary">
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Created At</th>
-                              </tr>
+                                <tr class="table-secondary">
+                                    <th scope="col">Transaction Id</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Created At</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                @foreach($orders as $order)
-                              <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->status }}</td>
-                                <td>{{ $order->created_at }}</td>
-                              </tr>
-                              @endforeach
+                                @forelse($transactions as $transaction)
+                                    <tr>
+                                        <td>{{ $transaction->id }}</td>
+                                        <td>{{ $transaction->status }}</td>
+                                        <td>{{ $transaction->created_at }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center">No transactions available.</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
-                          </table>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection

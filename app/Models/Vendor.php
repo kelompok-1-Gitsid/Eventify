@@ -12,4 +12,10 @@ class Vendor extends Model
     protected $table = 'vendors';
 
     protected $guarded = ['id'];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'id_role');
+    }
+
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,8 @@ Route::prefix('admin')->group(function () {
         return view('admin.order');
     })->name('order');
 });
+
+Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('dashboard');
 
 
 Route::get('/googleLogin', [HomeController::class, 'googleLogin']);
