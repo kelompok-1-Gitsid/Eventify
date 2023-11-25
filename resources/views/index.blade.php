@@ -1,5 +1,5 @@
 <x-user-layout>
-    <section id="header">
+    <section id="header" class="mb-10 mt-10">
         <div class="mt-[5rem] lg:mt-2 py-10 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
             <div class="flex flex-col lg:flex-row items-center md:justify-center gap-5 md:gap-15 lg:gap-40">
                 <div class="mx-5 my-5 text-center md:my-4 lg:my-auto lg:w-[50rem] lg:text-justify">
@@ -16,13 +16,13 @@
             </div>
         </div>
     </section>
-    <section id="our-product">
+    <section id="our-product" class="mb-10 mt-10">
         <div class="py-2 text-center font-plusJakarta">
             <h1 class="font-bold text-[1.5rem] md:text-[2rem] lg:text-[2.5rem]"> Our Product</h1>
             <h3 class="font-medium text-[1rem] md:text-[1.2rem] lg:text-[1.4rem]">This are our priority product</h3>
         </div>
         <div class="mt-10 mb-10 mx-8 flex justify-items-center items-center justify-center ">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-20 min-h-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-20 min-h-full">
                 <div
                     class="relative scale">
                     <div class="image-product">
@@ -30,6 +30,15 @@
                     </div>
                     <div class="absolute top-0 left-0 right-0 bottom-0 mb-2 ml-2 flex items-end justify-start">
                         <p class="text-white text-2xl font-bold">Wedding</p>
+                    </div>
+                </div>
+                <div
+                    class="relative scale">
+                    <div class="image-product">
+                        <img src="{{ url('assets/img/photo-product.jpg') }}" alt="" class="rounded-lg">
+                    </div>
+                    <div class="absolute top-0 left-0 right-0 bottom-0 mb-2 ml-2 flex items-end justify-start">
+                        <p class="text-white text-2xl font-bold">Photography</p>
                     </div>
                 </div>
                 <div
@@ -63,8 +72,8 @@
         </div>
     </section>
     <section id="content" class="mb-10 mt-10">
-    <div class="w-full flex flex-col">
-        <h1 class="flex justify-center lg:justify-start lg:mx-[15.5rem] text-[2rem] font-semibold my-5">Top Vendor</h1>
+    <div class="flex flex-col mx-auto">
+        <h1 class="text-3xl font-semibold text-center my-16">Top Vendor</h1>
         <div class="flex flex-col lg:flex-row items-center md:justify-center lg:gap-20">
             <div class="mx-5 my-5 image">
                 <img src="{{ url('assets/img/dummy.jpg') }}" alt="" class="rounded-lg">
