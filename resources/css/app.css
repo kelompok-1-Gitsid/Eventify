@@ -35,7 +35,7 @@
     }
 
     .scale{
-        @apply hover:transform hover:scale-110 cursor-pointer;
+        @apply hover:transform hover:scale-110 hover:rotate-3 transition-all cursor-pointer;
     }
 
     .footer{
