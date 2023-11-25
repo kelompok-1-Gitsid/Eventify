@@ -25,6 +25,7 @@ class CategorySeeder extends Seeder
             ["name" => "Catering"],
             ["name" => "Videographer"],
             ["name" => "Makeup Artist"],
+            ["name" => "Decoration"],
         ];
 
         foreach ($data as $value){
