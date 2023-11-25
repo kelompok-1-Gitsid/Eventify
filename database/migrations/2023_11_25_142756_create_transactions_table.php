@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('order_date')->nullable();
-            $table->dateTime('payment_date')->nullable();
-            $table->enum('status', ['paid', 'unpaid']);
-            $table->string('total');
-            // $table->foreignId('id_customer')->constrained('customers');
-            // $table->foreignId('id_vendor')->constrained('vendors');
+            $table->float('price');
+            $table->dateTime('start_date', $precision = 0);
+            $table->dateTime('end_date', $precision = 0);
+            $table->string('status');
+            $table->text('response_midtrans');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('product_id')->constrained('products');
             $table->timestamps();
         });
     }
