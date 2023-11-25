@@ -31,15 +31,20 @@ Route::get('/product', function(){
     return view('product');
 });
 
+Route::get('/detail', function(){
+    return view('detail');
+});
+
 
 Route::get('/about-us', function(){
     return view ('about-us');
 });
 
 
-Route::middleware(['auth', 'verified'])->group(function(){
-    Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
-});
+
+// Route::middleware(['auth', 'verified'])->group(function(){
+//     Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
