@@ -15,8 +15,8 @@
             </div>
             <div class="content-card mt-5">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <x-card/>
-                    <x-card/>
+                <x-card.card-layout/>
+                <x-card.card-layout/>
                 </div>
             </div>
         </div>
@@ -37,8 +37,7 @@
             </div>
             <div class="content-card mt-5">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <x-card/>
-                    <x-card/>
+                <x-card.card-layout/>
                 </div>
             </div>
         </div>
@@ -59,8 +58,7 @@
             </div>
             <div class="content-card mt-5">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <x-card/>
-                    <x-card/>
+                   <x-card.card-layout/>
                 </div>
             </div>
         </div>
