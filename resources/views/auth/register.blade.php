@@ -45,6 +45,19 @@
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
+
+            <!-- Select Role -->
+            <div class="mt-4">
+                <x-input-label for="role" :value="__('Select Type')" />
+                <select name="role" id="role" class="block w-full py-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+                    <option selected> Choose Type </option>
+                    <option value="user">User</option>
+                    <option value="vendor">Vendor</option>
+                </select>
+
+                <x-input-error :messages="$errors->get('role')" class="mt-2" />
+            </div>
+
             <div class="mt-8">
                 <x-primary-button
                     class="flex w-full justify-center rounded-md bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white">
