@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 
 use App\Models\User;
-use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
 class HomeController extends Controller
@@ -27,14 +29,14 @@ class HomeController extends Controller
                 $findUser=new User();
                 $findUser->name = $user->name;
                 $findUser->email = $user->email;
-                $findUser->password = "12345Dummy";
-                $findUser->usertype = "user";
+                $findUser->password = "";
+                $findUser->role = "user";
                 $findUser->save();
             }
 
             session()->put('id',$findUser->id);
             session()->put('type',$findUser->type);
-            return redirect('/');
+            return redirect(RouteServiceProvider::HOME);
 
             // dd($user);
         }
