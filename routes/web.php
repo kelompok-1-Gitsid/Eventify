@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\productController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VendorController;
@@ -28,9 +29,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/product', function(){
-    return view('product');
-});
+Route::get('/product', [productController::class, 'getAll']);
+Route::get('/product/detail/{id}', [ProductController::class, 'showDetail']);
 
 Route::get('/detail', function(){
     return view('detail');

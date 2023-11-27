@@ -13,13 +13,14 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'price',
         'description',
-        'image'
+        'image1',
+        'image2',
+        'image3',
+        'image4',
+        'image5',
+        'price',
+        'category',
+        'user_id',
     ];
-
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
 }
