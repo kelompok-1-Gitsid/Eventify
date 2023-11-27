@@ -7,11 +7,8 @@
                 <div class="ml-16 lg:ml-36">
                     <h1 class="title text-2xl">{{ $category }}</h1>
                     <h2 class="flex mt-2 text-lg text-slate-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                         </svg>
                         <span class="ml-2">Produk dalam kategori {{ $category }}</span>
                     </h2>
@@ -37,7 +34,7 @@
                                     </p>
                                     <div class="flex justify-between">
                                         <p class="flex items-center justify-center">Rp.{{ $product->price }}</p>
-                                        <a href="{{ url('product/detail/'.$product->id) }}"
+                                        <a href="{{ url('product/detail/'.$product->name) }}"
                                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Detail
                                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
