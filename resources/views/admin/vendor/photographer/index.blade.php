@@ -33,7 +33,7 @@
                             <tbody class="text-center">
                                 @foreach ($photo as $row)
                                     <tr>
-                                        <td>{{ $row->username }}</td>
+                                        <td>{{ $row->vendor_name }}</td>
                                         <td>{{ $row->address }}</td>
                                         <td>{{ $row->phone }}</td>
                                         <td>{{ $row->email }}</td>
@@ -42,7 +42,7 @@
                                                 title="Edit data">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form onsubmit="return deleteData('{{ $row->username }}')"
+                                            <form onsubmit="return deleteData('{{ $row->vendor_name }}')"
                                                 action="{{ route('photo.destroy', $row->id) }}" method="post"
                                                 class="d-inline">
                                                 @csrf

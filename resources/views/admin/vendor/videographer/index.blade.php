@@ -34,16 +34,20 @@
                             <tbody class="text-center">
                                 @foreach ($video as $row)
                                     <tr>
-                                        <td>{{ $row->username }}</td>
+                                        <td>{{ $row->vendor_name }}</td>
                                         <td>{{ $row->address }}</td>
                                         <td>{{ $row->phone }}</td>
                                         <td>{{ $row->email }}</td>
                                         <td>
+                                            <a href="#" class="btn btn-info" data-bs-toggle="modal"
+                                                data-bs-target="#myModal" data-id="{{ $row->id }}">
+                                                Open Modal
+                                            </a>
                                             <a href="{{ route('video.show', $row->id) }}" class="btn btn-warning"
                                                 title="Edit data">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form onsubmit="return deleteData('{{ $row->username }}')"
+                                            <form onsubmit="return deleteData('{{ $row->vendor_name }}')"
                                                 action="{{ route('video.destroy', $row->id) }}" method="post"
                                                 class="d-inline">
                                                 @csrf
@@ -60,4 +64,41 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Vendor : {{ $row->vendor_name }}</li>
+                                    <li class="list-group-item">Owner : {{ $row->vendor_owner }} </li>
+                                    <li class="list-group-item">Address : {{ $row->address }}</li>
+                                    <li class="list-group-item">Email : {{ $row->email }}</li>
+                                    <li class="list-group-item">Phone : {{ $row->phone }}</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Additional Modal Buttons Go Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('#myModal').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget); // Button that triggered the modal
+                        var videoId = button.data('id'); // Extract data-id attribute's value
+                        // Perform AJAX request or use the videoId to fetch data and update modal content
+                        var modal = $(this);
+                        modal.find('.modal-title').text('Video ID: ' + videoId);
+                        modal.find('.modal-body').html('<p>Content for video ID ' + videoId + '</p>');
+                    });
+                </script>
             @endsection

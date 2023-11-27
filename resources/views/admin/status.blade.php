@@ -29,7 +29,7 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead class="text-center">
                                 <tr>
-                                    <th>User</th>
+                                    <th>Customer</th>
                                     <th>Vendor</th>
                                     <th>Order Date</th>
                                     <th>Payment Date</th>
