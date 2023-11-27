@@ -62,13 +62,19 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-icon md-0 pe-4">
-
+                            @if ($user->avatar)
+                                    <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile" class="avatar img-fluid rounded" width="42px">
+                                @else
                                     <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="avatar img-fluid rounded" width="42px">
-
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="#" class="dropdown-item">Setting</a>
+
                             <form method="POST" action="{{ route('logout') }}">
+
+                            <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+
                                 @csrf
                                 <x-responsive-nav-link :href="route('logout')"
                                         onclick="event.preventDefault();

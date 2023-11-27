@@ -14,14 +14,17 @@
                             <div class="row g-0 w-100">
                                 <div class="col-6">
                                     <div class="p-3 m-1">
-                                        <h4>Welcome Back, #</h4>
+                                        <h4>Welcome Back, {{Auth::user()->name}} </h4>
                                         <p class="mb-0">Vendor Dashboard, Eventify</p>
                                     </div>
                                 </div>
                                 <div class="col-6 align-self-end text-end">
 
-                                        <img src="{{ asset('assets/img/logo.jpg') }}" alt="Default Profile"
-                                            class="img-fluid illustration-img">
+                                    @if ($user->avatar)
+                                    <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile" class="img-fluid illustration-img">
+                                    @else
+                                    <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="img-fluid illustration-img">
+                                    @endif
 
                                 </div>
                             </div>

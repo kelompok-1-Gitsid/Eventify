@@ -8,22 +8,25 @@ use Illuminate\Http\Request;
 class VendorController extends Controller
 { public function showDashboard()
     {
-
-        return view('Vendor.dashboard.dashboard');
+        $user = Auth::user();
+        return view('Vendor.dashboard.dashboard', compact('user'));
 
     }
 
+// Di dalam VendorController
     public function profile()
     {
-
-        return view('vendor.profile.profile');
+        $user = Auth::user();
+        return view('vendor.profile.profile', compact('user'));
     }
+
 
     public function edit()
     {
         $user = Auth::user();
-        return view('vendor.profile.UbahProfile');
+        return view('vendor.profile.UbahProfile', compact('user'));
     }
+
 
     public function update(Request $request)
     {
@@ -41,13 +44,17 @@ class VendorController extends Controller
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads'), $imageName);
 
-            $user->profile_image = $imageName;
+            // Simpan nama file yang benar ke kolom 'avatar' di database
+            $user->avatar = $imageName;
+            $user->save();
         }
 
-        $user->update($request->all());
+        // Sekarang perbarui data pengguna yang lain
+        $user->update($request->except('avatar'));
 
-        return redirect()->route('profile')->with('success', 'Profile updated successfully!');
+        return redirect()->route('vendor.profile')->with('success', 'Profil berhasil diperbarui!');
     }
+
 
 
     public function orders(){

@@ -87,6 +87,7 @@ Route::prefix('admin')->group(function () {
 Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');
 Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
 Route::get('/vendor/profile/update', [VendorController::class, 'edit'])->name('vendor.edit');
+Route::put('/vendor/profile/update', [VendorController::class, 'update'])->name('vendor.update');
 Route::get('vendor/transactions', [VendorController::class, 'orders'])->name('vendor.orders');
 
 
