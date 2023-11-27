@@ -11,8 +11,12 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Vendor</th>
-                        <th>Product Image</th>
+                        <th>Category</th>
+                        <th>Image 1</th>
+                        <th>Image 2</th>
+                        <th>Image 3</th>
+                        <th>Image 4</th>
+                        <th>Image 5</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -22,8 +26,12 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->description }}</td>
                             <td>Rp {{ $product->price }}</td>
-                            <td>{{ $product->user->vendor }}</td>
-                            <td><img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}" height="80" /></td>
+                            <td>{{ $product->category }}</td>
+                            <td><img src="{{ asset($product->image1) }}" alt="{{ $product->name }}" height="80" /></td>
+                            <td><img src="{{ asset($product->image2) }}" alt="{{ $product->name }}" height="80" /></td>
+                            <td><img src="{{ asset($product->image3) }}" alt="{{ $product->name }}" height="80" /></td>
+                            <td><img src="{{ asset($product->image4) }}" alt="{{ $product->name }}" height="80" /></td>
+                            <td><img src="{{ asset($product->image5) }}" alt="{{ $product->name }}" height="80" /></td>
                             <td>
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">

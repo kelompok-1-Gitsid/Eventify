@@ -20,8 +20,24 @@
                     <input type="number" name="price" id="price" step="0.01" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="product_image">Image</label>
-                    <input type="text" name="product_image" id="product_image" class="form-control" required>
+                    <label for="image1">Image 2</label>
+                    <input type="file" name="image1" id="image1" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="image2">Image 2</label>
+                    <input type="file" name="image2" id="image2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="image3">Image 3</label>
+                    <input type="file" name="image3" id="image3" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="image4">Image 4</label>
+                    <input type="file" name="image4" id="image4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="image5">Image 5</label>
+                    <input type="file" name="image5" id="image5" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>

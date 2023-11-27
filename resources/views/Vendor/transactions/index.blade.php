@@ -12,15 +12,15 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Status</th>
-                                <th>Created At</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($orders as $order)
+                            @foreach($transactions as $transaction)
                             <tr>
-                                <td>{{ $order->id }}</td>
-                                <td id="status_{{ $order->id }}">{{ $order->status }}</td>
-                                <td>{{ $order->created_at }}</td>
+                                <td>{{ $transaction->id }}</td>
+                                <td id="status_{{ $transaction->id }}">{{ $transaction->status }}</td>
+                                <td>{{ $transaction->start_date }}</td>
                             </tr>
                             @endforeach
                         </tbody>
