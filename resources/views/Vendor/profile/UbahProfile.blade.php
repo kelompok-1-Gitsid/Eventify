@@ -14,48 +14,24 @@
                             @method('put')
 
                             <div class="mb-3">
-                                <label for="vendor" class="form-label">Vendor Name</label>
-                                <input type="text" class="form-control" id="vendor" name="vendor" value="{{ old('vendor', $vendor->vendor) }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="deskripsi" class="form-label">Description</label>
-                                <textarea class="form-control" id="deskripsi" name="deskripsi">{{ old('deskripsi', $vendor->deskripsi) }}</textarea>
+                                <label for="name" class="form-label">Vendor Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $users->name) }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $vendor->address) }}">
+                                <textarea class="form-control" id="address" name="address">{{ old('address', $users->address) }}</textarea>
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $vendor->email) }}" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $users->email) }}" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $vendor->phone) }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="instagram" class="form-label">Instagram</label>
-                                <input type="text" class="form-control" id="instagram" name="instagram" value="{{ old('instagram', $vendor->instagram) }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="facebook" class="form-label">Facebook</label>
-                                <input type="text" class="form-control" id="facebook" name="facebook" value="{{ old('facebook', $vendor->facebook) }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="youtube" class="form-label">Youtube</label>
-                                <input type="text" class="form-control" id="youtube" name="youtube" value="{{ old('youtube', $vendor->youtube) }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="profile_image" class="form-label">Profile Image</label>
-                                <input type="file" class="form-control" id="profile_image" name="profile_image">
+                                <label for="avatar" class="form-label">Profile Image</label>
+                                <input type="file" class="form-control" id="avatar" name="avatar" value="{{ old('avatar', $users->avatar) }}" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update Profile</button>

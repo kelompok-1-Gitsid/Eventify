@@ -14,22 +14,22 @@
 
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="{{ route('index')}}" class="d-flex justify-content-center fs-3">Eventify</a>
+                    <a href="#" class="d-flex justify-content-center fs-3">Eventify</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header fs-4">
                         Vendor Elements
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{ route('index') }}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{route('vendor.dashboard')}}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-solid fa-list"></i>
                             Dashboard
                         </a>
-                        <a href="{{ route('profile') }}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{route('vendor.profile')}}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-regular fa-user"></i>
                             Profil Vendor
                         </a>
-                        <a href="{{ route('order.index')}}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{ Route('vendor.orders')}}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-regular fa-basket-shopping"></i>
                             Orders
                         </a>
@@ -40,10 +40,10 @@
                         </a>
                         <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('product.AddProduct')}}" class="sidebar-link">Tambah Produk</a>
+                                <a href="#" class="sidebar-link">Tambah Produk</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('product.index')}}" class="sidebar-link">Produk Saya</a>
+                                <a href="#" class="sidebar-link">Produk Saya</a>
                             </li>
                     </ul>
                     </li>
@@ -62,15 +62,13 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-icon md-0 pe-4">
-                            @if ($user->profile_image)
-                                    <img src="{{ asset('uploads/' . $user->profile_image) }}" alt="Profile" class="avatar img-fluid rounded" width="42px">
-                                @else
+
                                     <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="avatar img-fluid rounded" width="42px">
-                            @endif
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="#" class="dropdown-item">Setting</a>
-                            <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+                            <form action="#" method="POST" class="d-flex" role="search">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn border-0">Logout</button>

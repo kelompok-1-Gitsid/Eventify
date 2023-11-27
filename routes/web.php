@@ -84,7 +84,10 @@ Route::prefix('admin')->group(function () {
     })->name('order');
 });
 
-Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('dashboard');
+Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');
+Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
+Route::get('/vendor/profile/update', [VendorController::class, 'edit'])->name('vendor.edit');
+Route::get('vendor/transactions', [VendorController::class, 'orders'])->name('vendor.orders');
 
 
 Route::get('/googleLogin', [HomeController::class, 'googleLogin']);
