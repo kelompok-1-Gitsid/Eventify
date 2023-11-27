@@ -65,6 +65,17 @@
                 </x-primary-button>
             </div>
 
+
+            <div class="">
+                <div class="flex justify-center mt-4">
+                    <p class=""> have an account ?
+                        <a class="ml-1 underline text-sm text-bluelight hover:text-gray-900 rounded-md"
+                            href="{{ route('login') }}">
+                            {{ __('Already registered?') }}
+                        </a>
+                    </p>
+                </div>
+            </div>
         </form>
     </div>
 
