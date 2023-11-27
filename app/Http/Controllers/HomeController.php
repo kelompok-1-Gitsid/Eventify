@@ -47,16 +47,16 @@ class HomeController extends Controller
 
         if(Auth::id()){
 
-            $usertype=Auth()->user()->usertype;
+            $role=Auth()->user()->role;
 
-            if($usertype == 'user'){
+            if($role == 'user'){
                 return view('index');
             }
-            else if($usertype == 'admin'){
+            else if($role == 'admin'){
                 return view('admin.index');
             }
-            else if($usertype == 'vendor'){
-                return view ();
+            else if($role == 'vendor'){
+                return view ('vendor.dashboard.dashboard');
             }
 
             else{
