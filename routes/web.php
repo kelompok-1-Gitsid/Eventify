@@ -30,7 +30,7 @@ Route::get('/', function () {
 });
 
 Route::get('/product', [productController::class, 'getAll']);
-Route::get('/product/detail/{id}', [ProductController::class, 'showDetail']);
+Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->middleware('auth');
 
 Route::get('/detail', function(){
     return view('detail');

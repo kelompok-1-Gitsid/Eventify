@@ -70,10 +70,17 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="#" class="dropdown-item">Setting</a>
+
+                            <form method="POST" action="{{ route('logout') }}">
+
                             <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+
                                 @csrf
-                                @method('DELETE')
-                                <button class="btn border-0">Logout</button>
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
                             </form>
                         </div>
                     </li>
