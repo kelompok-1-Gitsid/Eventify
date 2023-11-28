@@ -60,7 +60,7 @@
 
             <div class="mt-8">
                 <x-primary-button
-                    class="flex w-full justify-center rounded-md bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white">
+                    class="submit-button flex w-full justify-center rounded-md">
                     {{ __('Register') }}
                 </x-primary-button>
             </div>

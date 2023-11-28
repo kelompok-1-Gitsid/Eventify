@@ -39,7 +39,7 @@
             </div>
 
 
-            <x-primary-button class="flex w-full justify-center rounded-md bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+            <x-primary-button class="submit-button flex w-full justify-center rounded-md">
                 {{ __('Log in') }}
             </x-primary-button>
 

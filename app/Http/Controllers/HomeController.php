@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 
 use App\Models\User;
-use Exception;
+use App\Models\Transaction;
+
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
 class HomeController extends Controller
@@ -27,14 +31,14 @@ class HomeController extends Controller
                 $findUser=new User();
                 $findUser->name = $user->name;
                 $findUser->email = $user->email;
-                $findUser->password = "12345Dummy";
-                $findUser->usertype = "user";
+                $findUser->password = "";
+                $findUser->role = "user";
                 $findUser->save();
             }
 
             session()->put('id',$findUser->id);
             session()->put('type',$findUser->type);
-            return redirect('/');
+            return redirect(RouteServiceProvider::HOME);
 
             // dd($user);
         }
@@ -43,27 +47,27 @@ class HomeController extends Controller
         }
 
     }
-    public function index(){
+    public function index()
+{
+    if (Auth::check()) {
 
-        if(Auth::id()){
+        $user = Auth::user();
+        $role = $user->role;
 
-            $role=Auth()->user()->role;
-
-            if($role == 'user'){
-                return view('index');
-            }
-            else if($role == 'admin'){
-                return view('admin.index');
-            }
-            else if($role == 'vendor'){
-                return view ('vendor.dashboard.dashboard');
-            }
-
-            else{
-                return redirect()->back();
-            }
-
+        if ($role == 'user') {
+            return view('index');
+        } else if ($role == 'admin') {
+            return view('admin.index');
+        } else if ($role == 'vendor') {
+            $user = Auth::user();
+            $products = $user->products;
+            $transactions = $user->transactions;
+            $totalSales = Transaction::sum('price');
+            return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+        } else {
+            return redirect()->back();
         }
-
     }
+}
+
 }

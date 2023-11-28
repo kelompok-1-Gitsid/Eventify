@@ -29,7 +29,7 @@
                             <i class="fa-regular fa-user"></i>
                             Profil Vendor
                         </a>
-                        <a href="{{ Route('vendor.orders')}}" class="sidebar-link fs-6 mt-2">
+                        <a href="{{ Route('vendor.transactions')}}" class="sidebar-link fs-6 mt-2">
                             <i class="fa-regular fa-basket-shopping"></i>
                             Orders
                         </a>
@@ -40,10 +40,10 @@
                         </a>
                         <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Tambah Produk</a>
+                                <a href="{{ Route('product.create')}}" class="sidebar-link">Tambah Produk</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Produk Saya</a>
+                                <a href="{{ Route('vendor.product')}}" class="sidebar-link">Produk Saya</a>
                             </li>
                     </ul>
                     </li>
@@ -62,16 +62,25 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-icon md-0 pe-4">
-
+                            @if ($user->avatar)
+                                    <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile" class="avatar img-fluid rounded" width="42px">
+                                @else
                                     <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="avatar img-fluid rounded" width="42px">
-
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="#" class="dropdown-item">Setting</a>
-                            <form action="#" method="POST" class="d-flex" role="search">
+
+                            <form method="POST" action="{{ route('logout') }}">
+
+                            <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+
                                 @csrf
-                                @method('DELETE')
-                                <button class="btn border-0">Logout</button>
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
                             </form>
                         </div>
                     </li>

@@ -1,7 +1,7 @@
 @extends('vendor.layouts.layouts')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -59,7 +59,7 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update Product</button>
+                        <button type="submit " class="btn btn-primary mt-2">Update Product</button>
                     </form>
                 </div>
             </div>
