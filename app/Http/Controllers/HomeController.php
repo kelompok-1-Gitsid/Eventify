@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Exception;
 
 use App\Models\User;
+use App\Models\Transaction;
+
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,27 +47,27 @@ class HomeController extends Controller
         }
 
     }
-    public function index(){
+    public function index()
+{
+    if (Auth::check()) {
 
-        if(Auth::id()){
+        $user = Auth::user();
+        $role = $user->role;
 
-            $role=Auth()->user()->role;
-
-            if($role == 'user'){
-                return view('index');
-            }
-            else if($role == 'admin'){
-                return view('admin.index');
-            }
-            else if($role == 'vendor'){
-                return view ('vendor.dashboard.dashboard');
-            }
-
-            else{
-                return redirect()->back();
-            }
-
+        if ($role == 'user') {
+            return view('index');
+        } else if ($role == 'admin') {
+            return view('admin.index');
+        } else if ($role == 'vendor') {
+            $user = Auth::user();
+            $products = $user->products;
+            $transactions = $user->transactions;
+            $totalSales = Transaction::sum('price');
+            return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+        } else {
+            return redirect()->back();
         }
-
     }
+}
+
 }

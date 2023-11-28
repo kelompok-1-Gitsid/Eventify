@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image4')->nullable();
             $table->string('image5')->nullable();
             $table->string('category')->nullable();
-            $table->float('price');
+            $table->decimal('price', 10, 2);
             $table->foreignId('user_id')->constrained('users')->nullable();
             $table->timestamps();
         });
