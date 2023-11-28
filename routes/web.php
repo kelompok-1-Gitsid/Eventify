@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\productController;
-use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Session\Middleware\AuthenticateSession;
@@ -32,13 +32,13 @@ Route::get('/', function () {
 Route::get('/product', [productController::class, 'getAll']);
 Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->middleware('auth');
 
-Route::get('/detail', function(){
+Route::get('/detail', function () {
     return view('detail');
 });
 
 
-Route::get('/about-us', function(){
-    return view ('about-us');
+Route::get('/about-us', function () {
+    return view('about-us');
 });
 
 
@@ -77,11 +77,7 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('user', CustomerController::class);
 
-    Route::get('status', [StatusController::class, 'index'])->name('status');
-
-    Route::get('/order', function () {
-        return view('admin.order');
-    })->name('order');
+    Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
 });
 
 Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');
