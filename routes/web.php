@@ -9,6 +9,7 @@ use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\transactionController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VendorController;
 use App\Http\Middleware\VendorMiddleware;
@@ -31,7 +32,8 @@ Route::get('/', function () {
 });
 
 Route::get('/product', [productController::class, 'getAll']);
-Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->middleware('auth');
+Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->name('product.detail');
+Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
 
 Route::get('/detail', function(){
     return view('detail');
