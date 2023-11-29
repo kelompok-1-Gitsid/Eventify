@@ -27,11 +27,15 @@
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email ?? '') }}" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $user->phone ?? '') }}" required>
+                            </div>
 
 
                             <div class="mb-3">
                                 <label for="avatar" class="form-label">Profile Image</label>
-                                <input type="file" class="form-control" id="avatar" name="avatar" required>
+                                <input type="file" class="form-control" id="avatar" name="avatar" value="{{ old('avatar', $user->avatar ?? '') }}" required>
                             </div>
 
 

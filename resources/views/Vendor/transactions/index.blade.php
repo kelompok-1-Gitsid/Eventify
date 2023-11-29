@@ -20,28 +20,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($transactions)
-                                            @dd($transactions)
-                                                @forelse($transactions as $transaction)
-                                                    @if($transaction->product->user_id == Auth::id())
-                                                        <tr>
-                                                            <td>{{ $transaction->id }}</td>
-                                                            <td>{{ $transaction->user->name }}</td>
-                                                            <td>{{ $transaction->product->name }}</td>
-                                                            <td id="status_{{ $transaction->id }}">{{ $transaction->status }}</td>
-                                                            <td>{{ $transaction->start_date }} - {{ $transaction->end_date }}</td>
-                                                        </tr>
-                                                    @endif
-                                                @empty
-                                                    <tr>
-                                                        <td colspan="5" class="text-center">No transactions available.</td>
-                                                    </tr>
-                                                @endforelse
-                                            @else
+                                            @if($transactions->isNotEmpty())
+                                            @foreach($transactions as $transaction)
                                                 <tr>
-                                                    <td colspan="5" class="text-center">No transactions available.</td>
+                                                    <td>{{ $transaction->id }}</td>
+                                                    <td>{{ $transaction->user->name }}</td>
+                                                    <td>{{ $transaction->product->name }}</td>
+                                                    <td id="status_{{ $transaction->id }}">{{ $transaction->status }}</td>
+                                                    <td>{{ $transaction->start_date }} - {{ $transaction->end_date }}</td>
                                                 </tr>
-                                            @endif
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="5" class="text-center">No transactions available.</td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>

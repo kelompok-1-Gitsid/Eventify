@@ -32,6 +32,8 @@
                                             <p class="text-muted">{{ Auth::user()->email }}</p>
                                             <h6>Address</h6>
                                             <p class="text-muted">{{ Auth::user()->address }}</p>
+                                            <h6>Phone</h6>
+                                            <p class="text-muted">{{ Auth::user()->phone }} </p>
                                         </div>
                                     </div>
                                 </div>

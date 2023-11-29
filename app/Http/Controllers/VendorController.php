@@ -38,6 +38,7 @@ class VendorController extends Controller
             'address' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'phone' => 'required|string|max:255',
         ]);
 
         if ($request->hasFile('avatar')) {
@@ -183,8 +184,12 @@ class VendorController extends Controller
     public function transactions()
     {
         $user = Auth::user();
-        $transactions = $user->transactions;
+        $productIds = $user->products->pluck('id')->toArray();
+
+        // Mengambil semua transaksi yang terkait dengan produk yang dimiliki oleh vendor
+        $transactions = Transaction::whereIn('product_id', $productIds)->get();
 
         return view('Vendor.transactions.index', compact('transactions', 'user'));
     }
+
 }
