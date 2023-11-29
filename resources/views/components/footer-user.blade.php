@@ -1,4 +1,4 @@
-<footer class="bg-gray-900 font-plusJakarta w-full z-20">
+<footer class="bg-gray-900 font-plusJakarta w-full z-20 fixed-bottom">
     <div class="w-full p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between m-5">
             <a href="{{ url('/') }}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">

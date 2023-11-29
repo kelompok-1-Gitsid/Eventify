@@ -18,12 +18,20 @@
     .title-sub-header{
         @apply font-bold text-slate-900;
     }
+
+    .submit-button{
+        @apply bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
+    }
     .image{
         @apply max-w-md md:max-w-lg lg:w-[400px];
     }
 
     .image-product{
         @apply w-72 ;
+    }
+
+    .image-galery-potrait{
+        @apply w-96 max-h-[30rem];
     }
 
     .content-card{
