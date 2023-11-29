@@ -62,14 +62,9 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-icon md-0 pe-4">
-                            @if ($user->avatar)
-                                    <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile" class="avatar img-fluid rounded" width="42px">
-                                @else
-                                    <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="avatar img-fluid rounded" width="42px">
-                            @endif
+                             <img src="{{ asset('assets/img/avatar.png') }}" alt="Default Profile" class="avatar img-fluid rounded" width="50px">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a href="#" class="dropdown-item">Setting</a>
 
                             <form method="POST" action="{{ route('logout') }}">
 

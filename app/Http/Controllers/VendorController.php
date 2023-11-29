@@ -13,7 +13,8 @@ class VendorController extends Controller
         $user = Auth::user();
         $products = $user->products;
         $transactions = $user->transactions;
-        $totalSales = Transaction::sum('price');
+        $productIds = $products->pluck('id')->toArray();
+        $totalSales = Transaction::whereIn('product_id', $productIds)->sum('price');
         return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
     }
 
@@ -137,32 +138,52 @@ class VendorController extends Controller
     }
 
     public function updateProduct(Request $request, $id)
-    {
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0.01',
+        'category' => 'required|in:Catering,Videographer,Photographer,Decoration,MUA',
+    ]);
+
+    $product = Product::findOrFail($id);
+
+    // Handle image uploads and other logic here...
+    if ($request->has('change_images')) {
+        // Jika pengguna memilih untuk mengganti gambar, tambahkan validasi dan pemrosesan gambar.
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0.01',
             'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category' => 'required|in:Catering,Videographer,Photographer,Decoration,MUA',
         ]);
 
-        $product = Product::findOrFail($id);
-
-        // Handle image uploads and other logic here...
-
-        $product->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'category' => $request->input('category'),
-        ]);
-
-        return redirect()->route('vendor.product')->with('success', 'Product updated successfully.');
+        // Proses pembaruan gambar sesuai kebutuhan.
+        $product->image1 = $this->uploadImage($request->file('image1'));
+        $product->image2 = $this->uploadImage($request->file('image2'));
+        $product->image3 = $this->uploadImage($request->file('image3'));
+        $product->image4 = $this->uploadImage($request->file('image4'));
+        $product->image5 = $this->uploadImage($request->file('image5'));
     }
+
+    // Lanjutkan dengan pembaruan informasi produk.
+    $product->name = $request->input('name');
+    $product->description = $request->input('description');
+    $product->price = $request->input('price');
+    $product->category = $request->input('category');
+    $product->save();
+
+    return redirect()->route('vendor.product')->with('success', 'Product updated successfully.');
+}
+
+protected function uploadImage($file)
+{
+    $imageName = time() . '_' . $file->getClientOriginalName();
+    $file->move(public_path('images/products'), $imageName);
+    return 'images/products/' . $imageName;
+}
+
     public function destroyProduct($id)
     {
         $product = Product::findOrFail($id);
@@ -190,6 +211,22 @@ class VendorController extends Controller
         $transactions = Transaction::whereIn('product_id', $productIds)->get();
 
         return view('Vendor.transactions.index', compact('transactions', 'user'));
+    }
+
+    public function notification()
+    {
+        // Ambil semua notifikasi untuk user tertentu
+        $notifications = auth()->user()->notifications;
+
+        return view('notifications.index', compact('notifications'));
+    }
+
+    public function markAsRead(Request $request)
+    {
+        // Tandai notifikasi sebagai dibaca
+        auth()->user()->notifications()->where('id', $request->id)->update(['is_read' => true]);
+
+        return redirect()->back();
     }
 
 }
