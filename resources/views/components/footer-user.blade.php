@@ -9,10 +9,10 @@
                     <a href="{{url('/about-us')}}" class="hover:underline me-4 md:me-6">About</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Social</a>
+                    <a href="{{url('/product')}}" class="hover:underline me-4 md:me-6">Product</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">Contact</a>
+                    <a href="{{url('/')}}" class="hover:underline">Home</a>
                 </li>
             </ul>
         </div>
