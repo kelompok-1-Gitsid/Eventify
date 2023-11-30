@@ -33,7 +33,7 @@ Run from local server
     http://127.0.0.1:8000
 ```
 
-## Team Member (Evetify)
+## Team Member (Eventify)
 
 -  Muhammad Haikal Fajari
 -  Rinaldi Simbolon
