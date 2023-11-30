@@ -54,6 +54,14 @@
         @apply group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 cursor-pointer duration-500 ;
     }
 
+    .gone{
+        @apply opacity-0 transition-all filter translate-x-[-50%];
+    }
+
+    .show{
+        @apply opacity-100 filter-none translate-x-0;
+    }
+
     .footer{
         @apply h-auto md:h-[20rem] bg-cyan pb-20 pt-10  rounded-t-[2.5rem];
     }
