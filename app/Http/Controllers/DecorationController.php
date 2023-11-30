@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vendor;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DecorationController extends Controller
@@ -12,9 +13,13 @@ class DecorationController extends Controller
      */
     public function index()
     {
-        return view('admin.vendor.decoration.index')->with([
-            'decoration' => Vendor::where('id_category', '2')->get()
-        ]);
+        $category = 'decoration';
+
+        $user = User::whereHas('product', function ($query) use ($category) {
+            $query->where('category', $category);
+        })->get();
+
+        return view('admin.vendor.decoration.index', compact('user'));
     }
 
     /**
@@ -36,17 +41,11 @@ class DecorationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vendor $vendor, $id)
+    public function show($id)
     {
-        $data = $vendor->find($id);
-        return view('admin.vendor.decoration.edit')->with([
-            'id' => $id,
-            'fullname' => $data->fullname,
-            'username' => $data->username,
-            'address' => $data->address,
-            'phone' => $data->phone,
-            'email' => $data->email,
-        ]);
+        $data = User::findOrFail($id);
+
+        return view('admin.vendor.decoration.edit', compact('id', 'data'));
     }
 
     /**
@@ -60,9 +59,32 @@ class DecorationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vendor $vendor, $id)
+    public function update(Request $request,  $id)
     {
-        $vendor->find($id)->update($request->only(['fullname', 'username', 'address', 'phone', 'email']));
+        // Find the user record
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('photo.index')->with('error', 'User not found');
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+        ]);
+
+        // Find the related product record
+        $product = Product::where('user_id', $id)->first();
+        if (!$product) {
+            return redirect()->route('photo.index')->with('error', 'Product not found');
+        }
+
+        $product->update([
+            'name' => $request->vendor,
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
 
         return redirect()->route('decoration.index')->with('msg', 'Category has been successfully updated');
     }
@@ -70,9 +92,9 @@ class DecorationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vendor $vendor, $id)
+    public function destroy($id)
     {
-        $data = $vendor->find($id);
+        $data = User::findOrFail($id);
         $data->delete();
 
         return redirect()->route('decoration.index')->with('msg', 'Category has been successfully deleted');

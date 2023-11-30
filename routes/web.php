@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
 
 Route::redirect('admin', 'admin/vendor');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('vendor')->group(function () {
         Route::get('/', function () {
             return view('admin.vendor');
@@ -73,7 +73,6 @@ Route::prefix('admin')->group(function () {
         Route::resource('mua', MuaController::class);
         Route::resource('decoration', DecorationController::class);
     });
-
 
     Route::resource('user', CustomerController::class);
 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Edit Data Catering
+    Edit Data Vendor
 @endsection
 
 @section('content')
@@ -16,20 +16,30 @@
                             <input type="hidden" name="id" value="{{ $id }}">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="fullname">Vendor</label>
-                                    <input type="text" class="form-control @error('fullname') is-invalid @enderror"
-                                        id="fullname" name="fullname" value="{{ $fullname }}" autofocus>
-                                    @error('fullname')
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        id="name" name="name" value="{{ $data->name }}" autofocus>
+                                    @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                        id="username" name="username" value="{{ $username }}" autofocus>
-                                    @error('username')
+                                    <label for="name">Vendor Name</label>
+                                    <input type="text" class="form-control @error('vendor') is-invalid @enderror"
+                                        id="vendor" name="vendor" value="{{ $data->product->name }}" autofocus>
+                                    @error('vendor')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">email</label>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        id="email" name="email" value="{{ $data->email }}" autofocus>
+                                    @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -38,7 +48,7 @@
                                 <div class="form-group">
                                     <label for="address">Address</label>
                                     <textarea name="address" id="address" cols="30" rows="5"
-                                        class="form-control @error('address') is-invalid @enderror">{{ $address }}</textarea>
+                                        class="form-control @error('address') is-invalid @enderror">{{ $data->address }}</textarea>
                                     @error('address')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -47,8 +57,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="phone" class="form-control @error('phone') is-invalid @enderror"
-                                        id="phone" name="phone" value="{{ $phone }}" autofocus>
+                                    <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                        id="phone" name="phone" value="{{ $data->phone }}" autofocus>
                                     @error('phone')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -56,17 +66,26 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                        id="email" name="email" value="{{ $email }}" autofocus>
-                                    @error('email')
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                        id="price" name="price" value="{{ $data->product->price }}" autofocus>
+                                    @error('price')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Description</label>
+                                    <textarea name="description" id="description" cols="30" rows="5"
+                                        class="form-control @error('description') is-invalid @enderror">{{ $data->product->description }}</textarea>
+                                    @error('description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                             </div>
-                            <!-- /.card-body -->
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Update</button>

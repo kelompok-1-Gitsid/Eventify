@@ -17,7 +17,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Auth()->user()->usertype == 'admin') {
+        if (Auth()->user()->role == 'admin') {
             return $next($request);
         } else {
             return redirect('/')->with('message', 'Access Denied as you are not Admin!');

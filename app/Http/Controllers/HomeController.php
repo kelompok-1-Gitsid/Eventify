@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Exception;
 
 use App\Models\User;
@@ -13,20 +14,21 @@ use Laravel\Socialite\Facades\Socialite;
 class HomeController extends Controller
 {
     // Login With Google
-    public function googleLogin(){
+    public function googleLogin()
+    {
 
         return Socialite::driver('google')->redirect();
-
     }
 
-    public function googleHandle(){
+    public function googleHandle()
+    {
 
-        try{
-            $user=Socialite::driver('google')->user();
-            $findUser=User::where('email', $user->email)->first();
+        try {
+            $user = Socialite::driver('google')->user();
+            $findUser = User::where('email', $user->email)->first();
 
-            if(!$findUser){
-                $findUser=new User();
+            if (!$findUser) {
+                $findUser = new User();
                 $findUser->name = $user->name;
                 $findUser->email = $user->email;
                 $findUser->password = "";
@@ -34,38 +36,31 @@ class HomeController extends Controller
                 $findUser->save();
             }
 
-            session()->put('id',$findUser->id);
-            session()->put('type',$findUser->type);
+            session()->put('id', $findUser->id);
+            session()->put('type', $findUser->type);
             return redirect(RouteServiceProvider::HOME);
 
             // dd($user);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             dd($e->getMessage());
         }
-
     }
-    public function index(){
+    public function index()
+    {
 
-        if(Auth::id()){
+        if (Auth::id()) {
 
-            $role=Auth()->user()->role;
+            $role = Auth()->user()->role;
 
-            if($role == 'user'){
+            if ($role == 'user') {
                 return view('index');
-            }
-            else if($role == 'admin'){
-                return view('admin.index');
-            }
-            else if($role == 'vendor'){
-                return view ('vendor.dashboard.dashboard');
-            }
-
-            else{
+            } else if ($role == 'admin') {
+                return view('admin.vendor');
+            } else if ($role == 'vendor') {
+                return view('vendor.dashboard.dashboard');
+            } else {
                 return redirect()->back();
             }
-
         }
-
     }
 }

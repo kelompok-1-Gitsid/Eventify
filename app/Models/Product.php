@@ -11,16 +11,23 @@ class Product extends Model
 
     protected $table = 'products';
 
-    protected $fillable = [
-        'name',
-        'description',
-        'image1',
-        'image2',
-        'image3',
-        'image4',
-        'image5',
-        'price',
-        'category',
-        'user_id',
-    ];
+    protected $guarded = ['id'];
+
+    // protected $fillable = [
+    //     'name',
+    //     'description',
+    //     'image1',
+    //     'image2',
+    //     'image3',
+    //     'image4',
+    //     'image5',
+    //     'price',
+    //     'category',
+    //     'user_id',
+    // ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

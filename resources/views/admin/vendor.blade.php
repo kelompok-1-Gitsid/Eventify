@@ -12,7 +12,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-4">
                             <div class="card elevation-3 mb-5" style="width: 18rem;">
-                                <img src="{{ asset('assets') }}/img/gambar1.jpg" class="card-img-top rounded-top">
+                                <img src="{{ asset('assets') }}/img/photo-product.jpg" class="card-img-top rounded-top">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <h5 class='card-header'>Photographer</h5>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card elevation-3 mb-5" style="width: 18rem;">
-                                <img src="{{ asset('assets') }}/img/gambar2.jpg" class="card-img-top rounded-top">
+                                <img src="{{ asset('assets') }}/img/video-product.jpg" class="card-img-top rounded-top">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <h5 class='card-header'>Videographer</h5>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card elevation-3 mb-5" style="width: 18rem;">
-                                <img src="{{ asset('assets') }}/img/gambar3.jpg" class="card-img-top rounded-top">
+                                <img src="{{ asset('assets') }}/img/catering-product.jpg" class="card-img-top rounded-top">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <h5 class='card-header'>Catering</h5>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card elevation-3" style="width: 18rem;">
-                                <img src="{{ asset('assets') }}/img/gambar4.jpg" class="card-img-top rounded-top">
+                                <img src="{{ asset('assets') }}/img/makeup-product.jpg" class="card-img-top rounded-top">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <h5 class="card-header">Makeup Artist</h5>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card elevation-3" style="width: 18rem;">
-                                <img src="{{ asset('assets') }}/img/gambar5.jpg" class="card-img-top rounded-top">
+                                <img src="{{ asset('assets') }}/img/decor-product.jpg" class="card-img-top rounded-top">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <h5 class='card-header'>Decoration</h5>
