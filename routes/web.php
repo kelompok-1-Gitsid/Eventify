@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 Route::get('/product', [productController::class, 'getAll']);
 Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->name('product.detail');
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
 });
 
@@ -58,7 +58,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
 
 Route::redirect('admin', 'admin/vendor');
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::prefix('vendor')->group(function () {
         Route::get('/', function () {
             return view('admin.vendor');
