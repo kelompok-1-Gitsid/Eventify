@@ -82,7 +82,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::resource('user', CustomerController::class);
 
-    Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
+    Route::get('transaction', [transactionController::class, 'index'])->name('transaction');
 });
 
 
