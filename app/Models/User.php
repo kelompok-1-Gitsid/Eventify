@@ -13,9 +13,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
-    protected $guarded = ['id'];
-
     /**
      * The attributes that are mass assignable.
      *
@@ -53,8 +50,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    public function products()
+    public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasOne(Product::class);
     }
 }

@@ -48,7 +48,7 @@ class HomeController extends Controller
         }
     }
     public function index()
- {
+    {
     if (Auth::check()) {
 
         $user = Auth::user();
@@ -57,7 +57,7 @@ class HomeController extends Controller
         if ($role == 'user') {
             return view('index');
         } else if ($role == 'admin') {
-            return view('admin.index');
+            return view('admin.vendor');
         } else if ($role == 'vendor') {
             $user = Auth::user();
             $products = $user->products;
