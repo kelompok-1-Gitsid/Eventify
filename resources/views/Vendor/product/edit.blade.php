@@ -1,14 +1,14 @@
 @extends('vendor.layouts.layouts')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Edit Product</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('products.update', $product->id) }}">
+                    <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -27,39 +27,48 @@
                             <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="image1">Product Image 1:</label>
-                            <input type="file" class="form-control" id="image1" name="image1" value="{{ $product->image1 }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image2">Product Image 2:</label>
-                            <input type="file" class="form-control" id="image2" name="image2" value="{{ $product->image2 }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image3">Product Image 3:</label>
-                            <input type="file" class="form-control" id="image3" name="image3" value="{{ $product->image3 }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image4">Product Image 4:</label>
-                            <input type="file" class="form-control" id="image4" name="image4" value="{{ $product->image4 }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image5">Product Image 5:</label>
-                            <input type="file" class="form-control" id="image5" name="image5" value="{{ $product->image5 }}" required>
+                        <!-- Tambahkan input untuk memungkinkan pengguna memilih untuk mengganti gambar atau tidak -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="change_images" name="change_images">
+                            <label class="form-check-label" for="change_images">Change Images</label>
                         </div>
 
-                        <div class="form-group">
+                        <!-- Tambahkan input file untuk setiap gambar jika pengguna memilih untuk mengganti gambar -->
+                        @if(old('change_images') || isset($product->image1))
+                            <div class="form-group">
+                                <label for="image1">Product Image 1:</label>
+                                <input type="file" class="form-control" id="image1" name="image1">
+                            </div>
+                        @endif
+                        <div class="form-group pt-2">
+                            <label for="image2">Product Image 2:</label>
+                            <input type="file" class="form-control" id="image2" name="image2">
+                        </div>
+                        <div class="form-group pt-2">
+                            <label for="image3">Product Image 3:</label>
+                            <input type="file" class="form-control" id="image3" name="image3">
+                        </div>
+                        <div class="form-group pt-2">
+                            <label for="image4">Product Image 4:</label>
+                            <input type="file" class="form-control" id="image4" name="image4">
+                        </div>
+                        <div class="form-group pt-2">
+                            <label for="image5">Product Image 5:</label>
+                            <input type="file" class="form-control" id="image5" name="image5">
+                        </div>
+
+                        <div class="form-group pt-2">
                             <label for="category">Category</label>
                             <select name="category" id="category" class="form-control" required>
-                                <option value="Catering">Catering</option>
-                                <option value="Videographer">Videographer</option>
-                                <option value="Photographer">Photographer</option>
-                                <option value="Decoration">Decoration</option>
-                                <option value="MUA">MUA</option>
+                                <option value="Catering" {{ $product->category == 'Catering' ? 'selected' : '' }}>Catering</option>
+                                <option value="Videographer" {{ $product->category == 'Videographer' ? 'selected' : '' }}>Videographer</option>
+                                <option value="Photographer" {{ $product->category == 'Photographer' ? 'selected' : '' }}>Photographer</option>
+                                <option value="Decoration" {{ $product->category == 'Decoration' ? 'selected' : '' }}>Decoration</option>
+                                <option value="MUA" {{ $product->category == 'MUA' ? 'selected' : '' }}>MUA</option>
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update Product</button>
+                        <button type="submit" class="btn btn-primary mt-2">Update Product</button>
                     </form>
                 </div>
             </div>

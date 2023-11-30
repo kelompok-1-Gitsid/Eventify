@@ -8,9 +8,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\productController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\transactionController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VendorController;
+use App\Http\Middleware\VendorMiddleware;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +32,11 @@ Route::get('/', function () {
 });
 
 Route::get('/product', [productController::class, 'getAll']);
-Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->middleware('auth');
+Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->name('product.detail');
+Route::middleware('auth')->group(function(){
+    Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
+});
+
 
 Route::get('/detail', function () {
     return view('detail');
@@ -79,11 +85,18 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
 });
 
+
 Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');
 Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
 Route::get('/vendor/profile/update', [VendorController::class, 'edit'])->name('vendor.edit');
 Route::put('/vendor/profile/update', [VendorController::class, 'update'])->name('vendor.update');
-Route::get('vendor/transactions', [VendorController::class, 'orders'])->name('vendor.orders');
+Route::get('vendor/transactions', [VendorController::class, 'transactions'])->name('vendor.transactions');
+Route::get('vendor/products', [VendorController::class, 'showProducts'])->name('vendor.product');
+Route::get('/products/create', [VendorController::class, 'create'])->name('product.create');
+Route::post('/products/store', [VendorController::class, 'store'])->name('product.store');
+Route::get('/products/{id}/edit', [VendorController::class, 'editProduct'])->name('product.edit');
+Route::put('/products/{id}', [VendorController::class, 'updateProduct'])->name('products.update');
+Route::delete('/products/{id}', [VendorController::class, 'destroyProduct'])->name('product.destroy');
 
 
 Route::get('/googleLogin', [HomeController::class, 'googleLogin']);

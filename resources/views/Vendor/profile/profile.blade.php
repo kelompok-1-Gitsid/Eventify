@@ -1,46 +1,74 @@
 @extends('vendor.layouts.layouts')
 
 @section('content')
-    <div class="content py-5 ps-5">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card text-center p-5">
-                    <div class="card-body">
-                        @if ($user->avatar)
-                            <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile" class="img img-thumbnail rounded-circle w-50">
-                        @else
-                            <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile" class="img img-thumbnail rounded-circle w-50">
-                        @endif
-
-                        <h2>{{ Auth::user()->name }}</h2>
-
-                        <a href="{{ route('vendor.edit') }}" class="btn btn-outline-success btn-sm">
-                            <i class="edit fa-solid fa-pencil me-1">
-                                Ubah Profil
-                            </i>
-                        </a>
-                    </div>
+    <section style="background-color: #fff;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col ">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ Route('vendor.dashboard')}}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Vendor Profile</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="content">
-                    <div class="shadow border rounded p-5 mb-5">
-                        <h2>Contact Information</h2>
 
-                        <p class="card-text">
-                            <span class="text-muted mb-1 d-block">Alamat :</span>
-                            <i class="fa-solid fa-map me-2 text-success"></i>
-                            {{ Auth::user()->address }}
-                        </p>
-
-                        <p class="card-text">
-                            <span class="text-muted mb-1 d-block">Alamat Email :</span>
-                            <i class="fa-solid fa-envelope text-success"></i>
-                            {{ Auth::user()->email }}
-                        </p>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            @if ($user->avatar)
+                                <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Avatar"
+                                     class="rounded-circle img-fluid mt-3" style="width: 150px;">
+                            @else
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                     alt="Avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            @endif
+                            <h5 class="mt-3">{{ Auth::user()->name }}</h5>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="{{ route('vendor.edit') }}" class="btn btn-primary mt-3">Edit Profile</a>
+                            </div>
+                        </div>
                     </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Full Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ Auth::user()->name }}</p>
+                                </div>
+                                <div class="col-sm-3  mt-2">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9  mt-2">
+                                    <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
+                                </div>
+                                <div class="col-sm-3  mt-2">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9  mt-2">
+                                    <p class="text-muted mb-0">{{ Auth::user()->phone }}</p>
+                                </div>
+                                <div class="col-sm-3  mt-2">
+                                    <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9  mt-2">
+                                    <p class="text-muted mb-0">{{ Auth::user()->address}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Add other user information here -->
+                        </div>
+                    </div>
+                    <!-- Add project status cards here -->
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Exception;
 
 use App\Models\User;
+use App\Models\Transaction;
+
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +48,8 @@ class HomeController extends Controller
         }
     }
     public function index()
-    {
-        if (Auth::check()) {
+ {
+    if (Auth::check()) {
 
         $user = Auth::user();
         $role = $user->role;
@@ -66,4 +68,6 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
+}
+
 }

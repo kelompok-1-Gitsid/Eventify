@@ -24,11 +24,12 @@
         </div>
     </div>
     <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between footer-2">
-        <img src="{{ 'assets/img/logo.jpg' }}" class="w-60 lg:ml-20 rounded-lg">
+        <img src="{{ 'assets/img/logo.png' }}" class="w-60 lg:ml-20 rounded-lg">
         <p class="flex items-center text-justify mx-24">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum iste impedit cum dignissimos tenetur optio perferendis inventore! Alias, quidem fuga corporis similique quo dolores necessitatibus, maxime, ducimus beatae tenetur ipsam.
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta excepturi necessitatibus nam, placeat voluptates est veniam architecto facere ipsa nobis alias laborum quam hic possimus exercitationem sed perspiciatis accusantium quis?
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et tempora hic facilis itaque dolorem mollitia corrupti quia consequuntur dolorum, accusamus sed harum quod sit necessitatibus obcaecati in, recusandae impedit facere!
         </p>
     </div>
+
 </x-user-layout>
