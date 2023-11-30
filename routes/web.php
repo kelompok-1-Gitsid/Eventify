@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 Route::get('/product', [productController::class, 'getAll']);
 Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->name('product.detail');
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
 });
 

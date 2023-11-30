@@ -15,8 +15,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control @error('category') is-invalid @enderror"
-                                        id="name" name="name" value="{{ old('category') }}" required autofocus>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        id="name" name="name" value="{{ old('name') }}" required autofocus>
                                     @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label for="address">Address</label>
                                     <textarea name="address" id="address" cols="30" rows="5" required
-                                        class="form-control @error('address') is-invalid @enderror">{{ old('address') }}"</textarea>
+                                        class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
                                     @error('address')
                                         <div class="invalid-feedback">
                                             {{ $message }}
