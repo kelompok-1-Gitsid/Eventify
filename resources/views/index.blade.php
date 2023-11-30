@@ -1,5 +1,5 @@
 <x-user-layout>
-    <section id="header" class="mb-10 mt-10">
+    <section id="header" class="mb-10 mt-10 gone delay-150">
         <div class="mt-[5rem] lg:mt-2 py-10 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
             <div class="flex flex-col lg:flex-row items-center md:justify-center gap-5 md:gap-15 lg:gap-40">
                 <div class="mx-5 my-5 text-center md:my-4 lg:my-auto lg:w-[50rem] lg:text-justify">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </section>
-    <section id="strategy" class=" bg-slate-100">
+    <section id="strategy" class=" bg-slate-100 gone delay-300">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
             <div class="font-light text-gray-500 sm:text-lg">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">We didn't reinvent the wheel</h2>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </section>
-    <section id="product" class="mb-10 mt-10">
+    <section id="product" class="mb-10 mt-10 gone delay-500">
         <div class="py-2 text-center font-plusJakarta">
             <h1 class="font-bold text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] "> Our Product </h1>
             <h3 class="font-medium text-[1rem] md:text-[1.2rem] lg:text-[1.4rem]">This are our priority product</h3>
@@ -89,19 +89,22 @@
             </div>
         </div>
     </section>
-    <section id="testimonials" class="mb-2 mt-12">
+    <section id="testimonials" class="mb-2 mt-12 gone delay-700">
         <div class="text-center py-10">
             <h2 class="font-bold">Tertimonials User</h2>
-            <h4 class="text-3xl w-72 mx-auto leading-normal font-semibold mb-12 gradient-text">Read What Other Have To Say</h4>
-            <div class="flex flex-col md:flex-row max-w-5xl mx-auto gap-8 px-3 group swiper mySwiper">
+            <h4 class="text-3xl w-72 mx-auto leading-normal font-semibold mb-12 gradient-text">Read What Other Have To
+                Say</h4>
+            <div class="flex flex-row md:max-w-5xl mx-auto gap-8 px-3 group swiper mySwiper ">
                 <div class="swiper-wrapper">
                     <div class=" bg-slate-300 md:blur-animation p-8 rounded-xl swiper-slide">
                         <img src="{{ url('assets/img/avatar/avatar.jpg') }}" alt=""
                             class="h-20 mx-auto rounded-md mb-3">
                         <h4 class="text-xl font-bold">Homba Stargazorus</h4>
                         <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus atque ad
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
+                            adipisci,
+                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
+                            atque ad
                             ut excepturi quas?
                         </p>
                     </div>
@@ -110,8 +113,10 @@
                             class="h-20 mx-auto rounded-md mb-3">
                         <h4 class="text-xl font-bold">Blumboy Mc'Claron</h4>
                         <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus atque ad
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
+                            adipisci,
+                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
+                            atque ad
                             ut excepturi quas?
                         </p>
                     </div>
@@ -120,8 +125,10 @@
                             class="h-20 mx-auto rounded-md mb-3">
                         <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
                         <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus atque ad
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
+                            adipisci,
+                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
+                            atque ad
                             ut excepturi quas?
                         </p>
                     </div>
@@ -130,8 +137,10 @@
                             class="h-20 mx-auto rounded-md mb-3">
                         <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
                         <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus atque ad
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
+                            adipisci,
+                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
+                            atque ad
                             ut excepturi quas?
                         </p>
                     </div>
@@ -140,13 +149,14 @@
                             class="h-20 mx-auto rounded-md mb-3">
                         <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
                         <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus atque ad
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
+                            adipisci,
+                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
+                            atque ad
                             ut excepturi quas?
                         </p>
                     </div>
                 </div>
             </div>
     </section>
-
 </x-user-layout>

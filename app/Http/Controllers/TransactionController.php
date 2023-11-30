@@ -2,63 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
+    public function index(){
         return view('admin.transaction');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        // Validate request data
+        $validator = Validator::make($request->all(), [
+            'product_id' => 'required|exists:products,id',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'price'     => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        // Check for validation errors
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // if ($validator->fails()) {
+        //     dd($request->all());
+        // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        try {
+            $data = $request->all();
+            $user = $request->user();
+            $data['user_id'] = $user->id;
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            // Create a new Order instance
+            // dd($data);
+            $order = Transaction::create($data);
+
+            // Redirect to product page after successful order creation
+            return redirect()->route('product.detail', ['id' => $request->productName])->with('success', 'Order created successfully');
+        } catch (\Exception $e) {
+            // Handle exception
+            return redirect()->back()->with('failed', 'Order created failed. Error: ' . $e->getMessage())->withInput();
+        }
     }
 }
