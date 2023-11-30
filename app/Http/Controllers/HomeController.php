@@ -47,20 +47,23 @@ class HomeController extends Controller
     }
     public function index()
     {
+        if (Auth::check()) {
 
-        if (Auth::id()) {
+        $user = Auth::user();
+        $role = $user->role;
 
-            $role = Auth()->user()->role;
-
-            if ($role == 'user') {
-                return view('index');
-            } else if ($role == 'admin') {
-                return view('admin.vendor');
-            } else if ($role == 'vendor') {
-                return view('vendor.dashboard.dashboard');
-            } else {
-                return redirect()->back();
-            }
+        if ($role == 'user') {
+            return view('index');
+        } else if ($role == 'admin') {
+            return view('admin.index');
+        } else if ($role == 'vendor') {
+            $user = Auth::user();
+            $products = $user->products;
+            $transactions = $user->transactions;
+            $totalSales = Transaction::sum('price');
+            return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+        } else {
+            return redirect()->back();
         }
     }
 }
