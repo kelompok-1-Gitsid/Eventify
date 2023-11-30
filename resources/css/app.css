@@ -19,6 +19,10 @@
         @apply font-bold text-slate-900;
     }
 
+    .gradient-text{
+        @apply text-transparent bg-clip-text bg-gradient-to-tr from-cyan to-blue-600;
+    }
+
     .submit-button{
         @apply bg-cyan px-3 py-2 text-sm leading-6 shadow-sm hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
     }
@@ -44,6 +48,10 @@
 
     .scale{
         @apply hover:transform hover:scale-110 hover:rotate-3 transition-all cursor-pointer;
+    }
+
+    .blur-animation{
+        @apply group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 cursor-pointer duration-500 ;
     }
 
     .footer{
