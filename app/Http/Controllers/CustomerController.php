@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class CustomerController extends Controller
 {
@@ -30,6 +31,19 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email'),
+                // 'users' is the table name
+            ],
+            'address' => 'required',
+            'phone' => 'required',
+            'password' => 'required',
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

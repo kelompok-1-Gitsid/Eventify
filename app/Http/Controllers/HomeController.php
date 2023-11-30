@@ -48,26 +48,26 @@ class HomeController extends Controller
         }
     }
     public function index()
- {
-    if (Auth::check()) {
+    {
+        if (Auth::check()) {
 
-        $user = Auth::user();
-        $role = $user->role;
-
-        if ($role == 'user') {
-            return view('index');
-        } else if ($role == 'admin') {
-            return view('admin.index');
-        } else if ($role == 'vendor') {
             $user = Auth::user();
-            $products = $user->products;
-            $transactions = $user->transactions;
-            $totalSales = Transaction::sum('price');
-            return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
-        } else {
-            return redirect()->back();
+            $role = $user->role;
+
+            if ($role == 'user') {
+                return view('index');
+            } else if ($role == 'admin') {
+                return view('admin.vendor');
+            } else if ($role == 'vendor') {
+                $user = Auth::user();
+                $products = $user->products;
+                $transactions = $user->transactions;
+                $totalSales = Transaction::sum('price');
+                return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+            } else {
+                return redirect()->back();
+            }
         }
     }
-}
 
 }

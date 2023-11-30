@@ -23,6 +23,6 @@ class Admin
             return redirect('/')->with('message', 'Access Denied as you are not Admin!');
         }
 
-        abort(401);
+        abort(403, 'Unauthorized');
     }
 }
