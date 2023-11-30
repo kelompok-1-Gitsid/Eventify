@@ -148,9 +148,9 @@ class VendorController extends Controller
 
     $product = Product::findOrFail($id);
 
-    // Handle image uploads and other logic here...
+
     if ($request->has('change_images')) {
-        // Jika pengguna memilih untuk mengganti gambar, tambahkan validasi dan pemrosesan gambar.
+
         $request->validate([
             'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -159,7 +159,7 @@ class VendorController extends Controller
             'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Proses pembaruan gambar sesuai kebutuhan.
+
         $product->image1 = $this->uploadImage($request->file('image1'));
         $product->image2 = $this->uploadImage($request->file('image2'));
         $product->image3 = $this->uploadImage($request->file('image3'));
@@ -167,7 +167,7 @@ class VendorController extends Controller
         $product->image5 = $this->uploadImage($request->file('image5'));
     }
 
-    // Lanjutkan dengan pembaruan informasi produk.
+
     $product->name = $request->input('name');
     $product->description = $request->input('description');
     $product->price = $request->input('price');
@@ -188,7 +188,6 @@ protected function uploadImage($file)
     {
         $product = Product::findOrFail($id);
 
-        // Hapus gambar dari storage jika diperlukan
         Storage::disk('public')->delete([
             $product->image1,
             $product->image2,
@@ -206,27 +205,13 @@ protected function uploadImage($file)
     {
         $user = Auth::user();
         $productIds = $user->products->pluck('id')->toArray();
-
-        // Mengambil semua transaksi yang terkait dengan produk yang dimiliki oleh vendor
         $transactions = Transaction::whereIn('product_id', $productIds)->get();
 
         return view('Vendor.transactions.index', compact('transactions', 'user'));
     }
 
-    public function notification()
-    {
-        // Ambil semua notifikasi untuk user tertentu
-        $notifications = auth()->user()->notifications;
 
-        return view('notifications.index', compact('notifications'));
-    }
 
-    public function markAsRead(Request $request)
-    {
-        // Tandai notifikasi sebagai dibaca
-        auth()->user()->notifications()->where('id', $request->id)->update(['is_read' => true]);
 
-        return redirect()->back();
-    }
 
 }

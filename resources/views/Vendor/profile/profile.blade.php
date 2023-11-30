@@ -1,45 +1,72 @@
 @extends('vendor.layouts.layouts')
 
 @section('content')
-    <section class="vh-100" style="background-color: #f4f5f7;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-6 mb-4 mb-lg-0">
-                    <div class="card mb-3" style="border-radius: .5rem;">
-                        <div class="row g-0">
-                            <div class="col-md-4 gradient-custom text-center text-white"
-                                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                @if ($user->avatar)
-                                    <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Avatar"
-                                         class="img-fluid my-5" style="width: 80px;">
-                                @else
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                         alt="Avatar" class="img-fluid my-5" style="width: 80px;">
-                                @endif
-                                <h5>{{ Auth::user()->name }}</h5>
-                                <p>{{ Auth::user()->role }}</p>
-                                <a href="{{ route('vendor.edit') }}" class="btn">
-                                    <i class="far fa-edit mb-5"></i>
-                                </a>
-                            </div>
-                            <div class="col-md-8 col-lg-8">
-                                <div class="card-body p-4">
-                                    <h6>Information</h6>
-                                    <hr class="mt-0 mb-4">
-                                    <div class="row pt-1">
-                                        <div class="col-12 mb-3">
-                                            <h6>Email</h6>
-                                            <p class="text-muted">{{ Auth::user()->email }}</p>
-                                            <h6>Address</h6>
-                                            <p class="text-muted">{{ Auth::user()->address }}</p>
-                                            <h6>Phone</h6>
-                                            <p class="text-muted">{{ Auth::user()->phone }} </p>
-                                        </div>
-                                    </div>
-                                </div>
+    <section style="background-color: #fff;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col ">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ Route('vendor.dashboard')}}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Vendor Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            @if ($user->avatar)
+                                <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Avatar"
+                                     class="rounded-circle img-fluid mt-3" style="width: 150px;">
+                            @else
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                     alt="Avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            @endif
+                            <h5 class="mt-3">{{ Auth::user()->name }}</h5>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="{{ route('vendor.edit') }}" class="btn btn-primary mt-3">Edit Profile</a>
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Full Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ Auth::user()->name }}</p>
+                                </div>
+                                <div class="col-sm-3  mt-2">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9  mt-2">
+                                    <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
+                                </div>
+                                <div class="col-sm-3  mt-2">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9  mt-2">
+                                    <p class="text-muted mb-0">{{ Auth::user()->phone }}</p>
+                                </div>
+                                <div class="col-sm-3  mt-2">
+                                    <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9  mt-2">
+                                    <p class="text-muted mb-0">{{ Auth::user()->address}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Add other user information here -->
+                        </div>
+                    </div>
+                    <!-- Add project status cards here -->
                 </div>
             </div>
         </div>
