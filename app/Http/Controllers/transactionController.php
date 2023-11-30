@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Validator;
 
 class transactionController extends Controller
 {
+    public function index(){
+        return view('admin.transaction');
+    }
     public function store(Request $request)
     {
         // Validate request data
