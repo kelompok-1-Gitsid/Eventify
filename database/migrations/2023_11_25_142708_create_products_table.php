@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('image3')->nullable();
             $table->string('image4')->nullable();
             $table->string('image5')->nullable();
-            $table->enum('category', ['Photographer', 'Videographer', 'Catering' , 'Decoration', 'Makeup Artist'])->nullable();
-            $table->decimal('price', 10, 2);
+            $table->enum('category', ['photographer', 'videographer', 'catering', 'decoration', 'mua'])->nullable();
+            $table->float('price');
             $table->foreignId('user_id')->constrained('users')->nullable();
             $table->timestamps();
         });

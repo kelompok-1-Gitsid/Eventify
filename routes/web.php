@@ -38,13 +38,13 @@ Route::middleware('auth')->group(function(){
 });
 
 
-Route::get('/detail', function(){
+Route::get('/detail', function () {
     return view('detail');
 });
 
 
-Route::get('/about-us', function(){
-    return view ('about-us');
+Route::get('/about-us', function () {
+    return view('about-us');
 });
 
 
@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
 
 Route::redirect('admin', 'admin/vendor');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('vendor')->group(function () {
         Route::get('/', function () {
             return view('admin.vendor');
@@ -80,14 +80,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('decoration', DecorationController::class);
     });
 
-
     Route::resource('user', CustomerController::class);
 
-    Route::get('status', [StatusController::class, 'index'])->name('status');
-
-    Route::get('/order', function () {
-        return view('admin.order');
-    })->name('order');
+    Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
 });
 
 

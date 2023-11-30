@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Status
+    Transaction
 @endsection
 
 @section('content')

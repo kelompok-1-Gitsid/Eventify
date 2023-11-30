@@ -34,20 +34,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('status') }}"
-                        class="nav-link {{ request()->segment('2') == 'status' ? 'active' : '' }}">
+                    <a href="{{ route('transaction') }}"
+                        class="nav-link {{ request()->segment('2') == 'transaction' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-sticky-note"></i>
                         <p>
-                            Status
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('order') }}"
-                        class="nav-link {{ request()->segment('2') == 'order' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tag"></i>
-                        <p>
-                            Order
+                            Transaction
                         </p>
                     </a>
                 </li>

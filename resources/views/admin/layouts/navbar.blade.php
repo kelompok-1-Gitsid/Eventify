@@ -15,10 +15,13 @@
                 <i class="far fa-user"> Profile </i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item text-center">
-                    <i class="fa fa-sign-out-alt mr-2"></i>
-                    <span class="text-muted">Logout</span>
-                </a>
+                <form action="{{ route('logout') }}" class="dropdown-item text-center" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa fa-sign-out-alt mr-2"></i>
+                        {{ __('Log Out') }}
+                    </button>
+                </form>
         </li>
     </ul>
 </nav>

@@ -12,7 +12,6 @@
                     <div class="card-header">
                         <a class="btn btn-primary" href="{{ route('vendor') }}"><i class="fas fa-arrow-left"></i></a>
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body">
                         @if (session('msg'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -24,24 +23,22 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead class="text-center">
                                 <tr>
+                                    <th>Owner</th>
                                     <th>Vendor</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                @foreach ($video as $row)
+                                @foreach ($user as $row)
                                     <tr>
-                                        <td>{{ $row->vendor_name }}</td>
-                                        <td>{{ $row->address }}</td>
-                                        <td>{{ $row->phone }}</td>
-                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->product->name }}</td>
+                                        <td>Rp {{ $row->product->price }}</td>
                                         <td>
                                             <a href="#" class="btn btn-info" data-bs-toggle="modal"
-                                                data-bs-target="#myModal" data-id="{{ $row->id }}">
-                                                Open Modal
+                                                data-bs-target="#exampleModal-{{ $row->id }}">
+                                                <i class="fas fa-database"></i>
                                             </a>
                                             <a href="{{ route('video.show', $row->id) }}" class="btn btn-warning"
                                                 title="Edit data">
@@ -62,43 +59,36 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.card-body -->
-                </div>
+                    @foreach ($user as $row)
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal-{{ $row->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center">
+                                                <img src="{{ $row->avatar ?? asset('assets/img/profile.jpg') }}"
+                                                    width="100">
+                                            </li>
+                                            <li class="list-group-item">Owner: {{ $row->name }}</li>
+                                            <li class="list-group-item">Vendor: {{ $row->product->name }}</li>
+                                            <li class="list-group-item">Description: {{ $row->product->description }}</li>
+                                            <li class="list-group-item">Price: Rp {{ $row->product->price }}</li>
+                                            <li class="list-group-item">Email: {{ $row->email }}</li>
+                                            <li class="list-group-item">Address: {{ $row->address }}</li>
+                                            <li class="list-group-item">Phone: {{ $row->phone }}</li>
+                                        </ul>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item">Vendor : {{ $row->vendor_name }}</li>
-                                    <li class="list-group-item">Owner : {{ $row->vendor_owner }} </li>
-                                    <li class="list-group-item">Address : {{ $row->address }}</li>
-                                    <li class="list-group-item">Email : {{ $row->email }}</li>
-                                    <li class="list-group-item">Phone : {{ $row->phone }}</li>
-                                </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <!-- Additional Modal Buttons Go Here -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <script>
-                    $('#myModal').on('show.bs.modal', function(event) {
-                        var button = $(event.relatedTarget); // Button that triggered the modal
-                        var videoId = button.data('id'); // Extract data-id attribute's value
-                        // Perform AJAX request or use the videoId to fetch data and update modal content
-                        var modal = $(this);
-                        modal.find('.modal-title').text('Video ID: ' + videoId);
-                        modal.find('.modal-body').html('<p>Content for video ID ' + videoId + '</p>');
-                    });
-                </script>
             @endsection
