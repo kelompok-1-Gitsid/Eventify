@@ -26,27 +26,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         @foreach($products as $product)
-                                            <tr>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ $product->description }}</td>
-                                                <td>Rp {{ $product->price }}</td>
-                                                <td>{{ $product->category }}</td>
-                                                <td><img src="{{ asset($product->image1) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
-                                                <td><img src="{{ asset($product->image2) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
-                                                <td><img src="{{ asset($product->image3) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
-                                                <td><img src="{{ asset($product->image4) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
-                                                <td><img src="{{ asset($product->image5) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
-                                                <td>
-                                                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Edit</a>
-                                                    <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        <tr>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->description }}</td>
+                                            <td>Rp {{ $product->price }}</td>
+                                            <td>{{ $product->category }}</td>
+                                            <td><img src="{{ asset($product->image1) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
+                                            <td><img src="{{ asset($product->image2) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
+                                            <td><img src="{{ asset($product->image3) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
+                                            <td><img src="{{ asset($product->image4) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
+                                            <td><img src="{{ asset($product->image5) }}" alt="{{ $product->name }}" class="img-fluid" /></td>
+                                            <td>
+                                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Edit</a>
+                                                <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+
                                     </tbody>
                                 </table>
                             </div>

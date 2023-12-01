@@ -57,12 +57,12 @@ class VendorController extends Controller
 
 
     public function showProducts()
-    {
-        $user = Auth::user();
-        $products = $user->products;
+{
+    $user = Auth::user();
+    $products = Product::all();
+    return view('vendor.product.MyProduct', compact('products'));
+}
 
-        return view('vendor.product.MyProduct', compact('user', 'products'));
-    }
 
     public function create()
     {
@@ -184,22 +184,28 @@ protected function uploadImage($file)
     return 'images/products/' . $imageName;
 }
 
-    public function destroyProduct($id)
-    {
-        $product = Product::findOrFail($id);
+public function destroyProduct($id)
+{
+    $product = Product::findOrFail($id);
 
-        Storage::disk('public')->delete([
-            $product->image1,
-            $product->image2,
-            $product->image3,
-            $product->image4,
-            $product->image5,
-        ]);
+    // Delete related transactions
+    $product->transactions()->delete();
 
-        $product->delete();
+    // Delete images
+    Storage::disk('public')->delete([
+        $product->image1,
+        $product->image2,
+        $product->image3,
+        $product->image4,
+        $product->image5,
+    ]);
 
-        return redirect()->route('vendor.product')->with('success', 'Product deleted successfully.');
-    }
+    // Delete the product
+    $product->delete();
+
+    return redirect()->route('vendor.product')->with('success', 'Product deleted successfully.');
+}
+
 
     public function transactions()
     {
