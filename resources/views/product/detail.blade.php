@@ -1,54 +1,33 @@
 <!-- resources/views/product/detail.blade.php -->
-
 <x-user-layout>
-    <div class="flex justify-center items-center h-auto md:h-screen">
-        <div class="w-full max-w-[100rem] my-24 px-8">
-            @if(session('success'))
-                <div class="bg-green-500 text-white p-4 mb-4 rounded">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if(session('failed'))
-                <div class="bg-red-500 text-white p-4 mb-4 rounded">
-                    {{ session('failed') }}
-                </div>
-            @endif
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+    <div class="flex justify-center items-center h-screen">
+        <div class="w-full max-w-4xl my-24 px-8">
+            <div class="flex flex-col justify-center items-center gap-8">
                 <!-- Product Image -->
-                <div class="w-[100vh]">
-                        <img src="{{ url('assets/img/wedding-product.jpg')}}" class="rounded-lg max-w-full h-auto" alt="Product Image">
+                <div class="image">
+                    <img src="{{ url('assets/img/wedding-product.jpg')}}" class="rounded-lg max-w-full h-auto" alt="Product Image">
                 </div>
 
                 <!-- Product Details -->
-                <div class="title text-center md:text-left">
+                <div class="title text-center">
                     <h1 class="text-4xl">{{ $product->name }}</h1>
-                    <p class="text-gray-600 text-base my-6">{{ $product->description }}</p>
+                    <p class="text-gray-600 text-base">{{ $product->description }}</p>
                     <p class="text-2xl font-bold mt-4">Rp.{{ $product->price }}</p>
 
                     <!-- Buttons -->
-                    <div class="flex gap-4 mt-8 ">
+                    <div class="flex gap-4 mt-8 px-8">
                         <!-- Back Button -->
-                        {{-- <a href="{{ url('/product') }}"
+                        <a href="{{ url('/product') }}"
                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Kembali
-                        </a> --}}
-
+                        </a>
+    
                         <!-- Order Button -->
-                        @if (Route::has('login'))
-                            @auth
-                            <a href="#"
-                                class="inline-flex justify-center items-center w-52 py-4 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                data-target="#myModal">
-                                Order Now
-                            </a>
-                        @else
-                            <a href="{{ url('/login') }}"
-                                class="inline-flex justify-center items-center w-52 py-4 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                Order Now
-                            </a>
-                            @endauth
-                        @endif
+                        <a href="#"
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            data-target="#myModal">
+                            Order Now
+                        </a>
                     </div>
                 </div>
             </div>
@@ -68,7 +47,7 @@
                     @csrf
                     <!-- Menambahkan input hidden untuk menyimpan product_id -->
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-
+                    
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -95,7 +74,7 @@
                                 <label for="endTime" class="block text-sm font-medium text-gray-700 mt-4">Waktu Berakhir</label>
                                 <input type="date" id="endTime" name="end_date"
                                     class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-                                    onchange="validateDatesAndCalculateTotal()">
+                                    onchange="validateDatesAndCalculateTotal()">                                    
 
                                 <!-- Total Harga -->
                                 <label for="totalPrice" class="block text-sm font-medium text-gray-700 mt-4">Total Harga</label>
@@ -108,7 +87,7 @@
             </div>
 
             <!-- Modal Buttons -->
-            <div class="bg-gray-50 px-4 py-3 gap-4 sm:px-6 sm:flex sm:flex-row-reverse">
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button id="closeModalButton" type="button"
                 class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-black hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 transition">
                 Close
