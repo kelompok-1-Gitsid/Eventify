@@ -1,6 +1,7 @@
 @extends('vendor.layouts.layouts')
 
 @section('content')
+
     <section class="intro mt-5">
         <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,0);">
             <div class="container">

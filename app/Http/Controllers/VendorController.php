@@ -9,14 +9,26 @@ use Illuminate\Http\Request;
 class VendorController extends Controller
 {
     public function showDashboard()
-    {
-        $user = Auth::user();
-        $products = $user->products;
-        $transactions = $user->transactions;
-        $productIds = $products->pluck('id')->toArray();
+{
+    $user = Auth::user();
+    $product = $user->product;
+
+    if ($product) {
+        $products = collect([$product]);
+        $productIds = [$product->id];
         $totalSales = Transaction::whereIn('product_id', $productIds)->sum('price');
-        return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+        $transactions = $user->transactions;
+    } else {
+        $products = collect();
+        $totalSales = 0;
+        $transactions = collect();
     }
+
+    return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+}
+
+
+
 
     public function profile()
     {
@@ -57,18 +69,33 @@ class VendorController extends Controller
 
 
     public function showProducts()
-{
-    $user = Auth::user();
-    $products = Product::all();
-    return view('vendor.product.MyProduct', compact('products'));
-}
+    {
+        $user = Auth::user();
+        $product = $user->product;
+
+        if ($product) {
+            return view('Vendor.product.MyProduct', compact('product'));
+        } else {
+            return redirect()->route('product.create')->with('warning', 'You already have a product.');
+        }
+    }
+
+
+
 
 
     public function create()
     {
         $user = Auth::user();
+        $product = $user->product;
+
+        if ($product) {
+            return redirect()->route('vendor.product')->with('warning', 'You already have a product.');
+        }
+
         return view('vendor.product.AddProduct', compact('user'));
     }
+
 
     public function store(Request $request)
     {
@@ -85,6 +112,11 @@ class VendorController extends Controller
         ]);
 
         $user = Auth::user();
+        $product = $user->product;
+
+        if ($product) {
+            return redirect()->route('vendor.product')->with('warning', 'You already have a product.');
+        }
 
         $image1 = $request->file('image1');
         $image1Name = time() . '_1.' . $image1->getClientOriginalExtension();
@@ -210,14 +242,11 @@ public function destroyProduct($id)
     public function transactions()
     {
         $user = Auth::user();
-        $productIds = $user->products->pluck('id')->toArray();
-        $transactions = Transaction::whereIn('product_id', $productIds)->get();
+        $product = $user->product;
+        $transactions = Transaction::where('product_id', $product->id)->get();
 
         return view('Vendor.transactions.index', compact('transactions', 'user'));
     }
-
-
-
 
 
 }

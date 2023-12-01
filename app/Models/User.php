@@ -50,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    public function products()
+    public function product()
     {
         return $this->hasOne(Product::class);
     }
