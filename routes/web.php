@@ -91,7 +91,14 @@ Route::prefix('admin')->group(function () {
 Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');
 Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
 Route::get('/vendor/profile/update', [VendorController::class, 'edit'])->name('vendor.edit');
-Route::get('vendor/transactions', [VendorController::class, 'orders'])->name('vendor.orders');
+Route::put('/vendor/profile/update', [VendorController::class, 'update'])->name('vendor.update');
+Route::get('vendor/transactions', [VendorController::class, 'transactions'])->name('vendor.transactions');
+Route::get('vendor/products', [VendorController::class, 'showProducts'])->name('vendor.product');
+Route::get('/products/create', [VendorController::class, 'create'])->name('product.create');
+Route::post('/products/store', [VendorController::class, 'store'])->name('product.store');
+Route::get('/products/{id}/edit', [VendorController::class, 'editProduct'])->name('product.edit');
+Route::put('/products/{id}', [VendorController::class, 'updateProduct'])->name('products.update');
+Route::delete('/products/{id}', [VendorController::class, 'destroyProduct'])->name('product.destroy');
 
 
 Route::get('/googleLogin', [HomeController::class, 'googleLogin']);

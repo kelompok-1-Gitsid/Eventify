@@ -20,20 +20,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($transactions->isNotEmpty())
+                                            @if(count($transactions) > 0)
+
                                             @foreach($transactions as $transaction)
+
                                                 <tr>
+
                                                     <td>{{ $transaction->id }}</td>
+
                                                     <td>{{ $transaction->user->name }}</td>
+
                                                     <td>{{ $transaction->product->name }}</td>
+
                                                     <td id="status_{{ $transaction->id }}">{{ $transaction->status }}</td>
+
                                                     <td>{{ $transaction->start_date }} - {{ $transaction->end_date }}</td>
+
                                                 </tr>
+
                                             @endforeach
+
                                         @else
+
                                             <tr>
+
                                                 <td colspan="5" class="text-center">No transactions available.</td>
+
                                             </tr>
+
                                         @endif
                                         </tbody>
                                     </table>
