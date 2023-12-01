@@ -3,12 +3,12 @@
 use App\Http\Controllers\CateringController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DecorationController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MuaController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\productController;
-use App\Http\Controllers\StatusController;
 use App\Http\Controllers\transactionController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VendorController;
@@ -36,13 +36,13 @@ Route::post('/order/product', [transactionController::class, 'store'])->middlewa
 Route::get('/order/pay', [transactionController::class, 'getDetail'])->middleware('auth')->name('order.list');
 Route::post('/order/pay', [transactionController::class, 'pay'])->middleware('auth')->name('order.pay');
 
-Route::get('/detail', function(){
+Route::get('/detail', function () {
     return view('detail');
 });
 
 
-Route::get('/about-us', function(){
-    return view ('about-us');
+Route::get('/about-us', function () {
+    return view('about-us');
 });
 
 
@@ -81,11 +81,8 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('user', CustomerController::class);
 
-    Route::get('status', [StatusController::class, 'index'])->name('status');
+    Route::resource('info', InfoController::class);
 
-    Route::get('/order', function () {
-        return view('admin.order');
-    })->name('order');
 });
 
 Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');

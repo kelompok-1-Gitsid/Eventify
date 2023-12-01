@@ -34,8 +34,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('transaction') }}"
-                        class="nav-link {{ request()->segment('2') == 'transaction' ? 'active' : '' }}">
+                    <a href="{{ route('info.index') }}"
+                        class="nav-link {{ request()->segment('2') == 'info' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-sticky-note"></i>
                         <p>
                             Transaction
