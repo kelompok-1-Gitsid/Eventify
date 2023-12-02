@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sender_id')->constrained('users');
             $table->foreignId('recipient_id')->constrained('users');
-            $table->boolean('is_read');
+            $table->boolean('is_read')->default(false);
             $table->text('content');
             $table->string('url');
             $table->timestamps();

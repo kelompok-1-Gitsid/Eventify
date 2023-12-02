@@ -20,7 +20,7 @@
                                         <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile"
                                             class="img-fluid illustration-img">
                                     @else
-                                        <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile"
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="Default Profile"
                                             class="img-fluid illustration-img">
                                     @endif
                                 </div>

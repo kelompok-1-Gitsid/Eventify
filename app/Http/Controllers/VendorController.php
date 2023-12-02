@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -9,26 +11,23 @@ use Illuminate\Http\Request;
 class VendorController extends Controller
 {
     public function showDashboard()
-{
-    $user = Auth::user();
-    $product = $user->product;
+    {
+        $user = Auth::user();
+        $product = $user->product;
 
-    if ($product) {
-        $products = collect([$product]);
-        $productIds = [$product->id];
-        $totalSales = Transaction::whereIn('product_id', $productIds)->sum('price');
-        $transactions = $user->transactions;
-    } else {
-        $products = collect();
-        $totalSales = 0;
-        $transactions = collect();
+        if ($product) {
+            $products = collect([$product]);
+            $productIds = [$product->id];
+            $totalSales = Transaction::whereIn('product_id', $productIds)->sum('price');
+            $transactions = $user->transactions;
+        } else {
+            $products = collect();
+            $totalSales = 0;
+            $transactions = collect();
+        }
+
+        return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
     }
-
-    return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
-}
-
-
-
 
     public function profile()
     {
@@ -67,7 +66,6 @@ class VendorController extends Controller
         return redirect()->route('vendor.profile')->with('success', 'Profil berhasil diperbarui!');
     }
 
-
     public function showProducts()
     {
         $user = Auth::user();
@@ -80,10 +78,6 @@ class VendorController extends Controller
         }
     }
 
-
-
-
-
     public function create()
     {
         $user = Auth::user();
@@ -95,7 +89,6 @@ class VendorController extends Controller
 
         return view('vendor.product.AddProduct', compact('user'));
     }
-
 
     public function store(Request $request)
     {
@@ -146,10 +139,10 @@ class VendorController extends Controller
             $image5->move(public_path('images/products'), $image5Name);
         }
 
-        $product = $user->products()->create([
+        $product = $user->product()->create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
-            'price' => $request->input('price'),
+            'price' => (int) $request->input('price'),
             'image1' => 'images/products/' . $image1Name,
             'image2' => ($image2Name) ? 'images/products/' . $image2Name : null,
             'image3' => ($image3Name) ? 'images/products/' . $image3Name : null,
@@ -161,7 +154,6 @@ class VendorController extends Controller
         return redirect()->route('vendor.product')->with('success', 'Product created successfully.');
     }
 
-
     public function editProduct($id)
     {
         $product = Product::findOrFail($id);
@@ -170,83 +162,82 @@ class VendorController extends Controller
     }
 
     public function updateProduct(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'required|string',
-        'price' => 'required|numeric|min:0.01',
-        'category' => 'required|in:Catering,Videographer,Photographer,Decoration,MUA',
-    ]);
-
-    $product = Product::findOrFail($id);
-
-
-    if ($request->has('change_images')) {
-
+    {
         $request->validate([
-            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0.01',
+            'category' => 'required|in:Catering,Videographer,Photographer,Decoration,MUA',
         ]);
 
+        $product = Product::findOrFail($id);
 
-        $product->image1 = $this->uploadImage($request->file('image1'));
-        $product->image2 = $this->uploadImage($request->file('image2'));
-        $product->image3 = $this->uploadImage($request->file('image3'));
-        $product->image4 = $this->uploadImage($request->file('image4'));
-        $product->image5 = $this->uploadImage($request->file('image5'));
+        if ($request->has('change_images')) {
+
+            $request->validate([
+                'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $product->image1 = $this->uploadImage($request->file('image1'));
+            $product->image2 = $this->uploadImage($request->file('image2'));
+            $product->image3 = $this->uploadImage($request->file('image3'));
+            $product->image4 = $this->uploadImage($request->file('image4'));
+            $product->image5 = $this->uploadImage($request->file('image5'));
+        }
+
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category = $request->input('category');
+        $product->save();
+
+        return redirect()->route('vendor.product')->with('success', 'Product updated successfully.');
     }
 
+    protected function uploadImage($file)
+    {
+        $imageName = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('images/products'), $imageName);
+        return 'images/products/' . $imageName;
+    }
 
-    $product->name = $request->input('name');
-    $product->description = $request->input('description');
-    $product->price = $request->input('price');
-    $product->category = $request->input('category');
-    $product->save();
+    public function destroyProduct($id)
+    {
+        $product = Product::findOrFail($id);
 
-    return redirect()->route('vendor.product')->with('success', 'Product updated successfully.');
-}
+        // Delete related transactions
+        $product->transactions()->delete();
 
-protected function uploadImage($file)
-{
-    $imageName = time() . '_' . $file->getClientOriginalName();
-    $file->move(public_path('images/products'), $imageName);
-    return 'images/products/' . $imageName;
-}
+        // Delete images
+        Storage::disk('public')->delete([
+            $product->image1,
+            $product->image2,
+            $product->image3,
+            $product->image4,
+            $product->image5,
+        ]);
 
-public function destroyProduct($id)
-{
-    $product = Product::findOrFail($id);
+        // Delete the product
+        $product->delete();
 
-    // Delete related transactions
-    $product->transactions()->delete();
-
-    // Delete images
-    Storage::disk('public')->delete([
-        $product->image1,
-        $product->image2,
-        $product->image3,
-        $product->image4,
-        $product->image5,
-    ]);
-
-    // Delete the product
-    $product->delete();
-
-    return redirect()->route('vendor.product')->with('success', 'Product deleted successfully.');
-}
-
+        return redirect()->route('vendor.product')->with('success', 'Product deleted successfully.');
+    }
 
     public function transactions()
     {
         $user = Auth::user();
         $product = $user->product;
+
+        if (!$product) {
+            return redirect()->route('vendor.product.create')->with('warning', 'You need to create a product first.');
+        }
+
         $transactions = Transaction::where('product_id', $product->id)->get();
 
         return view('Vendor.transactions.index', compact('transactions', 'user'));
     }
-
-
 }
