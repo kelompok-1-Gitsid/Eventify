@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Transaction;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class transactionController extends Controller
@@ -69,10 +70,9 @@ class transactionController extends Controller
                     'gross_amount' => $data['price'],
                 ),
                 'customer_details' => array(
-                    'first_name' => $firstName,
-                    'last_name' => $lastName,
-                    'email' => $user->email,
-                    'address' => $user->address,
+                    'first_name' => Auth::user(),
+                    'email' => Auth::user()->email,
+                    'address' => Auth::user()->address,
                 ),
                 'item_details' => array([
                     'id'    => "($product->id).$product->name",
