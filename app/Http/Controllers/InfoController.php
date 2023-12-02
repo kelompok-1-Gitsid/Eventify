@@ -10,11 +10,25 @@ class InfoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $transaction = Transaction::all();
+        $keyword = $request->input('keyword');
+
+
+        $query = Transaction::query();
+
+        if ($keyword) {
+            $query->whereHas('product', function ($subQuery) use ($keyword) {
+                $subQuery->where('category', $keyword)
+                    ->orWhere('status', $keyword);
+            });
+        }
+
+        $transaction = $query->get();
+
         return view('admin.transaction', compact('transaction'));
     }
+
 
     /**
      * Show the form for creating a new resource.
