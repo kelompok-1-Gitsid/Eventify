@@ -19,3 +19,14 @@ const observer = new IntersectionObserver((entries) =>{
 
 const hiddenElements = document.querySelectorAll('.gone');
 hiddenElements.forEach((el)=> observer.observe(el));
+
+// Midtrans
+// For example trigger on button clicked, or any time you need
+var payButtons = document.querySelectorAll('.pay-button');
+payButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        var token = button.getAttribute('data-token');
+        window.snap.pay(token);
+        // customer will be redirected after completing payment pop-up
+    });
+});

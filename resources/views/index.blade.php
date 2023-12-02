@@ -18,7 +18,7 @@
             </div>
         </div>
     </section>
-    <section id="strategy" class=" bg-slate-100 gone delay-300">
+    <section id="strategy" class=" bg-slate-100 gone delay-500">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
             <div class="font-light text-gray-500 sm:text-lg">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">We didn't reinvent the wheel</h2>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </section>
-    <section id="product" class="mb-10 mt-10 gone delay-500">
+    <section id="product" class="mb-10 mt-10 gone delay-7000">
         <div class="py-2 text-center font-plusJakarta">
             <h1 class="font-bold text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] "> Our Product </h1>
             <h3 class="font-medium text-[1rem] md:text-[1.2rem] lg:text-[1.4rem]">This are our priority product</h3>
@@ -89,7 +89,7 @@
             </div>
         </div>
     </section>
-    <section id="testimonials" class="mb-2 mt-12 gone delay-700">
+    <section id="testimonials" class="mb-2 mt-12 gone delay-1000">
         <div class="text-center py-10">
             <h2 class="font-bold">Tertimonials User</h2>
             <h4 class="text-3xl w-72 mx-auto leading-normal font-semibold mb-12 gradient-text">Read What Other Have To
