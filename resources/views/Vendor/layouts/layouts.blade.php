@@ -74,8 +74,6 @@
 
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="#">View All Notifications</a>
-
                                 <form method="POST" action="{{ route('logout') }}">
 
                                     <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">

@@ -233,7 +233,7 @@ class VendorController extends Controller
         $product = $user->product;
 
         if (!$product) {
-            return redirect()->route('vendor.product.create')->with('warning', 'You need to create a product first.');
+            return redirect()->route('product.create')->with('warning', 'You need to create a product first.');
         }
 
         $transactions = Transaction::where('product_id', $product->id)->get();

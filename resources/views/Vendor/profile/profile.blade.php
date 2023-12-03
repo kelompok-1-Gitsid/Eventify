@@ -3,28 +3,20 @@
 @section('content')
     <section style="background-color: #fff;">
         <div class="container py-5">
-            <div class="row">
-                <div class="col ">
-                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="{{ Route('vendor.dashboard')}}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Vendor Profile</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+
 
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
+
                             @if ($user->avatar)
-                                <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Avatar"
-                                     class="rounded-circle img-fluid mt-3" style="width: 150px;">
-                            @else
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                                     alt="Avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                            @endif
+                            <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Avatar"
+                                 class="rounded-circle img-fluid mt-3" style="width: 150px;">
+                        @else
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                 alt="Avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        @endif
                             <h5 class="mt-3">{{ Auth::user()->name }}</h5>
                             <div class="d-flex justify-content-center mb-2">
                                 <a href="{{ route('vendor.edit') }}" class="btn btn-primary mt-3">Edit Profile</a>
