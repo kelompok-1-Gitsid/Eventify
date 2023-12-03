@@ -22,7 +22,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'address',
         'email',
-        'address',
         'image',
         'password',
         'role',
@@ -54,4 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Product::class);
     }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
 }

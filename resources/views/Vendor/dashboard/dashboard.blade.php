@@ -16,13 +16,10 @@
                                     </div>
                                 </div>
                                 <div class="col-6 align-self-end text-end">
-                                    @if ($user->avatar)
-                                        <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile"
+
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="Default Profile"
                                             class="img-fluid illustration-img">
-                                    @else
-                                        <img src="{{ asset('assets/images/profile.jpg') }}" alt="Default Profile"
-                                            class="img-fluid illustration-img">
-                                    @endif
+
                                 </div>
                             </div>
                         </div>
@@ -45,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="align-self-center">
-                                    {{-- <h2 class="h1 mb-0"> {{$products->count()}}  Product</h2> --}}
+                                    <h2 class="h1 mb-0"> {{$products->count()}}  Product</h2>
                                 </div>
                             </div>
                         </div>
@@ -73,6 +70,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
     </div>
 @endsection

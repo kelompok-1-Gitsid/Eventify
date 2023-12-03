@@ -60,9 +60,19 @@ class HomeController extends Controller
                 return view('admin.vendor');
             } else if ($role == 'vendor') {
                 $user = Auth::user();
-                $products = $user->products;
-                $transactions = $user->transactions;
-                $totalSales = Transaction::sum('price');
+                $product = $user->product;
+
+                if ($product) {
+                    $products = collect([$product]);
+                    $productIds = [$product->id];
+                    $totalSales = Transaction::whereIn('product_id', $productIds)->sum('price');
+                    $transactions = $user->transactions;
+                } else {
+                    $products = collect();
+                    $totalSales = 0;
+                    $transactions = collect();
+                }
+
                 return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
             } else {
                 return redirect()->back();
