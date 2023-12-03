@@ -26,9 +26,9 @@
     <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between footer-2 gone delay-700">
         <img src="{{ 'assets/img/logo.png' }}" class="w-60 lg:ml-20 rounded-lg">
         <p class="flex items-center text-justify mx-24">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum iste impedit cum dignissimos tenetur optio perferendis inventore! Alias, quidem fuga corporis similique quo dolores necessitatibus, maxime, ducimus beatae tenetur ipsam.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta excepturi necessitatibus nam, placeat voluptates est veniam architecto facere ipsa nobis alias laborum quam hic possimus exercitationem sed perspiciatis accusantium quis?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et tempora hic facilis itaque dolorem mollitia corrupti quia consequuntur dolorum, accusamus sed harum quod sit necessitatibus obcaecati in, recusandae impedit facere!
+            Welcome to Eventify , where innovation meets celebration! We are the driving force behind unforgettable experiences that bridge the gap between cutting-edge products and the people who love them.
+            At Eventify, we believe in the power of connection and the thrill of discovery. Our team is dedicated to curating an immersive platform that brings together industry leaders, visionaries, and enthusiasts to explore the latest and greatest in industry.
+            Whether you're a seasoned professional or a curious newcomer, there's something for everyone at our event.
         </p>
     </div>
 
