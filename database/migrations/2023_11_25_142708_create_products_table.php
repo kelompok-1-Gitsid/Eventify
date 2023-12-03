@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -22,7 +21,7 @@ return new class extends Migration
             $table->string('image5')->nullable();
             $table->enum('category', ['Photographer', 'Videographer', 'Catering', 'Decoration', 'Makeup Artist'])->nullable();
             $table->decimal('price', 10, 2);
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

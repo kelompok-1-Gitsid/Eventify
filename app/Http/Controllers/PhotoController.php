@@ -59,7 +59,7 @@ class PhotoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
         // Find the user record
         $user = User::find($id);
@@ -86,7 +86,7 @@ class PhotoController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('photo.index')->with('msg', 'Category has been successfully updated');
+        return redirect()->route('photo.index')->with('msg', 'Data has been successfully updated');
     }
 
     /**
@@ -94,9 +94,17 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
-        $data = User::findOrFail($id);
-        $data->delete();
+        $user = User::find($id);
+        $product = Product::where('user_id', $id)->first();
 
-        return redirect()->route('photo.index')->with('msg', 'Category has been successfully deleted');
+        if ($user && $product) {
+            $user->delete();
+            $product->delete();
+
+            return redirect()->route('photo.index')->with('msg', 'Data has been successfully deleted');
+        } else {
+            return redirect()->route('photo.index')->with('msg', 'Data has been unsuccessfully deleted');
+        }
+
     }
 }
