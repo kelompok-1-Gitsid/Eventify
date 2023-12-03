@@ -20,7 +20,7 @@
                                 <div class="p-6">
                                     <a href="{{ url('product/detail/'.$product->id) }}">
                                         <img class="rounded-t-lg w-full h-64 rounded-lg"
-                                            src="{{ url('assets/img/wedding-product.jpg') }}" alt="" />
+                                            src="{{ asset($product->image1) }}" alt="Ini adalah image" />
                                     </a>
                                 </div>
                                 <div class="p-5 -mt-6">

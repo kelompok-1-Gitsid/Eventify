@@ -21,10 +21,10 @@
                             <span>{{ \Carbon\Carbon::parse($order->end_date)->locale('id')->formatLocalized('%A, %d %B %Y') }}</span>
                         </div>
                     </div>
-                    <div class="flex flex-row text-sm">
+                    {{-- <div class="flex flex-row text-sm">
                         <p>Status :</p>
                         <p class="ms-1">{{$order->status}}</p>
-                    </div>
+                    </div> --}}
                     <div class="flex flex-row justify-center">
                         <button class="w-full py-2 mt-2 rounded-md text-white bg-blue-500 pay-button" data-token="{{ $order->response_midtrans }}">
                             Pay!
