@@ -41,7 +41,7 @@ Make up Artist
                                     <a href="{{ route('mua.show', $row->id) }}" class="btn btn-warning" title="Edit data">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form onsubmit="return deleteData('{{ $row->vendor_name }}')" action="{{ route('mua.destroy', $row->id) }}" method="post" class="d-inline">
+                                    <form onsubmit="return deleteData('{{ $row->product->name }}')" action="{{ route('mua.destroy', $row->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" title="Hapus data" class="btn btn-danger">
