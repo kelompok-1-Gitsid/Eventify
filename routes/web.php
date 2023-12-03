@@ -40,15 +40,18 @@ Route::get('/about-us', function () {
 
 Route::get('/product', [productController::class, 'getAll']);
 Route::get('/product/detail/{id}', [productController::class, 'showDetail'])->name('product.detail');
-Route::post('/order/product', [transactionController::class, 'store'])->middleware('auth')->name('order.product');
-Route::get('/order/pay', [transactionController::class, 'getDetail'])->middleware('auth')->name('order.list');
-Route::post('/order/pay', [transactionController::class, 'pay'])->middleware('auth')->name('order.pay');
 
 Route::middleware('auth')->group(function () {
+    // Profile Update
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile', [ProfileController::class, 'avatar'])->name('profile.avatar');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Order
+    Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
+    Route::get('/order/pay', [transactionController::class, 'getDetail'])->name('order.list');
+    Route::post('/order/pay', [transactionController::class, 'pay'])->name('order.pay');
+    Route::get('/order/success', [transactionController::class, 'viewTransaction'])->name('transaction.transaction-success');
 });
 
 

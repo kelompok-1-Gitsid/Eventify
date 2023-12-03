@@ -106,4 +106,13 @@ class transactionController extends Controller
 
         return redirect('https://app.sandbox.midtrans.com/snap/v2/vtweb/'.$token);
     }
+
+    public function viewTransaction(Request $request){
+
+        $data = $request->all();
+        $user = $request->user();
+        $product = Product::where('id',$request->product_id)->first();
+
+        return view('transaction.transaction-success', $data);
+    }
 }
