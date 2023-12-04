@@ -35,10 +35,10 @@
 
                         <!-- Tambahkan input file untuk setiap gambar jika pengguna memilih untuk mengganti gambar -->
                         @if(old('change_images') || isset($product->image1))
-                            <div class="form-group">
-                                <label for="image1">Product Image 1:</label>
-                                <input type="file" class="form-control" id="image1" name="image1">
-                            </div>
+                        <div class="form-group">
+                            <label for="image1">Product Image 1:</label>
+                            <input type="file" class="form-control" id="image1" name="image1">
+                        </div>
                         @endif
                         <div class="form-group pt-2">
                             <label for="image2">Product Image 2:</label>

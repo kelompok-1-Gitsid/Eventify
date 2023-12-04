@@ -17,6 +17,7 @@ class Transaction extends Model
         'response_midtrans',
         'user_id',
         'product_id',
+        'order_id',
     ];
 
     public function user()

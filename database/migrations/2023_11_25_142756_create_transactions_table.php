@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('order_id');
             $table->decimal('price', 10, 2);
             $table->dateTime('start_date', $precision = 0);
             $table->dateTime('end_date', $precision = 0);

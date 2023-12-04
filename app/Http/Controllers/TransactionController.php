@@ -8,6 +8,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
 
 class transactionController extends Controller
 {
@@ -18,7 +19,7 @@ class transactionController extends Controller
             'product_id' => 'required|exists:products,id',
             'start_date' => 'required',
             'end_date' => 'required',
-            'price'     => 'required'
+            'price' => 'required'
         ]);
 
         // Check for validation errors
@@ -55,14 +56,14 @@ class transactionController extends Controller
                 $lastName = end($nameArray);
             }
 
-            $product = Product::where('id',$request->product_id)->first();
+            $product = Product::where('id', $request->product_id)->first();
 
             $tanggal_awal = new DateTime($request->start_date);
             $tanggal_akhir = new DateTime($request->end_date);
             // Menghitung selisih tanggal
             $selisih = $tanggal_awal->diff($tanggal_akhir);
             // Mengambil jumlah hari dari selisih
-            $daysDifference = $selisih->days+1;
+            $daysDifference = $selisih->days + 1;
 
             $params = array(
                 'transaction_details' => array(
@@ -74,18 +75,27 @@ class transactionController extends Controller
                     'email' => Auth::user()->email,
                     'address' => Auth::user()->address,
                 ),
-                'item_details' => array([
-                    'id'    => "($product->id).$product->name",
-                    'name' => "$product->name ($daysDifference Day)",
-                    'price' => $request->price,
-                    'quantity' => 1
+                'item_details' => array(
+                    [
+                        'id' => "($product->id).$product->name",
+                        'name' => "$product->name ($daysDifference Day)",
+                        'price' => $request->price,
+                        'quantity' => 1
                     ]
                 ),
+                'callbacks' => array(
+                    'finish' => 'http://127.0.0.1:8000/api/callback',
+                ),
             );
+
 
             $snapToken = \Midtrans\Snap::getSnapToken($params);
             $data['response_midtrans'] = $snapToken;
             $data['status'] = 'pending';
+            $data['order_id'] = $params['transaction_details']['order_id'];
+
+            // $order = new Transaction;
+
             $order = Transaction::create($data);
             // Redirect to product page after successful order creation
             return redirect()->route('order.list')->with('success', 'Order created successfully');
@@ -95,24 +105,52 @@ class transactionController extends Controller
         }
     }
 
-    public function getDetail(){
+    public function getDetail()
+    {
         $user = auth()->user();
         $transactions = Transaction::where('user_id', $user->id)->get();
 
-        return view('transaction.pay', ['orders'=>$transactions]);
+        return view('transaction.pay', ['orders' => $transactions]);
     }
-    public function pay(Request $request){
+    public function pay(Request $request)
+    {
         $token = $request->token;
 
-        return redirect('https://app.sandbox.midtrans.com/snap/v2/vtweb/'.$token);
+        return redirect('https://app.sandbox.midtrans.com/snap/v2/vtweb/' . $token);
     }
 
-    public function viewTransaction(Request $request){
-
+    public function viewTransaction(Request $request)
+    {
         $data = $request->all();
         $user = $request->user();
-        $product = Product::where('id',$request->product_id)->first();
+        $product = Product::where('id', $request->product_id)->first();
 
-        return view('transaction.transaction-success', $data);
+        $auth = base64_encode(env('MIDTRANS_SERVER_KEY'));
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => "Basic $auth",
+        ])->get("https://api.sandbox.midtrans.com/v2/{$request->order_id}/status");
+
+        $response = json_decode($response->body());
+
+        // dd($response);
+        $transaction = Transaction::where('order_id', $response->order_id)->first();
+
+        if ($transaction->status === 'settlement' || $transaction->status === 'capture') {
+            return response()->json(["status_code" => "200", "message" => "Pembayaran sudah diproses"]);
+        }
+
+        if ($response->transaction_status === 'capture') {
+            $transaction->status = 'capture';
+        } else if ($response->transaction_status === 'settlement') {
+            $transaction->status = 'settlement';
+        } else if ($response->transaction_status === 'pending') {
+            $transaction->status = 'pending';
+        }
+
+        $transaction->save();
+
+        return view('transaction.success', $data);
     }
 }
