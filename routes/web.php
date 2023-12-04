@@ -41,7 +41,7 @@ Route::get('/about-us', function () {
 Route::get('/product', [productController::class, 'getAll']);
 Route::get('/product/detail/{id}', [productController::class, 'showDetail'])->name('product.detail');
 
-Route::middleware('auth','user')->group(function () {
+Route::middleware('auth')->group(function () {
     // Profile Update
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
