@@ -41,7 +41,7 @@ Route::get('/about-us', function () {
 Route::get('/product', [productController::class, 'getAll']);
 Route::get('/product/detail/{id}', [productController::class, 'showDetail'])->name('product.detail');
 
-Route::middleware('auth','user')->group(function () {
+Route::middleware('auth')->group(function () {
     // Profile Update
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -51,13 +51,13 @@ Route::middleware('auth','user')->group(function () {
     Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
     Route::get('/order/pay', [transactionController::class, 'getDetail'])->name('order.list');
     Route::post('/order/pay', [transactionController::class, 'pay'])->name('order.pay');
-    Route::get('/order/success', [transactionController::class, 'viewTransaction'])->name('transaction.transaction-success');
+    // Route::get('/order/success', [transactionController::class, 'viewTransaction'])->name('transaction.success');
 });
 
 
 Route::redirect('admin', 'admin/vendor');
 
-Route::prefix('admin')->middleware('auth','admin')->group(function () {
+Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::prefix('vendor')->group(function () {
         Route::get('/', function () {
             return view('admin.vendor');
@@ -76,7 +76,7 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
     Route::resource('info', InfoController::class);
 
 });
-Route::middleware('auth','vendor')->group(function(){
+Route::middleware('auth', 'vendor')->group(function () {
     Route::get('/vendor/dashboard', [VendorController::class, 'showDashboard'])->name('vendor.dashboard');
     Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
     Route::get('/vendor/profile/update', [VendorController::class, 'edit'])->name('vendor.edit');
