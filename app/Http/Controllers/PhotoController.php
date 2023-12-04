@@ -102,12 +102,16 @@ class PhotoController extends Controller
             $product->image5 = $request->hasFile('image5') ? $this->uploadImage($request->file('image5')) : $product->image5;
         }
 
+
+        $avatar = $request->hasFile('avatar') ? $this->uploadImageAvatar($request->file('avatar')) : $request->avatar;
+
         // Update informasi user
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'address' => $request->address,
             'phone' => $request->phone,
+            'avatar' => $avatar,
         ]);
 
         // Update informasi product
@@ -128,6 +132,19 @@ class PhotoController extends Controller
             $imageName = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('images/products'), $imageName);
             return 'images/products/' . $imageName;
+        } else {
+            // Tangani kasus di mana tidak ada file (sesuaikan sesuai kebutuhan Anda)
+            return null;
+        }
+    }
+
+    protected function uploadImageAvatar($file)
+    {
+        // Periksa apakah file ada
+        if ($file) {
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/'), $imageName);
+            return 'uploads/' . $imageName;
         } else {
             // Tangani kasus di mana tidak ada file (sesuaikan sesuai kebutuhan Anda)
             return null;
