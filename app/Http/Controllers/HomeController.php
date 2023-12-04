@@ -15,38 +15,32 @@ use Laravel\Socialite\Facades\Socialite;
 
 class HomeController extends Controller
 {
-    // Login With Google
-    public function googleLogin()
-    {
 
-        return Socialite::driver('google')->redirect();
+    public function redirect($provider){
+        return Socialite::driver($provider)->redirect();
     }
 
-    public function googleHandle()
-    {
+    public function callback($provider){
 
-        try {
-            $user = Socialite::driver('google')->user();
-            $findUser = User::where('email', $user->email)->first();
+        $SocialUser = Socialite::driver($provider)->user();
 
-            if (!$findUser) {
-                $findUser = new User();
-                $findUser->name = $user->name;
-                $findUser->email = $user->email;
-                $findUser->password = "";
-                $findUser->role = "user";
-                $findUser->save();
-            }
+        $user = User::updateOrCreate([
+            'provider_id' => $SocialUser->id,
+            'provider' => $provider
+        ],[
+            'name' => $SocialUser->name,
+            'email' => $SocialUser->email,
+            'avatar' => $SocialUser->avatar,
+            'role' => 'user',
+            'provider_token' => $SocialUser->token,
+        ]);
 
-            session()->put('id', $findUser->id);
-            session()->put('type', $findUser->type);
-            return redirect(RouteServiceProvider::HOME);
+        Auth::login($user);
 
-            // dd($user);
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
+        return redirect(RouteServiceProvider::HOME);
+
     }
+
     public function index()
     {
         if (Auth::check()) {
