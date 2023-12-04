@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Edit Data Vendor
+    Edit Product
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('photo.update', $id) }}">
+                        <form method="POST" action="{{ route('photo.update', $id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{ $id }}">
@@ -26,7 +26,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Vendor Name</label>
+                                    <label for="vendor">Vendor Name</label>
                                     <input type="text" class="form-control @error('vendor') is-invalid @enderror"
                                         id="vendor" name="vendor" value="{{ $data->product->name }}" autofocus>
                                     @error('vendor')
@@ -36,7 +36,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">email</label>
+                                    <label for="email">Email</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                         id="email" name="email" value="{{ $data->email }}" autofocus>
                                     @error('email')
@@ -76,7 +76,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">Description</label>
+                                    <label for="description">Description</label>
                                     <textarea name="description" id="description" cols="30" rows="5"
                                         class="form-control @error('description') is-invalid @enderror">{{ $data->product->description }}</textarea>
                                     @error('description')
@@ -85,13 +85,48 @@
                                         </div>
                                     @enderror
                                 </div>
+
+                                <!-- Tambahkan input untuk memungkinkan admin memilih untuk mengganti gambar atau tidak -->
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="change_images" name="change_images">
+                                    <label class="form-check-label" for="change_images">Change Images</label>
+                                </div>
+
+                                <!-- Tambahkan input file untuk gambar produk jika admin memilih untuk mengganti gambar -->
+                                @if(old('change_images') || $data->product->image1)
+                                    <div class="form-group">
+                                        <label for="image1">Product Image 1:</label>
+                                        <input type="file" class="form-control" id="image1" name="image1" accept=".jpg, .png, .jpeg">
+                                    </div>
+                                @endif
+                                <div class="form-group pt-2">
+                                    <label for="image2">Product Image 2:</label>
+                                    <input type="file" class="form-control" id="image2" name="image2" accept=".jpg, .png, .jpeg">
+                                </div>
+                                <div class="form-group pt-2">
+                                    <label for="image3">Product Image 3:</label>
+                                    <input type="file" class="form-control" id="image3" name="image3" accept=".jpg, .png, .jpeg">
+                                </div>
+                                <div class="form-group pt-2">
+                                    <label for="image4">Product Image 4:</label>
+                                    <input type="file" class="form-control" id="image4" name="image4" accept=".jpg, .png, .jpeg">
+                                </div>
+                                <div class="form-group pt-2">
+                                    <label for="image5">Product Image 5:</label>
+                                    <input type="file" class="form-control" id="image5" name="image5" accept=".jpg, .png, .jpeg">
+                                </div>
+
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 <a class="btn btn-danger" href="{{ route('photo.index') }}">Batal</a>
                             </div>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
-            @endsection
+            </div>
+        </div>
+    </div>
+@endsection

@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('decoration.update', $id) }}">
+                        <form method="POST" action="{{ route('decoration.update', $id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{ $id }}">

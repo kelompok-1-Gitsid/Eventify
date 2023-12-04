@@ -61,12 +61,48 @@ class PhotoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Find the user record
+        // Validasi data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'vendor' => 'required|string|max:255',
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            'price' => 'required|numeric|min:0.01',
+            'description' => 'required|string',
+        ]);
+
+        // Temukan record user
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('photo.index')->with('error', 'User not found');
         }
 
+        // Temukan record product yang terkait
+        $product = Product::where('user_id', $id)->first();
+        if (!$product) {
+            return redirect()->route('photo.index')->with('error', 'Product not found');
+        }
+
+        // Cek apakah admin memilih untuk mengganti gambar
+        if ($request->has('change_images')) {
+            $request->validate([
+                'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            // Tangani penyimpanan gambar
+            $product->image1 = $request->hasFile('image1') ? $this->uploadImage($request->file('image1')) : $product->image1;
+            $product->image2 = $request->hasFile('image2') ? $this->uploadImage($request->file('image2')) : $product->image2;
+            $product->image3 = $request->hasFile('image3') ? $this->uploadImage($request->file('image3')) : $product->image3;
+            $product->image4 = $request->hasFile('image4') ? $this->uploadImage($request->file('image4')) : $product->image4;
+            $product->image5 = $request->hasFile('image5') ? $this->uploadImage($request->file('image5')) : $product->image5;
+        }
+
+        // Update informasi user
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -74,12 +110,7 @@ class PhotoController extends Controller
             'phone' => $request->phone,
         ]);
 
-        // Find the related product record
-        $product = Product::where('user_id', $id)->first();
-        if (!$product) {
-            return redirect()->route('photo.index')->with('error', 'Product not found');
-        }
-
+        // Update informasi product
         $product->update([
             'name' => $request->vendor,
             'price' => $request->price,
@@ -88,6 +119,21 @@ class PhotoController extends Controller
 
         return redirect()->route('photo.index')->with('msg', 'Data has been successfully updated');
     }
+
+
+    protected function uploadImage($file)
+    {
+        // Periksa apakah file ada
+        if ($file) {
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images/products'), $imageName);
+            return 'images/products/' . $imageName;
+        } else {
+            // Tangani kasus di mana tidak ada file (sesuaikan sesuai kebutuhan Anda)
+            return null;
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.
