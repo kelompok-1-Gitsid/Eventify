@@ -1,19 +1,20 @@
 <?php
 
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MuaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\productController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CateringController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DecorationController;
-use App\Http\Controllers\InfoController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MuaController;
-use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\productController;
 use App\Http\Controllers\transactionController;
-use App\Http\Controllers\VideoController;
-use App\Http\Controllers\VendorController;
 use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,8 +92,8 @@ Route::middleware('auth', 'vendor')->group(function () {
 });
 
 
-Route::get('/googleLogin', [HomeController::class, 'googleLogin']);
-Route::get('auth/google/callback', [HomeController::class, 'googleHandle']);
+Route::get('/auth/{provider}/redirect', [HomeController::class, 'redirect']);
+Route::get('/auth/{provider}/callback', [HomeController::class, 'callback']);
 
 route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
