@@ -45,7 +45,7 @@
                                             class="inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                             <div class="-mt-[0.65rem] me-8 relative">
                                                 @if (Auth::user()->avatar)
-                                                    <img src="{{ asset('uploads/' . $user->avatar) }}" alt="Profile"
+                                                    <img src="{{Auth::user()->avatar}}" alt="Profile"
                                                         class="w-9 h-9 mx-auto rounded-full mb-3">
                                                 @else
                                                     <img src="{{ asset('assets/img/avatar/avatar3.png') }}"
