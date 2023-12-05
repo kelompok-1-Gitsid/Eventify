@@ -27,21 +27,24 @@
             </ul>
             <div class="flex items-end">
                 @if (Route::has('login'))
-                <div class="md:fixed md:top-0 md:right-0 p-5 text-right z-10">
-                    @auth
-                    <div class="hidden sm:flex sm:items-center sm:ms-6">
-                        <x-dropdown align="right" width="64">
-                            <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                    <div class="-mt-[0.65rem] me-8 relative">
-                                        @if (Auth::user()->avatar)
-                                        <img src="{{ asset(Auth::user()->avatar) }}" alt="Profile" class="w-9 h-9 mx-auto rounded-full mb-3">
-                                        @else
-                                        <img src="{{ asset('assets/img/avatar/avatar3.png') }}" alt="Default Profile" class="w-9 h-9 mx-auto rounded-full mb-3">
-                                        @endif
-                                    </div>
-                                </button>
-                            </x-slot>
+                    <div class="md:fixed md:top-0 md:right-0 p-5 text-right z-10">
+                        @auth
+                            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                                <x-dropdown align="right" width="64">
+                                    <x-slot name="trigger">
+                                        <button
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                            <div class="-mt-[0.65rem] me-8 relative">
+                                                @if (Auth::user()->avatar)
+                                                    <img src="{{Auth::user()->avatar}}" alt="Profile"
+                                                        class="w-9 h-9 mx-auto rounded-full mb-3">
+                                                @else
+                                                    <img src="{{ asset('assets/img/avatar/avatar3.png') }}"
+                                                        alt="Default Profile" class="w-9 h-9 mx-auto rounded-full mb-3">
+                                                @endif
+                                            </div>
+                                        </button>
+                                    </x-slot>
 
                             <x-slot name="content">
                                 <div class="w-full flex flex-col items-start  px-4 py-4 font-thin text-slate-900">

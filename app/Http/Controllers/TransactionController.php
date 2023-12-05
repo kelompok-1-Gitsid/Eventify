@@ -110,7 +110,7 @@ class transactionController extends Controller
         $user = auth()->user();
         $transactions = Transaction::where('user_id', $user->id)->get();
 
-        return view('transaction.pay', ['orders' => $transactions]);
+        return view('user.transaction.pay', ['orders' => $transactions]);
     }
     public function pay(Request $request)
     {
