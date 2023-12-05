@@ -20,7 +20,7 @@
             @endif
         </div>
         <div class="">
-            <form action="{{ route('profile.avatar') }}" method="post">
+            <form action="{{ route('profile.avatar') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="mb-3">
@@ -34,7 +34,7 @@
                             <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                             <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                         </div>
-                        <input id="dropzone-file" type="file" class="hidden" id="avatar" name="avatar" value="{{ old('avatar', $user->avatar ?? '') }}"/>
+                        <input id="dropzone-file" type="file" class="hidden" name="avatar" value="{{ old('avatar', $user->avatar ?? '') }}"/>
                     </label>
                 </div>
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Http\Requests\AvatarUpdateRequest;
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\UploadedFile;
 
 class ProfileController extends Controller
 {
@@ -38,13 +40,12 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    public function avatar(Request $request)
+    public function avatar(AvatarUpdateRequest $request): RedirectResponse
     {
-        $user = Auth::user();
 
-        $request->validate([
-            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        $user = $request->user();
+
+        $user->fill($request->validated());
 
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
@@ -54,8 +55,7 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        $user->update($request->except('avatar'));
-
+        $user->save();
         return redirect::route('profile.avatar')->with('success', 'Avatar Updated!');
     }
 
