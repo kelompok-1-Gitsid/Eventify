@@ -4,9 +4,9 @@
 
 <div class="flex justify-center items-center h-screen mt-5">
     <div class="w-full max-w-4xl my-24 px-8">
-        <!-- Product Card -->
+
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <!-- Product Images -->
+
             <div class="flex overflow-x-auto gap-4 text-center p-4">
                 <img src="{{ asset($product->image1) }}" style="width: 15%; max-height: 200px; object-fit: cover;" class="rounded-lg inline-block m-2" alt="{{ $product->name }}">
                 <img src="{{ asset($product->image2) }}" style="width: 15%; max-height: 200px; object-fit: cover;" class="rounded-lg inline-block m-2" alt="{{ $product->name }}">
@@ -15,8 +15,8 @@
                 <img src="{{ asset($product->image5) }}" style="width: 15%; max-height: 200px; object-fit: cover;" class="rounded-lg inline-block m-2" alt="{{ $product->name }}">
             </div>
 
-            <!-- Product Details -->
-            <div class="p-4 text-center"> <!-- Menambahkan kelas text-center di sini -->
+
+            <div class="p-4 text-center">
                 <h1 class="text-4xl">{{ $product->name }}</h1>
                 <p class="text-gray-600 text-base">{{ $product->description }}</p>
                 <p class="text-2xl font-bold mt-4">Rp.{{ $product->price }}</p>

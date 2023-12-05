@@ -81,6 +81,13 @@ class VideoController extends Controller
             return redirect()->route('photo.index')->with('error', 'Product not found');
         }
 
+
+        $oldImage1 = $product->image1;
+        $oldImage2 = $product->image2;
+        $oldImage3 = $product->image3;
+        $oldImage4 = $product->image4;
+        $oldImage5 = $product->image5;
+
         if ($request->has('change_images')) {
             $request->validate([
                 'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -90,11 +97,19 @@ class VideoController extends Controller
                 'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
+
             $product->image1 = $request->hasFile('image1') ? $this->uploadImage($request->file('image1')) : $product->image1;
             $product->image2 = $request->hasFile('image2') ? $this->uploadImage($request->file('image2')) : $product->image2;
             $product->image3 = $request->hasFile('image3') ? $this->uploadImage($request->file('image3')) : $product->image3;
             $product->image4 = $request->hasFile('image4') ? $this->uploadImage($request->file('image4')) : $product->image4;
             $product->image5 = $request->hasFile('image5') ? $this->uploadImage($request->file('image5')) : $product->image5;
+
+
+            $this->deleteImageIfChanged($oldImage1, $product->image1);
+            $this->deleteImageIfChanged($oldImage2, $product->image2);
+            $this->deleteImageIfChanged($oldImage3, $product->image3);
+            $this->deleteImageIfChanged($oldImage4, $product->image4);
+            $this->deleteImageIfChanged($oldImage5, $product->image5);
         }
 
         $user->update([
@@ -113,6 +128,14 @@ class VideoController extends Controller
         return redirect()->route('photo.index')->with('msg', 'Data has been successfully updated');
     }
 
+        protected function deleteImageIfChanged($oldPath, $newPath)
+        {
+
+            if ($oldPath && $oldPath !== $newPath && File::exists(public_path($oldPath))) {
+                File::delete(public_path($oldPath));
+            }
+        }
+
 
     protected function uploadImage($file)
     {
@@ -122,6 +145,13 @@ class VideoController extends Controller
             return 'images/products/' . $imageName;
         } else {
             return null;
+        }
+    }
+
+    protected function deleteImage($path)
+    {
+        if ($path && File::exists(public_path($path))) {
+            File::delete(public_path($path));
         }
     }
 

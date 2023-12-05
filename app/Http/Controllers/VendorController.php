@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -143,11 +144,11 @@ class VendorController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'price' => (int) $request->input('price'),
-            'image1' => 'images/products/' . $image1Name,
-            'image2' => ($image2Name) ? 'images/products/' . $image2Name : null,
-            'image3' => ($image3Name) ? 'images/products/' . $image3Name : null,
-            'image4' => ($image4Name) ? 'images/products/' . $image4Name : null,
-            'image5' => ($image5Name) ? 'images/products/' . $image5Name : null,
+            'image1' => 'images/products/' . basename($image1Name),
+            'image2' => ($image2Name) ? 'images/products/' . basename($image2Name) : null,
+            'image3' => ($image3Name) ? 'images/products/' . basename($image3Name) : null,
+            'image4' => ($image4Name) ? 'images/products/' . basename($image4Name) : null,
+            'image5' => ($image5Name) ? 'images/products/' . basename($image5Name) : null,
             'category' => $request->input('category'),
         ]);
 
@@ -172,21 +173,28 @@ class VendorController extends Controller
 
         $product = Product::findOrFail($id);
 
+        $oldImage1 = $product->image1;
+        $oldImage2 = $product->image2;
+        $oldImage3 = $product->image3;
+        $oldImage4 = $product->image4;
+        $oldImage5 = $product->image5;
+
+
         if ($request->has('change_images')) {
 
             $request->validate([
-                'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
-            $product->image1 = $this->uploadImage($request->file('image1'));
-            $product->image2 = $this->uploadImage($request->file('image2'));
-            $product->image3 = $this->uploadImage($request->file('image3'));
-            $product->image4 = $this->uploadImage($request->file('image4'));
-            $product->image5 = $this->uploadImage($request->file('image5'));
+            $product->image1 = $request->hasFile('image1') ? $this->uploadImage($request->file('image1')) : $product->image1;
+            $product->image2 = $request->hasFile('image2') ? $this->uploadImage($request->file('image2')) : $product->image2;
+            $product->image3 = $request->hasFile('image3') ? $this->uploadImage($request->file('image3')) : $product->image3;
+            $product->image4 = $request->hasFile('image4') ? $this->uploadImage($request->file('image4')) : $product->image4;
+            $product->image5 = $request->hasFile('image5') ? $this->uploadImage($request->file('image5')) : $product->image5;
         }
 
         $product->name = $request->input('name');
@@ -194,6 +202,12 @@ class VendorController extends Controller
         $product->price = $request->input('price');
         $product->category = $request->input('category');
         $product->save();
+
+        $this->deleteImage($oldImage1);
+        $this->deleteImage($oldImage2);
+        $this->deleteImage($oldImage3);
+        $this->deleteImage($oldImage4);
+        $this->deleteImage($oldImage5);
 
         return redirect()->route('vendor.product')->with('success', 'Product updated successfully.');
     }
@@ -205,6 +219,12 @@ class VendorController extends Controller
         return 'images/products/' . $imageName;
     }
 
+    protected function deleteImage($path)
+    {
+        if ($path && File::exists(public_path($path))) {
+            File::delete(public_path($path));
+        }
+    }
     public function destroyProduct($id)
     {
         $product = Product::findOrFail($id);

@@ -81,28 +81,28 @@ Videographer
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
                                                     <img src="' .
-                                                        asset($row->product->image1) .
-                                                        '" class="d-block w-100" height="300" alt="...">
+                                                                asset('images/products/' . $row->product->image1) .
+                                                                '" class="d-block w-100" height="300" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
                                                     <img src="' .
-                                                        asset($row->product->image2) .
-                                                        '" class="d-block w-100" height="300" alt="...">
+                                                                asset('images/products/' . $row->product->image2) .
+                                                                '" class="d-block w-100" height="300" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
                                                     <img src="' .
-                                                        asset($row->product->image3) .
-                                                        '" class="d-block w-100" height="300" alt="...">
+                                                                asset('images/products/' . $row->product->image3) .
+                                                                '" class="d-block w-100" height="300" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
                                                     <img src="' .
-                                                        asset($row->product->image4) .
-                                                        '" class="d-block w-100" height="300" alt="...">
+                                                                asset('images/products/' . $row->product->image4) .
+                                                                '" class="d-block w-100" height="300" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
                                                     <img src="' .
-                                                        asset($row->product->image5) .
-                                                        '" class="d-block w-100" height="300" alt="...">
+                                                                asset('images/products/' . $row->product->image5) .
+                                                                '" class="d-block w-100" height="300" alt="...">
                                                 </div>
                                             </div>
                                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

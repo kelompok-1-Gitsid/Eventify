@@ -68,13 +68,14 @@
                                 <div class="form-group">
                                     <label for="price">Price</label>
                                     <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                        id="price" name="price" value="{{ $data->product->price }}" autofocus>
+                                           id="price" name="price" value="{{ $data->product ? $data->product->price : old('price') }}" autofocus>
                                     @error('price')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
+
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea name="description" id="description" cols="30" rows="5"
@@ -85,14 +86,10 @@
                                         </div>
                                     @enderror
                                 </div>
-
-                                <!-- Tambahkan input untuk memungkinkan admin memilih untuk mengganti gambar atau tidak -->
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" id="change_images" name="change_images">
                                     <label class="form-check-label" for="change_images">Change Images</label>
                                 </div>
-
-                                <!-- Tambahkan input file untuk gambar produk jika admin memilih untuk mengganti gambar -->
                                 @if(old('change_images') || $data->product->image1)
                                     <div class="form-group">
                                         <label for="image1">Product Image 1:</label>
