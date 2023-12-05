@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Edit Data Vendor
+Edit Data Vendor
 @endsection
 
 @section('content')
@@ -113,11 +113,11 @@
                                 </div>
                             </div>
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                                <a class="btn btn-danger" href="{{ route('video.index') }}">Batal</a>
-                            </div>
-                    </div>
-                    <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a class="btn btn-danger" href="{{ route('video.index') }}">Batal</a>
+                        </div>
                 </div>
+                <!-- /.card-body -->
+            </div>
             @endsection

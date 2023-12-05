@@ -103,13 +103,6 @@ class VideoController extends Controller
             $product->image3 = $request->hasFile('image3') ? $this->uploadImage($request->file('image3')) : $product->image3;
             $product->image4 = $request->hasFile('image4') ? $this->uploadImage($request->file('image4')) : $product->image4;
             $product->image5 = $request->hasFile('image5') ? $this->uploadImage($request->file('image5')) : $product->image5;
-
-
-            $this->deleteImageIfChanged($oldImage1, $product->image1);
-            $this->deleteImageIfChanged($oldImage2, $product->image2);
-            $this->deleteImageIfChanged($oldImage3, $product->image3);
-            $this->deleteImageIfChanged($oldImage4, $product->image4);
-            $this->deleteImageIfChanged($oldImage5, $product->image5);
         }
 
         $user->update([
@@ -117,6 +110,7 @@ class VideoController extends Controller
             'email' => $request->email,
             'address' => $request->address,
             'phone' => $request->phone,
+            'avatar' => $avatar,
         ]);
 
         $product->update([

@@ -18,13 +18,13 @@ class ProductController extends Controller
             $productsByCategory[$category] = Product::where('category', $category)->get();
         }
 
-        return view('product/index', compact('productsByCategory'));
+        return view('user.product.index', compact('productsByCategory'));
     }
 
     public function showDetail($name)
     {
         $product = Product::where('name', $name)->first();
 
-        return view('product/detail', compact('product'));
+        return view('user.product.detail', compact('product'));
     }
 }

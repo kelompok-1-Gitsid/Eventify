@@ -147,13 +147,6 @@ class DecorationController extends Controller
         }
     }
 
-    protected function deleteImage($path)
-    {
-        if ($path && File::exists(public_path($path))) {
-            File::delete(public_path($path));
-        }
-    }
-
     /**
      * Remove the specified resource from storage.
      */

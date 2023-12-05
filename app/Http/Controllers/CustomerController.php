@@ -37,12 +37,23 @@ class CustomerController extends Controller
                 'required',
                 'email',
                 Rule::unique('users', 'email'),
-                // 'users' is the table name
             ],
             'address' => 'required',
             'phone' => 'required',
             'password' => 'required',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // Add validation for avatar
         ]);
+
+        // Check if the 'avatar' field is present and is a valid file
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $avatar = $request->file('avatar');
+            $imageName = time() . '_' . $avatar->getClientOriginalName();
+            $avatar->move(public_path('uploads/'), $imageName);
+            $avatarPath = 'uploads/' . $imageName;
+        } else {
+            $avatarPath = null;
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -51,10 +62,13 @@ class CustomerController extends Controller
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'role' => 'user',
+            'avatar' => $avatarPath,
+            // Assign the file path to the 'avatar' field
         ]);
 
-        return redirect()->route('user.index')->with('msg', 'Category has been successfully created');
+        return redirect()->route('user.index')->with('msg', 'User has been successfully created');
     }
+
 
     /**
      * Display the specified resource.
@@ -79,10 +93,24 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = User::findOrFail($id)->update($request->only(['name', 'email', 'address', 'phone']));
+        $data = User::findOrFail($id);
 
-        return redirect()->route('user.index')->with('msg', 'Category has been successfully updated');
+        // Check if the 'avatar' field is present in the request
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $avatar = $request->file('avatar');
+            $imageName = time() . '_' . $avatar->getClientOriginalName();
+            $avatar->move(public_path('uploads/'), $imageName);
+            $data->avatar = 'uploads/' . $imageName; // Update the 'avatar' field in the database
+        }
+
+        // Update other fields
+        $data->update($request->only(['name', 'email', 'address', 'phone']));
+
+        return redirect()->route('user.index')->with('msg', 'User has been successfully updated');
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

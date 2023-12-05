@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Edit Product
+Edit Product
 @endsection
 
 @section('content')
@@ -113,17 +113,17 @@
                                     <input type="file" class="form-control" id="image5" name="image5" accept=".jpg, .png, .jpeg">
                                 </div>
 
-                            </div>
+                        </div>
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                                <a class="btn btn-danger" href="{{ route('photo.index') }}">Batal</a>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a class="btn btn-danger" href="{{ route('photo.index') }}">Batal</a>
+                        </div>
+                    </form>
                 </div>
+                <!-- /.card-body -->
             </div>
         </div>
     </div>
+</div>
 @endsection

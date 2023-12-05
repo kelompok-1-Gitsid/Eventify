@@ -110,7 +110,7 @@ class transactionController extends Controller
         $user = auth()->user();
         $transactions = Transaction::where('user_id', $user->id)->get();
 
-        return view('transaction.pay', ['orders' => $transactions]);
+        return view('user.transaction.pay', ['orders' => $transactions]);
     }
     public function pay(Request $request)
     {
@@ -121,9 +121,6 @@ class transactionController extends Controller
 
     public function viewTransaction(Request $request)
     {
-        $data = $request->all();
-        $user = $request->user();
-        $product = Product::where('id', $request->product_id)->first();
 
         $auth = base64_encode(env('MIDTRANS_SERVER_KEY'));
 
@@ -134,12 +131,7 @@ class transactionController extends Controller
 
         $response = json_decode($response->body());
 
-        // dd($response);
         $transaction = Transaction::where('order_id', $response->order_id)->first();
-
-        if ($transaction->status === 'settlement' || $transaction->status === 'capture') {
-            return response()->json(["status_code" => "200", "message" => "Pembayaran sudah diproses"]);
-        }
 
         if ($response->transaction_status === 'capture') {
             $transaction->status = 'capture';
@@ -151,6 +143,6 @@ class transactionController extends Controller
 
         $transaction->save();
 
-        return view('transaction.success', $data);
+        return redirect()->route('');
     }
 }

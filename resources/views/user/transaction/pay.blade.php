@@ -7,7 +7,7 @@
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 @foreach ($orders as $order)
             <div class="items-center bg-gray-50 rounded-lg shadow sm:flex">
-                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Avatar">
+                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ $order->product->image1 }}" alt="Bonnie Avatar">
                 <div class="p-6 ">
                     <h3 class="text-xl font-bold tracking-tight text-gray-900 rounded-lg md:rounded-l-lg">{{ $order->product->name }}</h3>
                     <span class="text-gray-500">Rp. {{ $order->price }}</span>

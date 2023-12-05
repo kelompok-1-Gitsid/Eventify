@@ -66,7 +66,7 @@ Videographer
                             <div class="modal-body">
                                 <ul class="list-group">
                                     <li class="list-group-item text-center">
-                                        <img src="{{ $row->avatar ? asset('uploads/' . $row->avatar) : asset('assets/img/profile.jpg') }}" width="100">
+                                        <img src="{{ $row->avatar ? asset($row->avatar) : asset('assets/img/profile.jpg') }}" width="100">
                                     </li>
                                     <li class="list-group-item">Owner: {{ $row->name }}</li>
                                     <li class="list-group-item">Vendor: {{ $row->product->name }}</li>
