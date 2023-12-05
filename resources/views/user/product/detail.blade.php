@@ -68,12 +68,6 @@
                     <p class="text-xl font-bold mt-4">Rp.{{ $product->price }}</p>
                     <!-- Buttons -->
                     <div class="flex gap-4 mt-8 w-full">
-                        <!-- Back Button -->
-                        <a href="{{ url('/product') }}"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                            Kembali
-                        </a>
-
                         <!-- Order Button -->
                         <a href="#"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
@@ -148,13 +142,13 @@
                     </div>
 
                     <!-- Modal Buttons -->
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-2">
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-2 ">
                         <button id="closeModalButton" type="button"
-                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-black hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 transition">
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 transition">
                             Close
                         </button>
                         <button id="orderButton" type="submit"
-                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-black hover:bg-green-700 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-200 transition ml-3">
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-200 transition ml-3">
                             Order
                         </button>
                     </div>
