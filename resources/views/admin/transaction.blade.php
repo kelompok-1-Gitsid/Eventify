@@ -34,12 +34,14 @@ Transaction
                                 <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->product->name }}</td>
                                 <td>{{ $row->start_date }} - {{ $row->end_date }} </td>
-                                <td>-</td>
+                                <td>
+                                    {{ $row->status == 'pending' ? '-' :  $row->updated_at  }}
+                                </td>
                                 <td>{{ $row->product->category }}</td>
                                 <td>
-                                    {!! $row->status == 'Paid'
-                                    ? '<button class="btn btn-success" disabled>' . $row->status . '</button>'
-                                    : '<button class="btn btn-primary" disabled>' . $row->status . '</button>' !!}
+                                    {!! $row->status == 'capture' || $row->status == 'settlement'
+                                    ? '<button class="btn btn-success" disabled> Paid </button>'
+                                    : '<button class="btn btn-primary" disabled> Unpaid </button>' !!}
                                 </td>
 
                             </tr>

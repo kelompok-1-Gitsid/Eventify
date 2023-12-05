@@ -59,26 +59,53 @@ class VideoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
-        // Find the user record
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'vendor' => 'required|string|max:255',
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            'price' => 'required|numeric|min:0.01',
+            'description' => 'required|string',
+        ]);
+
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('photo.index')->with('error', 'User not found');
         }
+
+        $product = Product::where('user_id', $id)->first();
+        if (!$product) {
+            return redirect()->route('photo.index')->with('error', 'Product not found');
+        }
+
+        if ($request->has('change_images')) {
+            $request->validate([
+                'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $product->image1 = $request->hasFile('image1') ? $this->uploadImage($request->file('image1')) : $product->image1;
+            $product->image2 = $request->hasFile('image2') ? $this->uploadImage($request->file('image2')) : $product->image2;
+            $product->image3 = $request->hasFile('image3') ? $this->uploadImage($request->file('image3')) : $product->image3;
+            $product->image4 = $request->hasFile('image4') ? $this->uploadImage($request->file('image4')) : $product->image4;
+            $product->image5 = $request->hasFile('image5') ? $this->uploadImage($request->file('image5')) : $product->image5;
+        }
+
+        $avatar = $request->hasFile('avatar') ? $this->uploadImageAvatar($request->file('avatar')) : $request->avatar;
 
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'address' => $request->address,
             'phone' => $request->phone,
+            'avatar' => $avatar,
         ]);
-
-        // Find the related product record
-        $product = Product::where('user_id', $id)->first();
-        if (!$product) {
-            return redirect()->route('photo.index')->with('error', 'Product not found');
-        }
 
         $product->update([
             'name' => $request->vendor,
@@ -86,8 +113,34 @@ class VideoController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('video.index')->with('msg', 'Category has been successfully updated');
+        return redirect()->route('photo.index')->with('msg', 'Data has been successfully updated');
     }
+
+
+    protected function uploadImage($file)
+    {
+        if ($file) {
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images/products'), $imageName);
+            return 'images/products/' . $imageName;
+        } else {
+            return null;
+        }
+    }
+
+    protected function uploadImageAvatar($file)
+    {
+        // Periksa apakah file ada
+        if ($file) {
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/'), $imageName);
+            return 'uploads/' . $imageName;
+        } else {
+            // Tangani kasus di mana tidak ada file (sesuaikan sesuai kebutuhan Anda)
+            return null;
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.

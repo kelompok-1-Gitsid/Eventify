@@ -15,13 +15,14 @@
                 <i class="far fa-user"> Profile </i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <form action="{{ route('logout') }}" class="dropdown-item text-center" method="post">
+                <form action="{{ route('logout') }}" method="POST" class="dropdown-item text-center">
                     @csrf
-                    <button type="submit">
-                        <i class="fa fa-sign-out-alt mr-2"></i>
-                        {{ __('Log Out') }}
+                    @method('POST')
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-sign-out-alt mr-2"></i> {{ __('Log Out') }}
                     </button>
                 </form>
+            </div>
         </li>
     </ul>
 </nav>
