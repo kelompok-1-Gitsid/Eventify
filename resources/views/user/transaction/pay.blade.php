@@ -7,7 +7,7 @@
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 @foreach ($orders as $order)
             <div class="items-center bg-gray-50 rounded-lg shadow sm:flex">
-                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ $order->product->image1 }}" alt="Bonnie Avatar">
+                <img class="w-full md:w-[21.5rem] h-96 rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ asset($order->product->image2) }}" alt="Bonnie Avatar">
                 <div class="p-6 ">
                     <h3 class="text-xl font-bold tracking-tight text-gray-900 rounded-lg md:rounded-l-lg">{{ $order->product->name }}</h3>
                     <span class="text-gray-500">Rp. {{ $order->price }}</span>
@@ -26,9 +26,16 @@
                         <p class="ms-1">{{$order->status}}</p>
                     </div> --}}
                     <div class="flex flex-row justify-center">
+                        @if ($order->status == 'pending')
                         <button class="w-full py-2 mt-2 rounded-md text-white bg-blue-500 pay-button" data-token="{{ $order->response_midtrans }}">
                             Pay!
                         </button>
+                        @else
+                        <button class="w-full py-2 mt-2 rounded-md text-white bg-green-600 pay-button" disabled">
+                            Success
+                        </button>
+                        @endif
+
                     </div>
                 </div>
             </div>

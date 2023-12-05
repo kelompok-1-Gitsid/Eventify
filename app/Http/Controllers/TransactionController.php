@@ -143,6 +143,6 @@ class transactionController extends Controller
 
         $transaction->save();
 
-        return redirect()->route('');
+        return redirect('/');
     }
 }

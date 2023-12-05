@@ -42,6 +42,7 @@
                                                     <img src="{{ asset('assets/img/avatar/avatar3.png') }}"
                                                         alt="Default Profile" class="w-9 h-9 mx-auto rounded-full mb-3">
                                                 @endif
+
                                             </div>
                                         </button>
                                     </x-slot>
