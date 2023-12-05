@@ -18,8 +18,8 @@ class InfoController extends Controller
         $query = Transaction::query();
 
         if ($keyword) {
-            $query->whereHas('product', function ($subQuery) use ($keyword) {
-                $subQuery->where('category', $keyword)
+            $query->whereHas('user', function ($subQuery) use ($keyword) {
+                $subQuery->where('name', $keyword)
                     ->orWhere('status', $keyword);
             });
         }

@@ -9,8 +9,8 @@ Transaction
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header" style="width: 20vw">
-                    <label for="keyword">Filter by Category & Status</label>
+                <div class="card-header">
+                    <label for="keyword">Filter by Customer & Status</label>
                     <form action="{{ route('info.index') }}" method="get">
                         <input type="text" name="keyword">
                         <button type="submit">Search</button>
@@ -33,17 +33,22 @@ Transaction
                             <tr>
                                 <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->product->name }}</td>
-                                <td>{{ $row->start_date }} - {{ $row->end_date }} </td>
+                                <td>
+                                    {{ \Carbon\Carbon::parse($row->start_date)->locale('id')->formatLocalized('%A, %d %B %Y') }} - {{ \Carbon\Carbon::parse($row->end_date)->locale('id')->formatLocalized('%A, %d %B %Y') }}
+                                </td>
                                 <td>
                                     {{ $row->status == 'pending' ? '-' :  $row->updated_at  }}
                                 </td>
                                 <td>{{ $row->product->category }}</td>
                                 <td>
-                                    {!! $row->status == 'capture' || $row->status == 'settlement'
-                                    ? '<button class="btn btn-success" disabled> Paid </button>'
-                                    : '<button class="btn btn-primary" disabled> Unpaid </button>' !!}
+                                    @if ($row->status == 'capture')
+                                    <span class="badge bg-success p-2"> {{ $row->status }} </span>
+                                    @elseif ($row->status == 'settlement')
+                                    <span class="badge bg-success p-2"> {{ $row->status }} </span>
+                                    @else
+                                    <span class="badge bg-danger p-2"> {{ $row->status }} </span>
+                                    @endif
                                 </td>
-
                             </tr>
                             @endforeach
                         </tbody>
