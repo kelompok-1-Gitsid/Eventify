@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -125,7 +125,7 @@ class MuaController extends Controller
         'description' => $request->description,
     ]);
 
-    return redirect()->route('photo.index')->with('msg', 'Data has been successfully updated');
+    return redirect()->route('mua.index')->with('msg', 'Data has been successfully updated');
 }
 
     protected function deleteImageIfChanged($oldPath, $newPath)

@@ -16,9 +16,11 @@ class DecorationController extends Controller
     {
         $category = 'decoration';
 
-        $products = Product::with('owner')->where('category', 'decoration')->get();
+        $user = User::whereHas('product', function ($query) use ($category) {
+            $query->where('category', $category);
+        })->get();
 
-        return view('admin.vendor.decoration.index', compact( 'products'));
+        return view('admin.vendor.decoration.index', compact('user'));
     }
 
     /**
@@ -124,7 +126,7 @@ class DecorationController extends Controller
         'description' => $request->description,
     ]);
 
-    return redirect()->route('photo.index')->with('msg', 'Data has been successfully updated');
+    return redirect()->route('decoration.index')->with('msg', 'Data has been successfully updated');
 }
 
     protected function deleteImageIfChanged($oldPath, $newPath)

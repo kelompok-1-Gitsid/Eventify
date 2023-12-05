@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,9 +15,11 @@ class CateringController extends Controller
     {
         $category = 'catering';
 
-        $products = Product::with('owner')->where('category', 'catering')->get();
+        $user = User::whereHas('product', function ($query) use ($category) {
+            $query->where('category', $category);
+        })->get();
 
-        return view('admin.vendor.catering.index', compact('products'));
+        return view('admin.vendor.catering.index', compact('user'));
     }
 
     /**
@@ -41,8 +43,9 @@ class CateringController extends Controller
      */
     public function show($id)
     {
-        $vendor = User::with('product')->findOrFail($id);
-        return view('admin.vendor.catering.edit', compact('vendor'));
+        $data = User::findOrFail($id);
+
+        return view('admin.vendor.catering.edit', compact('id', 'data'));
     }
 
     /**

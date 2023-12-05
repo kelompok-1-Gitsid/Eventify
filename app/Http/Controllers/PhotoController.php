@@ -15,9 +15,13 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $products = Product::with('owner')->where('category', 'photographer')->get();
+        $category = 'photographer';
 
-        return view('admin.vendor.photographer.index', compact('products'));
+        $user = User::whereHas('product', function ($query) use ($category) {
+            $query->where('category', $category);
+        })->get();
+
+        return view('admin.vendor.photographer.index', compact('user'));
     }
 
     /**
