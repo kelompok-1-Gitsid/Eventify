@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\TransactionChart;
+use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class InfoController extends Controller
@@ -28,6 +31,18 @@ class InfoController extends Controller
 
         return view('admin.transaction', compact('transaction'));
     }
+
+    public function data(TransactionChart $transactionChart)
+    {
+        $user = User::where('role', 'user')->get();
+        $vendor = User::where('role', 'vendor')->get();
+        $transaction = Transaction::all();
+        $product = Product::all();
+        $transactionChart = $transactionChart->build();
+
+        return view('admin.beranda', compact('user', 'vendor', 'transaction', 'product', 'transactionChart'));
+    }
+
 
 
     /**

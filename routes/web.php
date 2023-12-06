@@ -56,9 +56,11 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::redirect('admin', 'admin/vendor');
+Route::redirect('admin', 'admin/beranda');
 
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
+    Route::get('beranda', [InfoController::class, 'data'])->name('beranda');
+
     Route::prefix('vendor')->group(function () {
         Route::get('/', function () {
             return view('admin.vendor');
