@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-User
+Admin || User
 @endsection
 
 @section('content')

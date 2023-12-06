@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-Transaction
+Admin || Transaction
 @endsection
 
 @section('content')
@@ -29,6 +29,7 @@ Transaction
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                            @if (count($transaction) > 0)
                             @foreach ($transaction as $row)
                             <tr>
                                 <td>{{ $row->user->name }}</td>
@@ -51,6 +52,12 @@ Transaction
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="6" class="text-center">No data</td>
+                            </tr>
+                            @endif
+
                         </tbody>
                     </table>
                 </div>
