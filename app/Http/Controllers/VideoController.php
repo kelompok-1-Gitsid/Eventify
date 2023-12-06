@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\User;
@@ -27,7 +28,10 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::where('role', 'vendor')
+            ->whereDoesntHave('product')
+            ->get();
+        return view('admin.vendor.videographer.product', compact('user'));
     }
 
     /**
@@ -35,7 +39,60 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0.01',
+            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'user' => 'required|exists:users,id,role,vendor'
+        ]);
+
+        $image1 = $request->file('image1');
+        $image1Name = time() . '_1.' . $image1->getClientOriginalExtension();
+        $image1->move(public_path('images/products'), $image1Name);
+
+        $image2 = $request->file('image2');
+        $image2Name = ($image2) ? time() . '_2.' . $image2->getClientOriginalExtension() : null;
+        if ($image2) {
+            $image2->move(public_path('images/products'), $image2Name);
+        }
+
+        $image3 = $request->file('image3');
+        $image3Name = ($image3) ? time() . '_3.' . $image3->getClientOriginalExtension() : null;
+        if ($image3) {
+            $image3->move(public_path('images/products'), $image3Name);
+        }
+
+        $image4 = $request->file('image4');
+        $image4Name = ($image4) ? time() . '_4.' . $image4->getClientOriginalExtension() : null;
+        if ($image4) {
+            $image4->move(public_path('images/products'), $image4Name);
+        }
+
+        $image5 = $request->file('image5');
+        $image5Name = ($image5) ? time() . '_5.' . $image5->getClientOriginalExtension() : null;
+        if ($image5) {
+            $image5->move(public_path('images/products'), $image5Name);
+        }
+
+        $product = Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => (int) $request->input('price'),
+            'image1' => 'images/products/' . basename($image1Name),
+            'image2' => ($image2Name) ? 'images/products/' . basename($image2Name) : null,
+            'image3' => ($image3Name) ? 'images/products/' . basename($image3Name) : null,
+            'image4' => ($image4Name) ? 'images/products/' . basename($image4Name) : null,
+            'image5' => ($image5Name) ? 'images/products/' . basename($image5Name) : null,
+            'user_id' => $request->input('user'),
+            'category' => 'Videographer',
+        ]);
+
+        return redirect()->route('video.index')->with('success', 'Product has been successfully created');
     }
 
     /**
@@ -73,12 +130,12 @@ class VideoController extends Controller
 
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('photo.index')->with('error', 'User not found');
+            return redirect()->route('video.index')->with('error', 'User not found');
         }
 
         $product = Product::where('user_id', $id)->first();
         if (!$product) {
-            return redirect()->route('photo.index')->with('error', 'Product not found');
+            return redirect()->route('video.index')->with('error', 'Product not found');
         }
 
 
@@ -131,13 +188,13 @@ class VideoController extends Controller
         return redirect()->route('video.index')->with('msg', 'Data has been successfully updated');
     }
 
-        protected function deleteImageIfChanged($oldPath, $newPath)
-        {
+    protected function deleteImageIfChanged($oldPath, $newPath)
+    {
 
-            if ($oldPath && $oldPath !== $newPath && File::exists(public_path($oldPath))) {
-                File::delete(public_path($oldPath));
-            }
+        if ($oldPath && $oldPath !== $newPath && File::exists(public_path($oldPath))) {
+            File::delete(public_path($oldPath));
         }
+    }
 
 
     protected function uploadImage($file)

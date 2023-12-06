@@ -20,6 +20,7 @@ Photographer
                     </div>
                     @endif
                     <table id="example2" class="table table-bordered table-hover">
+                        <a href="{{ route('photo.create') }}" class="btn btn-info mb-3">+ Create Product</a>
                         <thead class="text-center">
                             <tr>
                                 <th>Owner</th>

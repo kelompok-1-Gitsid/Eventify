@@ -37,7 +37,7 @@ Transaction
                                     {{ \Carbon\Carbon::parse($row->start_date)->locale('id')->formatLocalized('%A, %d %B %Y') }} - {{ \Carbon\Carbon::parse($row->end_date)->locale('id')->formatLocalized('%A, %d %B %Y') }}
                                 </td>
                                 <td>
-                                    {{ $row->status == 'pending' ? '-' :  $row->updated_at  }}
+                                    {{ $row->status == 'pending' ? '-' :  \Carbon\Carbon::parse($row->updated_at)->locale('id')->formatLocalized('%A, %d %B %Y %H:%M')  }}
                                 </td>
                                 <td>{{ $row->product->category }}</td>
                                 <td>

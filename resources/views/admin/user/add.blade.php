@@ -59,6 +59,14 @@ Add Data User
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="role">User</label>
+                                <select name="user" id="user" class="form-control" required>
+                                    <option selected disabled>Pick Role</option>
+                                    <option value="user">User</option>
+                                    <option value="vendor">Vendor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="avatar">Avatar:</label>
                                 <input type="file" class="form-control" id="avatar" name="avatar" accept=".jpg, .png, .jpeg">
                             </div>

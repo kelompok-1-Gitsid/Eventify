@@ -41,6 +41,7 @@ class CustomerController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'password' => 'required',
+            'role' => 'required',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // Add validation for avatar
         ]);
@@ -61,7 +62,7 @@ class CustomerController extends Controller
             'address' => $request->address,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'role' => 'user',
+            'role' => $request->role,
             'avatar' => $avatarPath,
             // Assign the file path to the 'avatar' field
         ]);
