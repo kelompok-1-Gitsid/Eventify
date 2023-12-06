@@ -57,7 +57,7 @@ Create Makeup Artist Product
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Create</button>
-                            <a class="btn btn-danger" href="{{ route('mua.index') }}">Batal</a>
+                            <a class="btn btn-danger" href="{{ route('mua.index') }}">Cancel</a>
                         </div>
                     </form>
                 </div>
