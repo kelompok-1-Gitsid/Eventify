@@ -69,18 +69,15 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
 
-                                <div class="dropdown-divider"></div>
 
-                                <form method="POST" action="{{ route('logout') }}">
+                                <form action="{{route('logout')}}" method="POST" class=" text-center" role="search">
 
-                                    <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
-
-                                        @csrf
-                                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                    @csrf
+                                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                            {{ __('Log Out') }}
-                                        </x-responsive-nav-link>
-                                    </form>
+                                        {{ __('Log Out') }}
+                                    </x-responsive-nav-link>
+                                </form>
 
                             </div>
                         </li>

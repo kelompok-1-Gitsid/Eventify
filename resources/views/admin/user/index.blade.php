@@ -10,7 +10,7 @@ User
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('user.create') }}" class="btn btn-primary">+ Add Data</a>
+                    <a href="{{ route('user.create') }}" class="btn btn-primary">+ Add User & Vendor</a>
                 </div>
                 <div class="card-body">
                     @if (session('msg'))

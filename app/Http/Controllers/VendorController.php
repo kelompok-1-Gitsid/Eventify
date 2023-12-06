@@ -58,7 +58,7 @@ class VendorController extends Controller
             $image = $request->file('avatar');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads'), $imageName);
-            $user->avatar = $imageName;
+            $user->avatar = 'uploads/' . $imageName;
             $user->save();
         }
 
