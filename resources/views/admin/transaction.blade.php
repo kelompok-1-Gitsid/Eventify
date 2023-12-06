@@ -9,12 +9,18 @@ Admin || Transaction
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <label for="keyword">Filter by Customer & Status</label>
-                    <form action="{{ route('info.index') }}" method="get">
-                        <input type="text" name="keyword">
-                        <button type="submit">Search</button>
-                    </form>
+                <div class="card-header d-flex">
+                    <div>
+                        <label for="keyword">Filter by Customer & Status</label>
+                        <form action="{{ route('info.index') }}" method="get">
+                            <input type="text" name="keyword">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div class="mt-4 ms-auto">
+                        <a class="btn btn-info" target="_blank" href="{{ route('info.cetakPdf') }}"><i class="fas fa-print"></i> Export PDF</a>
+                        <a class="btn btn-success" href="{{ route('info.cetakExcel') }}"><i class="fas fa-print"></i> Export Excel</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-hover">

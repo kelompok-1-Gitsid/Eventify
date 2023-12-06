@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\TransactionExport;
 use App\Charts\TransactionChart;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InfoController extends Controller
 {
@@ -32,6 +33,20 @@ class InfoController extends Controller
         return view('admin.transaction', compact('transaction'));
     }
 
+    public function cetakPdf()
+    {
+        $transaction = Transaction::all();
+
+        return view('admin.report', compact('transaction'));
+    }
+  
+    public function cetakExcel()
+    {
+        return Excel::download(new TransactionExport, 'transaction.xlsx');
+
+        // return view('admin.excel', compact('transaction'));
+    }
+
     public function data(TransactionChart $transactionChart)
     {
         $user = User::where('role', 'user')->get();
@@ -42,7 +57,6 @@ class InfoController extends Controller
 
         return view('admin.beranda', compact('user', 'vendor', 'transaction', 'product', 'transactionChart'));
     }
-
 
 
     /**

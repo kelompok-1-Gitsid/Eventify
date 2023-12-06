@@ -79,7 +79,7 @@ Photographer
                                     <li class="list-group-item">Owner: {{ $row->name }}</li>
                                     <li class="list-group-item">Vendor: {{ $row->product->name }}</li>
                                     <li class="list-group-item">Description: {{ $row->product->description }}</li>
-                                    <li class="list-group-item">Price: Rp {{ $row->product->price }}</li>
+                                    <li class="list-group-item">Price: Rp {{ number_format($row->product->price, 0, ',', '.') }},00</li>
                                     <li class="list-group-item">Email: {{ $row->email }}</li>
                                     <li class="list-group-item">Address: {{ $row->address }}</li>
                                     <li class="list-group-item">Phone: {{ $row->phone }}</li>
