@@ -57,7 +57,7 @@ Create Decoration Product
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Create</button>
-                            <a class="btn btn-danger" href="{{ route('decoration.index') }}">Batal</a>
+                            <a class="btn btn-danger" href="{{ route('decoration.index') }}">Cancel</a>
                         </div>
                     </form>
                 </div>

@@ -59,7 +59,7 @@ Edit Data User
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a class="btn btn-danger" href="{{ route('user.index') }}">Batal</a>
+                            <a class="btn btn-danger" href="{{ route('user.index') }}">Cancel</a>
                         </div>
                 </div>
                 <!-- /.card-body -->

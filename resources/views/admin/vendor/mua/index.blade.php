@@ -30,6 +30,7 @@ Make up Artist
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                            @if (count($user) > 0)
                             @foreach ($user as $row)
                             <tr>
                                 <td>{{ $row->name }}</td>
@@ -52,6 +53,12 @@ Make up Artist
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="4" class="text-center">No data</td>
+                            </tr>
+                            @endif
+
                         </tbody>
                     </table>
                 </div>

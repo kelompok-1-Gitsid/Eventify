@@ -117,7 +117,7 @@ Edit Product
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a class="btn btn-danger" href="{{ route('photo.index') }}">Batal</a>
+                            <a class="btn btn-danger" href="{{ route('photo.index') }}">Cancel</a>
                         </div>
                     </form>
                 </div>
