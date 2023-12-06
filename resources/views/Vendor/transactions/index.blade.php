@@ -33,7 +33,7 @@
 
                                             <td>{{ $transaction->product->name }}</td>
 
-                                            <td id="status_{{ $transaction->id }}">{{ $transaction->status }}</td>
+                                            <td>{{ $transaction->status == 'pending' ? 'Unpaid' : 'Paid' }}</td>
 
                                             <td>{{ \Carbon\Carbon::parse($transaction->start_date)->locale('id')->formatLocalized('%A, %d %B %Y') }} - {{ \Carbon\Carbon::parse($transaction->end_date)->locale('id')->formatLocalized('%A, %d %B %Y') }}</td>
 
