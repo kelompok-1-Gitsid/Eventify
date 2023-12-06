@@ -57,7 +57,7 @@ Create Videographer Product
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Create</button>
-                            <a class="btn btn-danger" href="{{ route('video.index') }}">Batal</a>
+                            <a class="btn btn-danger" href="{{ route('video.index') }}">Cancel</a>
                         </div>
                     </form>
                 </div>
