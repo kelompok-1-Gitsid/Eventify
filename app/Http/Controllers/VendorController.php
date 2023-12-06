@@ -27,19 +27,19 @@ class VendorController extends Controller
             $transactions = collect();
         }
 
-        return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+        return view('Vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
     }
 
     public function profile()
     {
         $user = Auth::user();
-        return view('vendor.profile.profile', compact('user'));
+        return view('Vendor.profile.profile', compact('user'));
     }
 
     public function edit()
     {
         $user = Auth::user();
-        return view('vendor.profile.UbahProfile', compact('user'));
+        return view('Vendor.profile.UbahProfile', compact('user'));
     }
 
     public function update(Request $request)
@@ -64,7 +64,7 @@ class VendorController extends Controller
 
         $user->update($request->except('avatar'));
 
-        return redirect()->route('vendor.profile')->with('success', 'Profil berhasil diperbarui!');
+        return redirect()->route('Vendor.profile')->with('success', 'Profil berhasil diperbarui!');
     }
 
     public function showProducts()
@@ -88,7 +88,7 @@ class VendorController extends Controller
             return redirect()->route('vendor.product')->with('warning', 'You already have a product.');
         }
 
-        return view('vendor.product.AddProduct', compact('user'));
+        return view('Vendor.product.AddProduct', compact('user'));
     }
 
     public function store(Request $request)
@@ -102,7 +102,7 @@ class VendorController extends Controller
             'image3' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image4' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image5' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category' => 'required|in:Catering,Videographer,Photographer,Decoration,MUA',
+            'category' => 'required|in:Catering,Videographer,Photographer,Decoration,Makeup Artist',
         ]);
 
         $user = Auth::user();
@@ -113,43 +113,45 @@ class VendorController extends Controller
         }
 
         $image1 = $request->file('image1');
-        $image1Name = time() . '_1.' . $image1->getClientOriginalExtension();
+        $image1Name = $image1->getClientOriginalName();
         $image1->move(public_path('images/products'), $image1Name);
 
         $image2 = $request->file('image2');
-        $image2Name = ($image2) ? time() . '_2.' . $image2->getClientOriginalExtension() : null;
+        $image2Name = ($image2) ? $image2->getClientOriginalName() : null;
         if ($image2) {
             $image2->move(public_path('images/products'), $image2Name);
         }
 
         $image3 = $request->file('image3');
-        $image3Name = ($image3) ? time() . '_3.' . $image3->getClientOriginalExtension() : null;
+        $image3Name = ($image3) ? $image3->getClientOriginalName() : null;
         if ($image3) {
             $image3->move(public_path('images/products'), $image3Name);
         }
 
         $image4 = $request->file('image4');
-        $image4Name = ($image4) ? time() . '_4.' . $image4->getClientOriginalExtension() : null;
+        $image4Name = ($image4) ? $image4->getClientOriginalName() : null;
         if ($image4) {
             $image4->move(public_path('images/products'), $image4Name);
         }
 
         $image5 = $request->file('image5');
-        $image5Name = ($image5) ? time() . '_5.' . $image5->getClientOriginalExtension() : null;
+        $image5Name = ($image5) ? $image5->getClientOriginalName() : null;
         if ($image5) {
             $image5->move(public_path('images/products'), $image5Name);
         }
+
 
         $product = $user->product()->create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'price' => (int) $request->input('price'),
-            'image1' => 'images/products/' . basename($image1Name),
-            'image2' => ($image2Name) ? 'images/products/' . basename($image2Name) : null,
-            'image3' => ($image3Name) ? 'images/products/' . basename($image3Name) : null,
-            'image4' => ($image4Name) ? 'images/products/' . basename($image4Name) : null,
-            'image5' => ($image5Name) ? 'images/products/' . basename($image5Name) : null,
+            'image1' => 'images/products/' . $image1Name,
+            'image2' => ($image2Name) ? 'images/products/' . $image2Name : null,
+            'image3' => ($image3Name) ? 'images/products/' . $image3Name : null,
+            'image4' => ($image4Name) ? 'images/products/' . $image4Name : null,
+            'image5' => ($image5Name) ? 'images/products/' . $image5Name : null,
             'category' => $request->input('category'),
+
         ]);
 
         return redirect()->route('vendor.product')->with('success', 'Product created successfully.');
@@ -159,7 +161,7 @@ class VendorController extends Controller
     {
         $product = Product::findOrFail($id);
         $user = Auth::user();
-        return view('vendor.product.edit', compact('product', 'user'));
+        return view('Vendor.product.edit', compact('product', 'user'));
     }
 
     public function updateProduct(Request $request, $id)
@@ -168,7 +170,7 @@ class VendorController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0.01',
-            'category' => 'required|in:Catering,Videographer,Photographer,Decoration,MUA',
+            'category' => 'required|in:Catering,Videographer,Photographer,Decoration,Makeup Artist',
         ]);
 
         $product = Product::findOrFail($id);
@@ -225,14 +227,46 @@ class VendorController extends Controller
             File::delete(public_path($path));
         }
     }
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+
+
+        $this->deleteImages($product);
+
+
+        $product->delete();
+
+        return redirect()->route('vendor.product')->with('success', 'Product deleted successfully.');
+    }
+
+    private function deleteImages(Product $product)
+    {
+
+        foreach (range(1, 5) as $index) {
+            $imageField = "image{$index}";
+
+
+            if ($product->$imageField) {
+                $imagePath = public_path($product->$imageField);
+
+
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+        }
+    }
+
+
+
     public function destroyProduct($id)
     {
         $product = Product::findOrFail($id);
 
-        // Delete related transactions
+
         $product->transactions()->delete();
 
-        // Delete images
         Storage::disk('public')->delete([
             $product->image1,
             $product->image2,
@@ -241,7 +275,7 @@ class VendorController extends Controller
             $product->image5,
         ]);
 
-        // Delete the product
+
         $product->delete();
 
         return redirect()->route('vendor.product')->with('success', 'Product deleted successfully.');

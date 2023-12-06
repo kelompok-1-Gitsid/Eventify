@@ -56,9 +56,11 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::redirect('admin', 'admin/vendor');
+Route::redirect('admin', 'admin/beranda');
 
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
+    Route::get('beranda', [InfoController::class, 'data'])->name('beranda');
+
     Route::prefix('vendor')->group(function () {
         Route::get('/', function () {
             return view('admin.vendor');
@@ -91,6 +93,7 @@ Route::middleware('auth', 'vendor')->group(function () {
     Route::get('/products/{id}/edit', [VendorController::class, 'editProduct'])->name('product.edit');
     Route::put('/products/{id}', [VendorController::class, 'updateProduct'])->name('products.update');
     Route::delete('/products/{id}', [VendorController::class, 'destroyProduct'])->name('product.destroy');
+    Route::delete('/products/{id}', [VendorController::class, 'destroy'])->name('product.destroys');
 });
 
 

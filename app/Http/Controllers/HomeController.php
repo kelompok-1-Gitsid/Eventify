@@ -67,7 +67,7 @@ class HomeController extends Controller
                     $transactions = collect();
                 }
 
-                return view('vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
+                return view('Vendor.dashboard.dashboard', compact('user', 'products', 'totalSales', 'transactions'));
             } else {
                 return redirect()->back();
             }

@@ -46,7 +46,7 @@
                         <option value="Videographer">Videographer</option>
                         <option value="Photographer">Photographer</option>
                         <option value="Decoration">Decoration</option>
-                        <option value="MUA">MUA</option>
+                        <option value="Makeup Artist">Makeup Artist</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Create</button>
