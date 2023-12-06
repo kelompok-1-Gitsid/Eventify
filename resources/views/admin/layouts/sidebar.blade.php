@@ -15,6 +15,14 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
+                    <a href="{{ route('beranda') }}" class="nav-link {{ request()->segment('2') == 'beranda' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Home
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('vendor') }}" class="nav-link {{ request()->segment('2') == 'vendor' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
