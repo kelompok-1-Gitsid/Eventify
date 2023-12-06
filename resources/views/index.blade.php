@@ -89,74 +89,64 @@
             </div>
         </div>
     </section>
-    <section id="testimonials" class="mb-2 mt-12 gone delay-1000">
+    <section id="testimonials" class="mb-12 mt-12 gone delay-1000">
         <div class="text-center py-10">
             <h2 class="font-bold">Tertimonials User</h2>
             <h4 class="text-3xl w-72 mx-auto leading-normal font-semibold mb-12 gradient-text">Read What Other Have To
                 Say</h4>
-            <div class="flex flex-row md:max-w-5xl mx-auto gap-8 px-3 group swiper mySwiper ">
-                <div class="swiper-wrapper">
-                    <div class=" bg-slate-300 md:blur-animation p-8 rounded-xl swiper-slide">
-                        <img src="{{ url('assets/img/avatar/avatar.jpg') }}" alt=""
-                            class="h-20 mx-auto rounded-md mb-3">
-                        <h4 class="text-xl font-bold">Homba Stargazorus</h4>
-                        <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
-                            adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
-                            atque ad
-                            ut excepturi quas?
-                        </p>
+                    <div class=" md:max-w-5xl mx-auto gap-8 px-3 group swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class=" bg-slate-50 shadow-md md:blur-animation p-8 rounded-xl swiper-slide">
+                                <img src="{{ url('assets/img/avatar/avatar.jpg') }}" alt=""
+                                    class="h-20 mx-auto rounded-md mb-3">
+                                <h4 class="text-xl font-bold">Homba Stargazorus</h4>
+                                <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                    Waw, so nice i like the app, its so easy for order Make Up Artist.
+                                </p>
+                            </div>
+                            <div class=" bg-slate-50 shadow-md md:blur-animation p-8 rounded-xl swiper-slide">
+                                <img src="{{ url('assets/img/avatar/avatar1.jpg') }}" alt=""
+                                    class="h-20 mx-auto rounded-md mb-3">
+                                <h4 class="text-xl font-bold">Blumboy Mc'Claron</h4>
+                                <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                    Good app, for you who want to rent a decoration setup.
+                                </p>
+                            </div>
+                            <div class=" bg-slate-50 shadow-md md:blur-animation p-8 rounded-xl swiper-slide">
+                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
+                                    class="h-20 mx-auto rounded-md mb-3">
+                                <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
+                                <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                    I am very pleased with the makeup results from Malmoy Makeup. The makeup makes me look my best and I feel more confident. Malmoy Makeup is also very kind and takes her time to apply the makeup perfectly.
+                                </p>
+                            </div>
+                            <div class=" bg-slate-50 shadow-md md:blur-animation p-8 rounded-xl swiper-slide">
+                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
+                                    class="h-20 mx-auto rounded-md mb-3">
+                                <h4 class="text-xl font-bold">Vincent Hanazo</h4>
+                                <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
+                                    adipisci,
+                                    sit numquam harum.
+                                </p>
+                            </div>
+                            <div class=" bg-slate-50 shadow-md md:blur-animation p-8 rounded-xl swiper-slide">
+                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
+                                    class="h-20 mx-auto rounded-md mb-3">
+                                <h4 class="text-xl font-bold">Peca'ch Junggon</h4>
+                                <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                    I'm so happy to use this app
+                                </p>
+                            </div>
+                            <div class=" bg-slate-50 shadow-md md:blur-animation p-8 rounded-xl swiper-slide">
+                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
+                                    class="h-20 mx-auto rounded-md mb-3">
+                                <h4 class="text-xl font-bold">Wolum'm Jargoen</h4>
+                                <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                    Konichiwa Company is so great, you can order for a videographer. its so incridible and so nice vendor on this app.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class=" bg-slate-300 md:blur-animation p-8 rounded-xl swiper-slide">
-                        <img src="{{ url('assets/img/avatar/avatar1.jpg') }}" alt=""
-                            class="h-20 mx-auto rounded-md mb-3">
-                        <h4 class="text-xl font-bold">Blumboy Mc'Claron</h4>
-                        <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
-                            adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
-                            atque ad
-                            ut excepturi quas?
-                        </p>
-                    </div>
-                    <div class=" bg-slate-300 md:blur-animation p-8 rounded-xl swiper-slide">
-                        <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
-                            class="h-20 mx-auto rounded-md mb-3">
-                        <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
-                        <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
-                            adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
-                            atque ad
-                            ut excepturi quas?
-                        </p>
-                    </div>
-                    <div class=" bg-slate-300 md:blur-animation p-8 rounded-xl swiper-slide">
-                        <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
-                            class="h-20 mx-auto rounded-md mb-3">
-                        <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
-                        <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
-                            adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
-                            atque ad
-                            ut excepturi quas?
-                        </p>
-                    </div>
-                    <div class=" bg-slate-300 md:blur-animation p-8 rounded-xl swiper-slide">
-                        <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
-                            class="h-20 mx-auto rounded-md mb-3">
-                        <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
-                        <p class="text-sm leading-7 my-3 font-light opacity-50">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
-                            adipisci,
-                            sit numquam harum, obcaecati ipsa quos sapiente ea dolorem eligendi dolor aut accusamus
-                            atque ad
-                            ut excepturi quas?
-                        </p>
-                    </div>
-                </div>
-            </div>
     </section>
 </x-user-layout>
