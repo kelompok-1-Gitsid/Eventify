@@ -89,6 +89,7 @@ Route::middleware('auth', 'vendor')->group(function () {
     Route::get('/products/{id}/edit', [VendorController::class, 'editProduct'])->name('product.edit');
     Route::put('/products/{id}', [VendorController::class, 'updateProduct'])->name('products.update');
     Route::delete('/products/{id}', [VendorController::class, 'destroyProduct'])->name('product.destroy');
+    Route::delete('/products/{id}', [VendorController::class, 'destroy'])->name('product.destroys');
 });
 
 

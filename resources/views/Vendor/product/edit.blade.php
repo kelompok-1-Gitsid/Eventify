@@ -64,7 +64,7 @@
                                 <option value="Videographer" {{ $product->category == 'Videographer' ? 'selected' : '' }}>Videographer</option>
                                 <option value="Photographer" {{ $product->category == 'Photographer' ? 'selected' : '' }}>Photographer</option>
                                 <option value="Decoration" {{ $product->category == 'Decoration' ? 'selected' : '' }}>Decoration</option>
-                                <option value="MUA" {{ $product->category == 'MUA' ? 'selected' : '' }}>MUA</option>
+                                <option value="Makeup Artist" {{ $product->category == 'Makeup Artist' ? 'selected' : '' }}>Makeup Artist</option>
                             </select>
                         </div>
 

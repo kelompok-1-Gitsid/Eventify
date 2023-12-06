@@ -32,7 +32,7 @@
             </form>
 
             <!-- Delete Button -->
-            <form action="{{ route('product.destroy', $product->id) }}" method="POST">
+            <form action="{{ route('product.destroys', $product->id) }}" method="POST">
                 @csrf
                 <!-- Metode DELETE -->
                 @method('DELETE')

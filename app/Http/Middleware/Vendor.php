@@ -18,7 +18,7 @@ class Vendor
         if (Auth()->user()->role == 'vendor') {
             return $next($request);
         } else {
-            return redirect('/')->with('message', 'Access Denied as you are not Admin!');
+            return redirect('/')->with('message', 'Access Denied as you are not vendor!');
         }
 
         abort(401);
