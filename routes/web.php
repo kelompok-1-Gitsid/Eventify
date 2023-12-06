@@ -74,6 +74,8 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
 
     Route::resource('user', CustomerController::class);
 
+    Route::get('info/cetakExcel', [InfoController::class, 'cetakExcel'])->name('info.cetakExcel');
+    Route::get('info/cetakPdf', [InfoController::class, 'cetakPdf'])->name('info.cetakPdf');
     Route::resource('info', InfoController::class);
 
 });

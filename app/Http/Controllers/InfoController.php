@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransactionExport;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InfoController extends Controller
 {
@@ -27,6 +29,19 @@ class InfoController extends Controller
         $transaction = $query->get();
 
         return view('admin.transaction', compact('transaction'));
+    }
+
+    public function cetakPdf()
+    {
+        $transaction = Transaction::all();
+
+        return view('admin.report', compact('transaction'));
+    }
+    public function cetakExcel()
+    {
+        return Excel::download(new TransactionExport, 'transaction.xlsx');
+
+        // return view('admin.excel', compact('transaction'));
     }
 
 
