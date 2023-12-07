@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/dist/css/adminlte.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('assets/img/logo2.jpg')}}">
 </head>
 
 <body class="hold-transition sidebar-mini">
