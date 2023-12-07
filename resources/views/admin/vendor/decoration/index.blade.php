@@ -35,7 +35,7 @@ Decoration
                             <tr>
                                 <td>{{ $row->name }}</td>
                                 <td>{{ $row->product->name }}</td>
-                                <td>Rp {{ $row->product->price }}</td>
+                                <td>Rp {{ number_format($row->product->price, 0, ',', '.') }},00</td>
                                 <td>
                                     <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $row->id }}">
                                         <i class="fas fa-database"></i>
