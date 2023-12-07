@@ -33,6 +33,12 @@ Run from local server
     http://127.0.0.1:8000
 ```
 
+Before use the application
+```bash
+    php artisan route:cache
+    php artisan optimize:clear
+```
+
 ## Team Member (Eventify)
 
 -  Muhammad Haikal Fajari
