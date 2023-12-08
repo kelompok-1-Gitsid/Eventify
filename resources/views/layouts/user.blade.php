@@ -12,7 +12,7 @@
     <title>Eventify</title>
 </head>
 
-<body class="font-plusJakarta">
+<body class="font-plusJakarta selection:bg-blue-300 selection:text-black">
 
     <div class="w-full">
         <x-navbar-user />
@@ -26,27 +26,6 @@
     <div class="">
         <x-footer-user />
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            freeMode: true,
-            autoplay :{
-                delay: 2000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
 
 </body>
 </html>

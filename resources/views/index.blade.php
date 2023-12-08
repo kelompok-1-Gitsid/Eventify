@@ -3,7 +3,13 @@
         <div class="mt-[5rem] lg:mt-2 py-10 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
             <div class="flex flex-col lg:flex-row items-center md:justify-center gap-5 md:gap-15 lg:gap-40">
                 <div class="mx-5 my-5 text-center md:my-4 lg:my-auto lg:w-[50rem] lg:text-justify">
-                    <h1 class="title text-[1.5rem] md:text-[2.5rem] lg:text-[3rem]">Eventify is</h1>
+                    <h1 class="title text-[1.5rem] md:text-[2.5rem] lg:text-[3rem]">
+                        <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
+                            <span class="relative text-white">
+                                Eventify is
+                            </span>
+                        </span>
+                    </h1>
                     <p class="mt-5 text-xl text-slate-800">
                         a website for customer to order event, videography, catering, decoration, and makeup artist from
                         vendor,
@@ -94,56 +100,46 @@
             <h2 class="font-bold">Tertimonials User</h2>
             <h4 class="text-3xl w-72 mx-auto leading-normal font-semibold mb-12 gradient-text">Read What Other Have To
                 Say</h4>
-                    <div class=" md:max-w-5xl mx-auto gap-8 px-3 group swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class=" bg-slate-50 shadow-md p-8 rounded-xl swiper-slide">
-                                <img src="{{ url('assets/img/avatar/avatar.jpg') }}" alt=""
-                                    class="h-20 mx-auto rounded-md mb-3">
-                                <h4 class="text-xl font-bold">Homba Stargazorus</h4>
-                                <p class="text-sm leading-7 my-3 font-light opacity-50">
-                                    Waw, so nice i like the app, its so easy for order Make Up Artist.
-                                </p>
+                    <div class="md:max-w-5xl mx-auto gap-8 px-3 group swiper mySwiper">
+                        <div class="swiper-wrapper py-1">
+                            <div class="swiper-slide bg-slate-50 shadow-md p-8 rounded-xl">
+                                    <img src="{{ url('assets/img/avatar/avatar3.png') }}" alt=""
+                                        class="h-20 mx-auto rounded-md mb-3">
+                                    <h4 class="text-xl font-bold">Homba Stargazorus</h4>
+                                    <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                        Waw, so nice i like the app, its so easy for order Make Up Artist.
+                                    </p>
                             </div>
-                            <div class=" bg-slate-50 shadow-md p-8 rounded-xl swiper-slide">
-                                <img src="{{ url('assets/img/avatar/avatar1.jpg') }}" alt=""
-                                    class="h-20 mx-auto rounded-md mb-3">
-                                <h4 class="text-xl font-bold">Blumboy Mc'Claron</h4>
-                                <p class="text-sm leading-7 my-3 font-light opacity-50">
-                                    Good app, for you who want to rent a decoration setup.
-                                </p>
+                            <div class="swiper-slide bg-slate-50 shadow-md p-8 rounded-xl">
+                                    <img src="{{ url('assets/img/avatar/avatar3.png') }}" alt=""
+                                        class="h-20 mx-auto rounded-md mb-3">
+                                    <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
+                                    <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                        I'm so happy to use this app, its easy to use.
+                                    </p>
                             </div>
-                            <div class=" bg-slate-50 shadow-md p-8 rounded-xl swiper-slide">
-                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
-                                    class="h-20 mx-auto rounded-md mb-3">
-                                <h4 class="text-xl font-bold">Ronaldo's Christoprous</h4>
-                                <p class="text-sm leading-7 my-3 font-light opacity-50">
-                                    I am very pleased with the makeup results from Malmoy Makeup. The makeup makes me look my best and I feel more confident. Malmoy Makeup is also very kind and takes her time to apply the makeup perfectly.
-                                </p>
+                            <div class="swiper-slide bg-slate-50 shadow-md p-8 rounded-xl">
+                                    <img src="{{ url('assets/img/avatar/avatar3.png') }}" alt=""
+                                        class="h-20 mx-auto rounded-md mb-3">
+                                    <h4 class="text-xl font-bold">Blumboy Mc'Claron</h4>
+                                    <p class="text-sm leading-7 my-3 font-light opacity-50">
+                                        Eventify help us who want to make a party or wedding.
+                                    </p>
                             </div>
-                            <div class=" bg-slate-50 shadow-md p-8 rounded-xl swiper-slide">
-                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
+                            <div class="swiper-slide bg-slate-50 shadow-md p-8 rounded-xl">
+                                <img src="{{ url('assets/img/avatar/avatar3.png') }}" alt=""
                                     class="h-20 mx-auto rounded-md mb-3">
                                 <h4 class="text-xl font-bold">Vincent Hanazo</h4>
                                 <p class="text-sm leading-7 my-3 font-light opacity-50">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure, optio
-                                    adipisci,
-                                    sit numquam harum.
+                                    I like the ui, it's so good and so nice so easy to use.
                                 </p>
                             </div>
-                            <div class=" bg-slate-50 shadow-md p-8 rounded-xl swiper-slide">
-                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
+                            <div class="swiper-slide bg-slate-50 shadow-md p-8 rounded-xl">
+                                <img src="{{ url('assets/img/avatar/avatar3.png') }}" alt=""
                                     class="h-20 mx-auto rounded-md mb-3">
-                                <h4 class="text-xl font-bold">Peca'ch Junggon</h4>
+                                <h4 class="text-xl font-bold">Vincent Hanazo</h4>
                                 <p class="text-sm leading-7 my-3 font-light opacity-50">
-                                    I'm so happy to use this app
-                                </p>
-                            </div>
-                            <div class=" bg-slate-50 shadow-md p-8 rounded-xl swiper-slide">
-                                <img src="{{ url('assets/img/avatar/avatar2.jpg') }}" alt=""
-                                    class="h-20 mx-auto rounded-md mb-3">
-                                <h4 class="text-xl font-bold">Wolum'm Jargoen</h4>
-                                <p class="text-sm leading-7 my-3 font-light opacity-50">
-                                    Konichiwa Company is so great, you can order for a videographer. its so incridible and so nice vendor on this app.
+                                    Eventify is a good web for you, who want to order catering.
                                 </p>
                             </div>
                         </div>

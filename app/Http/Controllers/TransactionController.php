@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\Product;
 use App\Models\Transaction;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Http;
 
-class transactionController extends Controller
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+
+class TransactionController extends Controller
 {
     public function store(Request $request)
     {
@@ -21,12 +22,6 @@ class transactionController extends Controller
             'end_date' => 'required',
             'price' => 'required'
         ]);
-
-        // Check for validation errors
-
-        // if ($validator->fails()) {
-        //     dd($request->all());
-        // }
 
         try {
             $data = $request->all();
@@ -112,6 +107,7 @@ class transactionController extends Controller
 
         return view('user.transaction.pay', ['orders' => $transactions]);
     }
+
     public function pay(Request $request)
     {
         $token = $request->token;

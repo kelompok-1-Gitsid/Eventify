@@ -20,10 +20,8 @@ export default {
                 plusJakarta: "Plus Jakarta Sans",
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
-            variants: {
-                extend: {
-                    backgroundColor: ["active"],
-                },
+            fontSize:{
+                '10xl' : '11rem',
             },
         },
     },

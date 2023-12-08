@@ -8,6 +8,45 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+import Swiper from 'swiper';
+
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    freeMode: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    breakpoints:{
+        640:{
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        1024:{
+            slidesPerView: 3,
+            spaceBetween: 30,
+        }
+    }
+});
+
+var swiper = new Swiper(".myGalerySwiper",{
+    slidesPerView: 1,
+    spaceBetween: 40,
+    centerInsufficientSlides: false,
+    autoplay:{
+        delay: 2000,
+        disableOnInteraction:false,
+    },
+    breakpoints:{
+        1024:{
+            slidesPerView: 3,
+            spaceBetween: 30,
+        }
+    },
+});
+
+// Animation On Index
 const observer = new IntersectionObserver((entries) =>{
     entries.forEach((entry)=>{
         console.log(entry)
@@ -19,6 +58,24 @@ const observer = new IntersectionObserver((entries) =>{
 
 const hiddenElements = document.querySelectorAll('.gone');
 hiddenElements.forEach((el)=> observer.observe(el));
+
+// Animation On About Us
+let sections = document.querySelectorAll('section');
+
+window.onscroll = () => {
+    sections.forEach(sec =>{
+        let top = window.scrollY;
+        let offset = sec.offsetTop - 150;
+        let height = sec.offsetHeight;
+
+        if(top >= offset && top < offset + height){
+            sec.classList.add('show-animate');
+        }
+        else{
+            sec.classList.remove('show-animate');
+        }
+    });
+}
 
 // Midtrans
 // For example trigger on button clicked, or any time you need

@@ -31,7 +31,7 @@
     }
 
     .image-product{
-        @apply w-72 ;
+        @apply lg:w-72 ;
     }
 
     .image-galery-potrait{
@@ -49,11 +49,6 @@
     .scale{
         @apply hover:transform hover:scale-110 hover:rotate-3 transition-all cursor-pointer;
     }
-
-    .blur-animation{
-        @apply group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 cursor-pointer duration-500 ;
-    }
-
     .gone{
         @apply opacity-0 transition-all filter translate-x-[-50%];
     }
@@ -67,5 +62,9 @@
     }
     .footer-2{
         @apply h-auto md:h-[30rem] bg-white -mt-12 lg:-mt-14 pt-12 mb-8 z-20 gap-10 rounded-t-[2.5rem];
+    }
+
+    .active{
+        @apply text-blue-700;
     }
 }

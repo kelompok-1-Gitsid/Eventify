@@ -8,12 +8,12 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VendorController;
-use App\Http\Controllers\productController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CateringController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DecorationController;
-use App\Http\Controllers\transactionController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 
 /*
@@ -39,8 +39,8 @@ Route::get('/about-us', function () {
     return view('about-us');
 });
 
-Route::get('/product', [productController::class, 'getAll']);
-Route::get('/product/detail/{id}', [productController::class, 'showDetail'])->name('product.detail');
+Route::get('/product', [ProductController::class, 'getAll']);
+Route::get('/product/detail/{id}', [ProductController::class, 'showDetail'])->name('product.detail');
 
 Route::middleware('auth')->group(function () {
     // Profile Update
@@ -49,9 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile', [ProfileController::class, 'avatar'])->name('profile.avatar');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Order
-    Route::post('/order/product', [transactionController::class, 'store'])->name('order.product');
-    Route::get('/order/pay', [transactionController::class, 'getDetail'])->name('order.list');
-    Route::post('/order/pay', [transactionController::class, 'pay'])->name('order.pay');
+    Route::post('/order/product', [TransactionController::class, 'store'])->name('order.product');
+    Route::get('/order/pay', [TransactionController::class, 'getDetail'])->name('order.list');
+    Route::post('/order/pay', [TransactionController::class, 'pay'])->name('order.pay');
     // Route::get('/order/success', [transactionController::class, 'viewTransaction'])->name('transaction.success');
 });
 
