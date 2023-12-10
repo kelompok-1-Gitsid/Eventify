@@ -6,13 +6,13 @@
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-slate-50 sm:mb-0">
                 <li>
-                    <a href="{{url('/')}}" class="hover:underline me-4 md:me-6">Home</a>
+                    <a href="{{url('#')}}" class="hover:underline me-4 md:me-6">Contact Us</a>
                 </li>
                 <li>
-                    <a href="{{url('/product')}}" class="hover:underline me-4 md:me-6">Product</a>
+                    <a href="{{url('#')}}" class="hover:underline me-4 md:me-6">Find Us</a>
                 </li>
                 <li>
-                    <a href="{{url('/about-us')}}" class="hover:underline me-4 md:me-6">About</a>
+                    <a href="{{url('#')}}" class="hover:underline me-4 md:me-6">Social Media</a>
                 </li>
             </ul>
         </div>
