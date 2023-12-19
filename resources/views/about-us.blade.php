@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="w-full h-auto">
-                        <h4 class="text-center text-2xl my-6 title">Galery Of Eventify</h4>
+                        <h4 class="text-center text-2xl my-6 title">Gallery Of Eventify</h4>
                         <div class="swiper myGalerySwiper">
                             <div class="swiper-wrapper py-4">
                                 <div class="swiper-slide">
@@ -108,7 +108,14 @@
             </div>
         </section>
         <section class="sec-3">
-
+            <div class="max-w-xl bg-slate-300 flex flex-row">
+                <div class="">
+                    <h1>Contact Us</h1>
+                </div>
+                <div class="">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, reiciendis.</p>
+                </div>
+            </div>
         </section>
     </div>
 </x-user-layout>
