@@ -1,30 +1,24 @@
 <x-user-layout>
-    <section id="header" class="mb-10 mt-10 gone delay-150">
-        <div class="mt-[5rem] lg:mt-2 py-10 px-2 mx-[3rem] lg:mx-[5rem] max-w-screen lg:py-24">
-            <div class="flex flex-col lg:flex-row items-center md:justify-center gap-5 md:gap-15 lg:gap-40">
-                <div class="mx-5 my-5 text-center md:my-4 lg:my-auto lg:w-[50rem] lg:text-justify">
-                    <h1 class="title text-[1.5rem] md:text-[2.5rem] lg:text-[3rem]">
-                        <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
-                            <span class="relative text-white">
-                                Eventify is
-                            </span>
-                        </span>
-                    </h1>
-                    <p class="mt-5 text-xl text-slate-800">
-                        a website for customer to order event, videography, catering, decoration, and makeup artist from
+    <section id="header" class="mt-20 gone delay-150">
+        <div class="flex flex-row py-32 px-32 justify-between items-center gap-16">
+            <div class="">
+                <div class="text-7xl font-bold">
+                    <h1>Eventify is</h1>
+                </div>
+                <div class="py-7 text-lg text-justify">
+                    <p>a website for customer to order event, videography, catering, decoration, and makeup artist from
                         vendor,
                         <span class="font-bold">eventify</span> also have many feature and more flexible for you.
                     </p>
                 </div>
-                <div class="image top-0">
-                    <div>
-                        <img src="{{ url('assets/img/wedding-header.jpg') }}" />
-                    </div>
-                </div>
+            </div>
+            <div class="max-w-screen">
+                <img src="{{ url('assets/img/header-photo.jpg') }}" alt="">
             </div>
         </div>
+
     </section>
-    <section id="strategy" class=" bg-slate-100 gone delay-500">
+    <section id="strategy" class="bg-slate-100 gone delay-500 -mt-32">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
             <div class="font-light text-gray-500 sm:text-lg">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">We didn't reinvent the wheel</h2>
