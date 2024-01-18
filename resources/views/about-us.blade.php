@@ -107,15 +107,5 @@
                 </div>
             </div>
         </section>
-        <section class="sec-3">
-            <div class="max-w-xl bg-slate-300 flex flex-row">
-                <div class="">
-                    <h1>Contact Us</h1>
-                </div>
-                <div class="">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, reiciendis.</p>
-                </div>
-            </div>
-        </section>
     </div>
 </x-user-layout>
