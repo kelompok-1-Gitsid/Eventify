@@ -65,7 +65,7 @@
                 <div class="title">
                     <h1 class="text-4xl">{{ $product->name }}</h1>
                     <p class="text-gray-600 text-sm mt-2">{{ $product->description }}</p>
-                    <p class="text-xl font-bold mt-4">Rp.{{ $product->price }}</p>
+                    <p class="text-xl font-bold mt-4">Rp.{{ number_format($product->price, 0, ',', '.') }}</p>
                     <!-- Buttons -->
                     <div class="flex gap-4 mt-8 w-full">
                         <!-- Order Button -->
