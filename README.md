@@ -1,6 +1,6 @@
 ## About Eventify
 
-Eventify is a website for customer to order event, videography, catering, decoration, and makeup artist from vendor, eventify also have many feature and more flexible for you.
+Eventify is a website for customer to order event, videography, catering, decoration, and makeup artist from vendor, eventify also have many feature and more flexible for you. 
 
 ## Installation (for developer only)
 
@@ -26,6 +26,11 @@ Start server
     php artisan serve -> to run laravel artisan
 
     npm run dev -> to run depencies styling
+```
+
+Migrate Database
+```bash
+    php artisan migrate
 ```
 
 Run from local server
